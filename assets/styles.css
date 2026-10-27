@@ -313,7 +313,7 @@ strong { font-weight: 600; }
   }
   .hero__cta .btn { width: auto; }
   /* Camada com o mesmo recorte "cover" da imagem: o selo fica preso a um ponto da foto
-     (o pulso da Alessandra, x 1200 · y 590 em hero.webp) em qualquer largura. */
+     (sobre o corpo da Alessandra, x 900 · y 590 em hero.webp) em qualquer largura. */
   .hero__media { container-type: size; overflow: hidden; }
   .hero__overlay {
     inset: auto; left: 50%; top: 50%;
@@ -322,7 +322,8 @@ strong { font-weight: 600; }
     transform: translate(-50%, -50%);
   }
   .photo-badge {
-    left: calc(1200 / 1920 * 100% - 32px); top: calc(590 / 753 * 100%);
+    /* ~300px mais ao centro que o pulso, mas nunca sobre a coluna de texto (metade esquerda). */
+    left: max(calc(900 / 1920 * 100% - 32px), calc(50% + 8px)); top: calc(590 / 753 * 100%);
     right: auto; bottom: auto; transform: translateY(-50%);
   }
 }

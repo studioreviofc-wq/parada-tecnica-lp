@@ -482,7 +482,7 @@ strong { font-weight: 600; }
 .faq__head { text-align: center; margin-bottom: 48px; }
 .faq__head .eyebrow { margin-bottom: 16px; color: var(--muted); font-weight: 500; letter-spacing: 0.2em; }
 .faq__head h2 { max-width: 24ch; margin-inline: auto; }
-.section--faq { background: #EFE6D6; }
+.section--faq { background: var(--cream); } /* #F8F5EE */
 .faq { display: grid; gap: 12px; }
 .faq__item {
   background: var(--warm-white); border: 1px solid transparent; border-radius: 20px;

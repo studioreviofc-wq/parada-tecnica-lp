@@ -35,3 +35,9 @@ Em `src/content.mjs` → `commercial` (só a Versão B usa):
 - `rebate` (abatimento no protocolo posterior): **não confirmado** — não aparece na página. Para exibir, mude `confirmed` para `true`.
 
 A barra de revisão (topo) tem os links **Versão A** e **Versão B** para alternar entre as páginas.
+
+### Navegação comercial (só Versão B)
+
+- Botões **antes** da oferta (Hero, solução e entregáveis): "VER INVESTIMENTO E DETALHES" → rolam até `#investimento` (seção de oferta).
+- Botões **da oferta em diante** (oferta, FAQ e chamada final): "QUERO FAZER MINHA PARADA TÉCNICA" → checkout SumUp.
+- O link direto `/versao-b/#investimento` abre já na seção de oferta.

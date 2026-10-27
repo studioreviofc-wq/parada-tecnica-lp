@@ -585,7 +585,8 @@ strong { font-weight: 600; }
 }
 
 /* ---------- Versão B: oferta (painel escuro no mesmo vocabulário da seção 3) ---------- */
-.section--offer { background: #F3F1EC; }
+.section--offer { background: #F3F1EC; scroll-margin-top: 16px; }
+.section--offer:focus { outline: none; } /* recebe o foco ao chegar pela âncora #investimento */
 .offer {
   display: grid; gap: 32px; padding: 36px 20px 20px; border-radius: 28px;
   background:

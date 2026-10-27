@@ -6,6 +6,8 @@ import { icon } from './icons.mjs';
 // Versão em renderização: 'a' (original, intocada) ou 'b' (ajustes comerciais). Definida por Page().
 let variant = 'a';
 const isB = () => variant === 'b';
+// Versão B: CTAs anteriores à oferta rolam até ela; na A seguem para o checkout com o texto original.
+const toOffer = (label) => (isB() ? { label: c.versionB.toOfferCta, href: '#investimento' } : { label });
 
 const esc = (s) =>
   String(s).replace(/[&<>"]/g, (ch) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[ch]);
@@ -56,7 +58,7 @@ export const Hero = () => `
         ${paragraphs(c.hero.description)}
       </div>
       <div class="hero__cta" id="hero-cta">
-        ${Button({ label: c.hero.cta, variant: 'gold', cta: 'hero', iconBox: 'arrowUpRight' })}
+        ${Button({ ...toOffer(c.hero.cta), variant: 'gold', cta: 'hero', iconBox: 'arrowUpRight' })}
       </div>
     </div>
     <div class="hero__media">
@@ -110,7 +112,7 @@ export const Solution = () => `
         ${Eyebrow(c.solution.eyebrow, false)}
         <h2 id="solucao-title">${headlineWithAccent(c.solution)}</h2>
         <p class="solution__highlight">${esc(c.solution.highlight)}</p>
-        ${Button({ label: c.solution.cta, variant: 'gold', cta: 'solucao', iconBox: 'arrowUpRight' })}
+        ${Button({ ...toOffer(c.solution.cta), variant: 'gold', cta: 'solucao', iconBox: 'arrowUpRight' })}
       </div>
       <ul class="solution__list">
         ${c.solution.description
@@ -173,7 +175,7 @@ export const Deliverables = () => `
         .join('\n')}
     </ul>
     <p class="pull">${esc(c.deliverables.closing)}</p>
-    <div class="section-cta">${Button({ label: c.deliverables.cta, variant: 'gold', cta: 'entregaveis', iconBox: 'arrowUpRight' })}</div>
+    <div class="section-cta">${Button({ ...toOffer(c.deliverables.cta), variant: 'gold', cta: 'entregaveis', iconBox: 'arrowUpRight' })}</div>
   </div>
 </section>`;
 
@@ -219,7 +221,7 @@ export const Faq = () => `
         )
         .join('\n')}
     </div>
-    <div class="section-cta">${Button({ label: c.faq.cta, variant: 'gold', cta: 'faq', iconBox: 'arrowUpRight' })}</div>
+    <div class="section-cta">${Button({ label: isB() ? c.versionB.buyCta : c.faq.cta, variant: 'gold', cta: 'faq', iconBox: 'arrowUpRight' })}</div>
   </div>
 </section>`;
 
@@ -235,7 +237,7 @@ export const Offer = () => {
   const o = c.versionB.offer;
   const k = c.commercial;
   return `
-<section class="section theme-warm section--offer" aria-labelledby="oferta-title" data-section="06b-oferta">
+<section class="section theme-warm section--offer" id="investimento" tabindex="-1" aria-labelledby="oferta-title" data-section="06b-oferta">
   <div class="container">
     <div class="offer theme-dark">
       <div class="offer__intro">

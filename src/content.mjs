@@ -169,6 +169,9 @@ export const commercial = {
 
 export const versionB = {
   stepOneTitle: 'Confirme sua Parada Técnica',
+  // CTAs antes da oferta levam até ela (#investimento); da oferta em diante, direto ao checkout.
+  toOfferCta: 'VER INVESTIMENTO E DETALHES',
+  buyCta: 'QUERO FAZER MINHA PARADA TÉCNICA',
   offer: {
     eyebrow: 'SUA PARADA TÉCNICA',
     headline: 'Um primeiro passo para compreender o que está acontecendo e decidir como seguir.',

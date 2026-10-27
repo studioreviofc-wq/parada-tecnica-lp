@@ -27,6 +27,28 @@
     });
   });
 
+  // ---------- Versão B: CTAs que levam até a oferta (#investimento) ----------
+  // Rolagem suave (ou instantânea com prefers-reduced-motion) e foco na seção, para teclado e leitor de tela.
+  var offer = document.getElementById('investimento');
+  if (offer) {
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var goToOffer = function (smooth) {
+      offer.scrollIntoView({ behavior: smooth && !reduceMotion ? 'smooth' : 'auto', block: 'start' });
+      offer.focus({ preventScroll: true });
+    };
+    document.querySelectorAll('a[href="#investimento"]').forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        e.preventDefault();
+        if (location.hash !== '#investimento') history.pushState(null, '', '#investimento');
+        goToOffer(true);
+      });
+    });
+    // Link direto (…/versao-b/#investimento): garante a posição depois que fontes e imagens assentam.
+    if (location.hash === '#investimento') {
+      window.addEventListener('load', function () { goToOffer(false); });
+    }
+  }
+
   // ---------- Barra de revisão ----------
   var bar = document.getElementById('review-bar');
   var notes = document.getElementById('toggle-notes');

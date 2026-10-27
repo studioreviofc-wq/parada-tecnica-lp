@@ -399,17 +399,13 @@ strong { font-weight: 600; }
 .watermark--about { font-size: clamp(3.5rem, 10.5vw, 12rem); }
 @media (min-width: 1024px) { .section--watermark-about .watermark { transform: translate(-50%, 18%); } }
 
-/* Celular e tablet: nome maior, quebrado em duas linhas e inteiro dentro da seção
-   (antes ficava pequeno, largo demais e cortado pela seção de baixo). */
+/* Celular e tablet: nome maior, numa linha só que passa das laterais (cortando as pontas),
+   e inteiro na altura, sem ser cortado pela seção de baixo. */
 @media (max-width: 1023px) {
-  .watermark {
-    left: 0; right: 0; bottom: 12px; transform: none;
-    white-space: normal; text-align: center; line-height: 0.92;
-    font-size: 22vw;
-  }
+  .watermark { bottom: 8px; transform: translateX(-50%); font-size: 22vw; line-height: 0.92; }
   .watermark--about { font-size: 17vw; }
-  .section--watermark { padding-bottom: calc(var(--section) + 24vw); }
-  .section--watermark-about { padding-bottom: calc(var(--section) + 20vw); }
+  .section--watermark { padding-bottom: calc(var(--section) + 14vw); }
+  .section--watermark-about { padding-bottom: calc(var(--section) + 11vw); }
 }
 
 /* ---------- 03 Solução ---------- */

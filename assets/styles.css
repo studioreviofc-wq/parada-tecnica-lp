@@ -226,31 +226,12 @@ strong { font-weight: 600; }
 }
 .photo__label small { font-weight: 400; letter-spacing: 0.04em; color: var(--on-dark-muted); font-size: 0.75rem; }
 
-/* ---------- Cabeçalho editorial ---------- */
-.masthead { border-bottom: 1px solid var(--gold); }
-.masthead__inner {
-  display: flex; flex-direction: column; align-items: center; gap: 2px;
-  padding-block: 12px; text-align: center;
-}
+/* ---------- Marca (usada no rodapé) ---------- */
 .masthead__brand {
   margin: 0; max-width: none; font-family: var(--font-serif); font-weight: 700;
   font-size: 1.375rem; letter-spacing: 0.08em; line-height: 1.2; color: var(--cream);
 }
 .masthead__gold { color: var(--champagne); }
-.masthead__credential { margin: 0; max-width: none; font-size: 0.75rem; letter-spacing: 0.06em; color: var(--on-dark-muted); }
-/* Telas muito estreitas (≤380px): a credencial sai do cabeçalho (segue em "Sobre" e no rodapé)
-   para o CTA da primeira dobra continuar visível sem rolagem. */
-@media (max-width: 380px) {
-  .masthead__credential { display: none; }
-  .masthead__inner { padding-block: 10px; }
-  .hero__desc { margin-top: 16px; }
-  .hero__cta { margin-top: 20px; }
-}
-@media (min-width: 768px) {
-  .masthead__inner { flex-direction: row; justify-content: space-between; padding-block: 18px; }
-  .masthead__brand { font-size: 1.75rem; }
-  .masthead__credential { font-size: 0.8125rem; }
-}
 
 /* ---------- 01 Primeira dobra ---------- */
 /* Desktop: texto sobre creme à esquerda, foto sangrando até a borda direita (print aprovado).
@@ -303,7 +284,7 @@ strong { font-weight: 600; }
 @media (min-width: 1024px) {
   .hero__grid {
     grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
-    min-height: clamp(620px, calc(100vh - 72px), 780px);
+    min-height: clamp(620px, 100vh, 820px);
   }
   .hero__text {
     justify-content: center;

@@ -36,14 +36,6 @@ export const Photo = ({ src, alt, position }, frame) =>
 export const Eyebrow = (text, rule = true) =>
   `<p class="eyebrow${rule ? ' eyebrow--rule' : ''}">${esc(text)}</p>`;
 
-export const Masthead = () => `
-<header class="masthead theme-dark">
-  <div class="container masthead__inner">
-    <p class="masthead__brand"><span>${esc(c.masthead.brand[0])}</span> <span class="masthead__gold">${esc(c.masthead.brand[1])}</span></p>
-    <p class="masthead__credential">${esc(c.masthead.credential)}</p>
-  </div>
-</header>`;
-
 const headlineWithAccent = ({ headline, accent }) =>
   accent && headline.endsWith(accent)
     ? `${esc(headline.slice(0, -accent.length))}<em class="display__accent">${esc(accent)}</em>`
@@ -320,7 +312,6 @@ export const Page = (variant) => `<!doctype html>
 <body data-variant="${variant.id}">
 <a class="skip-link" href="#formulario">Ir para o formulário</a>
 ${ReviewBar(variant)}
-${Masthead()}
 <main>
 ${Hero(variant)}
 ${Identification()}

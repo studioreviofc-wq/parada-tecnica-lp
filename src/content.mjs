@@ -24,10 +24,9 @@ export const heroVariants = {
   },
 };
 
-// Cabeçalho editorial: nome do serviço + linha de credencial da copy consolidada.
+// Marca exibida no rodapé.
 export const masthead = {
   brand: ['PARADA', 'TÉCNICA'],
-  credential: 'Psicóloga Alessandra Trentin | CRP 07/14095',
 };
 
 // Fotos: quando a foto oficial chegar, basta preencher `src` (ex.: '../assets/img/alessandra-hero.jpg').

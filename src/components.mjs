@@ -3,6 +3,10 @@
 import * as c from './content.mjs';
 import { icon } from './icons.mjs';
 
+// Versão em renderização: 'a' (original, intocada) ou 'b' (ajustes comerciais). Definida por Page().
+let variant = 'a';
+const isB = () => variant === 'b';
+
 const esc = (s) =>
   String(s).replace(/[&<>"]/g, (ch) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[ch]);
 
@@ -138,7 +142,7 @@ export const Steps = () => `
           (s, i) => `<li class="step-card${i === 0 ? ' step-card--accent' : ''}">
         <span class="step-card__n" aria-hidden="true">${s.n}</span>
         <div class="step-card__visual" aria-hidden="true"><span class="step-card__icon">${icon(stepIcons[i])}</span></div>
-        <h3><span class="visually-hidden">Etapa ${s.n}: </span>${esc(s.title)}</h3>
+        <h3><span class="visually-hidden">Etapa ${s.n}: </span>${esc(isB() && i === 0 ? c.versionB.stepOneTitle : s.title)}</h3>
         ${paragraphs(s.text)}
       </li>`
         )
@@ -204,7 +208,7 @@ export const Faq = () => `
       <h2 id="faq-title">${headlineWithAccent(c.faq)}</h2>
     </header>
     <div class="faq">
-      ${c.faq.items
+      ${(isB() ? [...c.faq.items, ...c.versionB.faqExtra] : c.faq.items)
         .map(
           (f) => `<details class="faq__item">
         <summary><h3>${esc(f.q)}</h3><span class="faq__toggle" aria-hidden="true">${icon('plus', 'faq__icon')}</span></summary>
@@ -218,6 +222,57 @@ export const Faq = () => `
     <div class="section-cta">${Button({ label: c.faq.cta, variant: 'gold', cta: 'faq', iconBox: 'arrowUpRight' })}</div>
   </div>
 </section>`;
+
+// ---------- Versão B ----------
+
+// Valor comercial: mostra o valor confirmado ou um placeholder identificado como pendência.
+const commercialValue = ({ confirmed, value }, placeholder, cls) =>
+  confirmed && value
+    ? `<p class="${cls}">${esc(value)}</p>`
+    : `<p class="${cls} is-placeholder"><span>${esc(placeholder)}</span><small class="placeholder-flag">pendente de confirmação</small></p>`;
+
+export const Offer = () => {
+  const o = c.versionB.offer;
+  const k = c.commercial;
+  return `
+<section class="section theme-warm section--offer" aria-labelledby="oferta-title" data-section="06b-oferta">
+  <div class="container">
+    <div class="offer theme-dark">
+      <div class="offer__intro">
+        ${Eyebrow(o.eyebrow, false)}
+        <h2 id="oferta-title">${esc(o.headline)}</h2>
+        <p class="offer__desc">${esc(o.description)}</p>
+        <h3 class="offer__subtitle">${esc(o.includedTitle)}</h3>
+        <ul class="offer__list">
+          ${o.included.map((t) => `<li><span class="offer__check" aria-hidden="true">${icon('check', 'icon')}</span><span>${esc(t)}</span></li>`).join('\n')}
+        </ul>
+      </div>
+      <div class="offer__price">
+        <p class="offer__price-label">${esc(o.priceLabel)}</p>
+        ${commercialValue(k.price, o.pricePlaceholder, 'offer__value')}
+        ${commercialValue(k.installments, o.installmentsPlaceholder, 'offer__terms')}
+        ${Button({ label: o.cta, variant: 'gold', cta: 'oferta', iconBox: 'arrowUpRight' })}
+        <p class="offer__micro">${esc(o.microcopy)}</p>
+        ${k.rebate.confirmed ? `<p class="offer__rebate">${esc(k.rebate.text)}</p>` : Note(`Benefício a confirmar (não exibir como condição válida): “${k.rebate.text}”`)}
+      </div>
+    </div>
+  </div>
+</section>`;
+};
+
+export const FinalCta = () => {
+  const f = c.versionB.finalCta;
+  return `
+<section class="section theme-dark section--final" aria-labelledby="final-title" data-section="08-chamada-final">
+  <div class="container final">
+    ${Eyebrow(f.eyebrow, false)}
+    <h2 id="final-title">${headlineWithAccent(f)}</h2>
+    <p class="final__subtitle">${esc(f.subtitle)}</p>
+    <div class="section-cta">${Button({ label: f.cta, variant: 'gold', cta: 'chamada-final', iconBox: 'arrowUpRight' })}</div>
+    <p class="final__micro">${esc(f.microcopy)}</p>
+  </div>
+</section>`;
+};
 
 export const Footer = () => `
 <footer class="footer theme-dark" data-section="rodape">
@@ -235,7 +290,9 @@ export const ReviewBar = () => `
   <button type="button" id="hide-review" class="review-bar__close" aria-label="Ocultar barra de revisão">×</button>
 </aside>`;
 
-export const Page = () => `<!doctype html>
+export const Page = (v = 'a') => {
+  variant = v;
+  return `<!doctype html>
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
@@ -258,10 +315,11 @@ ${Solution()}
 ${Steps()}
 ${Deliverables()}
 ${About()}
-${Faq()}
-</main>
+${isB() ? `${Offer()}\n` : ''}${Faq()}
+${isB() ? `${FinalCta()}\n` : ''}</main>
 ${Footer()}
 <script src="assets/main.js" defer></script>
 </body>
 </html>
 `;
+};

@@ -1,4 +1,5 @@
-// Gera a landing page (index.html na raiz) a partir dos componentes. Uso: node build.mjs
+// Gera a landing page a partir dos componentes. Uso: node build.mjs
+// Saída: / (versão A), /versao-a/ (versão A) e /versao-b/ (versão B, com ajustes comerciais).
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { dirname, join } from 'node:path';
@@ -14,18 +15,14 @@ const versioned = (html) =>
     .replace('assets/styles.css"', `assets/styles.css?v=${stamp('assets/styles.css')}"`)
     .replace('assets/main.js"', `assets/main.js?v=${stamp('assets/main.js')}"`);
 
-writeFileSync(join(root, 'index.html'), versioned(Page()));
-console.log('ok  /');
+// Raiz = versão A (página aprovada; continua sendo o endereço principal).
+writeFileSync(join(root, 'index.html'), versioned(Page('a')));
+console.log('ok  /            (versão A)');
 
-// Endereços antigos do teste A/B levam para a página única.
-const redirect = `<!doctype html>
-<html lang="pt-BR"><head><meta charset="utf-8"><meta name="robots" content="noindex">
-<meta http-equiv="refresh" content="0; url=../"><link rel="canonical" href="../">
-<title>Parada Técnica</title><script>location.replace('../' + location.search + location.hash)</script>
-</head><body><a href="../">Ir para a página</a></body></html>
-`;
-for (const old of ['versao-a', 'versao-b']) {
-  mkdirSync(join(root, old), { recursive: true });
-  writeFileSync(join(root, old, 'index.html'), redirect);
-  console.log(`ok  /${old}/ → /`);
+// Rotas de comparação: mesma base de CSS/JS/imagens, só os caminhos sobem um nível.
+const nested = (html) => html.replace(/(href|src)="assets\//g, '$1="../assets/');
+for (const [dir, v] of [['versao-a', 'a'], ['versao-b', 'b']]) {
+  mkdirSync(join(root, dir), { recursive: true });
+  writeFileSync(join(root, dir, 'index.html'), nested(versioned(Page(v))));
+  console.log(`ok  /${dir}/   (versão ${v.toUpperCase()})`);
 }

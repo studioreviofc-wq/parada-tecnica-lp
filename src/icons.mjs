@@ -16,6 +16,7 @@ const paths = {
   batteryLow: '<rect x="2.5" y="7" width="16" height="10" rx="2"/><path d="M21.5 10.5v3M6 10.5v3"/>',
   home: '<path d="M4 10.5L12 4l8 6.5V20H4z"/><path d="M9.5 20v-5.5h5V20"/>',
   trendingDown: '<path d="M3 7l6.5 6.5 4-4L21 17"/><path d="M15 17h6v-6"/>',
+  check: '<path d="M5 12.5l4.5 4.5L19 7.5"/>',
   chevron: '<path d="M6 9l6 6 6-6"/>',
 };
 

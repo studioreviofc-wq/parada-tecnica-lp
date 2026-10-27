@@ -151,3 +151,66 @@ export const footer = {
   city: 'Farroupilha, Rio Grande do Sul',
   disclaimer: 'Esta página apresenta informações gerais sobre um serviço psicológico e não substitui avaliação individualizada.',
 };
+
+// ---------------------------------------------------------------------------
+// Versão B (/versao-b/): ajustes comerciais. A versão A (raiz e /versao-a/) não usa nada daqui.
+// ---------------------------------------------------------------------------
+
+// Condições comerciais centralizadas. Enquanto `confirmed` for false, a página mostra
+// placeholders marcados como pendência — nunca valores hipotéticos como se fossem reais.
+export const commercial = {
+  price: { confirmed: false, value: '' },          // ex.: 'R$ 2.500' — só preencher com valor confirmado
+  installments: { confirmed: false, value: '' },   // ex.: 'em até 10x no cartão' — idem
+  rebate: {
+    confirmed: false,
+    text: 'Se você decidir continuar o acompanhamento: o valor investido na Parada Técnica poderá ser abatido do protocolo posterior, conforme as condições confirmadas pela Alessandra.',
+  },
+};
+
+export const versionB = {
+  stepOneTitle: 'Confirme sua Parada Técnica',
+  offer: {
+    eyebrow: 'SUA PARADA TÉCNICA',
+    headline: 'Um primeiro passo para compreender o que está acontecendo e decidir como seguir.',
+    description: 'Reserve três horas para uma avaliação psicológica individual, com testes, biofeedback cardiovascular conforme indicação profissional e um documento escrito com orientações para os próximos passos.',
+    includedTitle: 'O que está incluído:',
+    included: [
+      'Avaliação individual de 3 horas.',
+      'Recursos de avaliação psicológica, conforme indicação profissional.',
+      'Documento individualizado em até 7 dias úteis.',
+      'Devolutiva para esclarecer os resultados e as recomendações.',
+    ],
+    priceLabel: 'INVESTIMENTO',
+    pricePlaceholder: 'R$ [VALOR CONFIRMADO]',
+    installmentsPlaceholder: '[CONDIÇÕES DE PARCELAMENTO]',
+    cta: 'QUERO FAZER MINHA PARADA TÉCNICA',
+    microcopy: 'Pagamento pelo checkout. Após a confirmação, a equipe entra em contato para orientar o agendamento.',
+  },
+  faqExtra: [
+    {
+      q: 'Qual é o investimento para fazer a Parada Técnica?',
+      a: 'O investimento é de R$ [VALOR CONFIRMADO], com possibilidade de pagamento [CONDIÇÕES CONFIRMADAS]. Você pode consultar os detalhes antes de concluir a compra.',
+      pending: true, // depende de commercial.price e commercial.installments
+    },
+    {
+      q: 'Como funciona o pagamento?',
+      a: 'Ao clicar no botão de contratação, você será direcionado para uma página de pagamento, onde poderá conferir as condições disponíveis e concluir a compra.',
+    },
+    {
+      q: 'Como faço para agendar minha sessão?',
+      a: 'Após a confirmação do pagamento, nossa equipe entrará em contato pelo WhatsApp para orientar o agendamento e o preenchimento do questionário preparatório.',
+    },
+    {
+      q: 'O que acontece depois que eu comprar?',
+      a: 'Você receberá as orientações para agendar sua avaliação individual de 3 horas. Após a sessão, será preparado um documento com os principais pontos avaliados e recomendações profissionais, com entrega prevista em até 7 dias úteis.',
+    },
+  ],
+  finalCta: {
+    eyebrow: 'O PRÓXIMO PASSO É SEU',
+    headline: 'Você já dedica tanto tempo à sua empresa. Que tal reservar três horas para olhar para você?',
+    accent: 'olhar para você?',
+    subtitle: 'A Parada Técnica oferece um momento individual e estruturado para compreender melhor sua situação e receber orientações profissionais sobre os próximos passos.',
+    cta: 'QUERO FAZER MINHA PARADA TÉCNICA',
+    microcopy: 'Após o pagamento, nossa equipe entrará em contato para orientar o agendamento.',
+  },
+};

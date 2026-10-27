@@ -15,3 +15,7 @@ Estrutura:
 - `_etapa-02/` — arquivo do wireframe aprovado
 
 Nunca edite o `index.html` gerado. `?review=0` esconde a barra de revisão.
+
+## Checkout
+
+O formulário foi removido. Os botões (Hero, seção 3 e barra fixa do celular) levam ao link de checkout definido em `src/content.mjs` → `checkout.url`. Enquanto estiver vazio, o clique não faz nada. Depois de preencher, rode `node build.mjs`.

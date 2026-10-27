@@ -14,7 +14,9 @@ const accent = (text) => esc(text).replace(/Parada Técnica/g, '<span class="acc
 // Pendência de conteúdo: continua visível até ser resolvida (pode ser ocultada pela barra de revisão).
 export const Note = (text) => `<p class="pending-note" role="note"><strong>Pendência:</strong> ${esc(text)}</p>`;
 
-export const Button = ({ label, href = '#formulario', variant = 'dark', cta, arrow = false, iconBox = '' }) =>
+const checkoutHref = () => c.checkout.url || '#checkout';
+
+export const Button = ({ label, href = checkoutHref(), variant = 'dark', cta, arrow = false, iconBox = '' }) =>
   `<a class="btn btn--${variant}" href="${href}"${cta ? ` data-cta="${cta}"` : ''}><span>${esc(label)}</span>${arrow ? icon('arrow', 'btn__arrow') : ''}${iconBox ? `<span class="btn__iconbox">${icon(iconBox)}</span>` : ''}</a>`;
 
 // Selo flutuante com nome e registro, sobre a foto da primeira dobra.
@@ -191,54 +193,6 @@ export const Faq = () => `
   </div>
 </section>`;
 
-export const LeadForm = () => `
-<section class="section theme-dark section--form" id="formulario" aria-labelledby="form-title" data-section="08-formulario">
-  <div class="container form-layout">
-    <header class="form-layout__intro">
-      <h2 id="form-title" tabindex="-1">${esc(c.form.headline)}</h2>
-      ${paragraphs(c.form.text)}
-    </header>
-
-    <div class="form-card">
-      <form id="lead-form" novalidate>
-        <div class="form-error-summary" id="form-error-summary" role="alert" tabindex="-1" hidden></div>
-
-        <div class="field" data-field="nome">
-          <label for="nome" class="visually-hidden">${esc(c.form.nameLabel)} (obrigatório)</label>
-          <input id="nome" name="nome" type="text" autocomplete="name" autocapitalize="words" placeholder="${esc(c.form.nameLabel)}*" required aria-describedby="nome-erro">
-          <p class="field__error" id="nome-erro" hidden></p>
-        </div>
-
-        <div class="field" data-field="whatsapp">
-          <label for="whatsapp" class="visually-hidden">${esc(c.form.phoneLabel)} com DDD (obrigatório)</label>
-          <input id="whatsapp" name="whatsapp" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="${esc(c.form.phoneLabel)}*" maxlength="15" required aria-describedby="whatsapp-erro">
-          <p class="field__error" id="whatsapp-erro" hidden></p>
-        </div>
-
-        <button type="submit" class="btn btn--submit btn--block" id="submit-btn">
-          <span class="btn__label">${esc(c.form.cta)}</span>
-          <span class="btn__loading" aria-hidden="true">Enviando…</span>
-        </button>
-        <p class="form-legal">${esc(c.form.microcopy)} <a href="#politica-privacidade">${esc(c.form.privacyLabel)}</a>.</p>
-        <p class="visually-hidden" id="form-status" aria-live="polite"></p>
-        ${Note('Formulário demonstrativo — nenhum dado é enviado ou armazenado nesta etapa.')}
-      </form>
-
-      <div class="form-success" id="form-success" hidden>
-        <span class="rule" aria-hidden="true"></span>
-        <h3 id="success-title" tabindex="-1">Solicitação recebida.</h3>
-        <p>A equipe entrará em contato pelo WhatsApp <strong id="success-phone"></strong> para explicar o atendimento e esclarecer suas dúvidas.</p>
-        <ol class="next-steps" aria-label="Próximo passo">
-          <li>Fique atento à mensagem da equipe no WhatsApp informado.</li>
-          <li>Responda quando puder: a conversa serve para explicar o funcionamento e orientar os próximos passos.</li>
-        </ol>
-        ${Note('Prazo e horário do primeiro contato, nome/número de origem da mensagem e texto final desta confirmação estão pendentes de definição.')}
-        <button type="button" class="btn btn--editorial" id="edit-phone"><span>O número está errado? Corrigir dados</span>${icon('arrow', 'btn__arrow')}</button>
-      </div>
-    </div>
-  </div>
-</section>`;
-
 export const Footer = () => `
 <footer class="footer theme-dark" data-section="rodape">
   <div class="container">
@@ -256,7 +210,7 @@ export const Footer = () => `
 // Barra editorial fixa no mobile (inspirada na barra escura da referência).
 export const StickyCta = () => `
 <div class="sticky-cta theme-dark" id="sticky-cta" aria-hidden="true">
-  <a class="sticky-cta__link" href="#formulario" data-cta="sticky-mobile" tabindex="-1">
+  <a class="sticky-cta__link" href="${checkoutHref()}" data-cta="sticky-mobile" tabindex="-1">
     <span>${esc(c.hero.cta)}</span>${icon('arrow', 'btn__arrow')}
   </a>
 </div>`;
@@ -266,7 +220,6 @@ export const ReviewBar = () => `
 <aside class="review-bar" id="review-bar" aria-label="Barra de revisão">
   <span class="review-bar__title">Revisão</span>
   <label class="review-bar__opt"><input type="checkbox" id="toggle-notes" checked> Pendências</label>
-  <label class="review-bar__opt"><input type="checkbox" id="simulate-error"> Falha</label>
   <button type="button" id="hide-review" class="review-bar__close" aria-label="Ocultar barra de revisão">×</button>
 </aside>`;
 
@@ -284,9 +237,9 @@ export const Page = () => `<!doctype html>
 <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
-<a class="skip-link" href="#formulario">Ir para o formulário</a>
+<a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
 ${ReviewBar()}
-<main>
+<main id="conteudo" tabindex="-1">
 ${Hero()}
 ${Identification()}
 ${Solution()}
@@ -294,7 +247,6 @@ ${Steps()}
 ${Deliverables()}
 ${About()}
 ${Faq()}
-${LeadForm()}
 </main>
 ${Footer()}
 ${StickyCta()}

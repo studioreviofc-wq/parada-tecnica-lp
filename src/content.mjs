@@ -127,17 +127,9 @@ export const faq = {
   ],
 };
 
-export const form = {
-  headline: 'Reserve um momento para olhar para você.',
-  text: [
-    'Se você deseja compreender melhor a Parada Técnica e descobrir como ela funciona, preencha seus dados abaixo.',
-    'A equipe entrará em contato pelo WhatsApp para explicar o atendimento e esclarecer suas dúvidas.',
-  ],
-  nameLabel: 'Nome',
-  phoneLabel: 'WhatsApp',
-  cta: 'QUERO RECEBER AS INFORMAÇÕES',
-  microcopy: 'Seus dados serão utilizados para responder à sua solicitação de contato, conforme a',
-  privacyLabel: 'Política de Privacidade',
+// Link de checkout dos botões. Pendente: enquanto vazio, os botões não levam a lugar nenhum.
+export const checkout = {
+  url: '',
 };
 
 export const footer = {

@@ -399,6 +399,19 @@ strong { font-weight: 600; }
 .watermark--about { font-size: clamp(3.5rem, 10.5vw, 12rem); }
 @media (min-width: 1024px) { .section--watermark-about .watermark { transform: translate(-50%, 18%); } }
 
+/* Celular e tablet: nome maior, quebrado em duas linhas e inteiro dentro da seção
+   (antes ficava pequeno, largo demais e cortado pela seção de baixo). */
+@media (max-width: 1023px) {
+  .watermark {
+    left: 0; right: 0; bottom: 12px; transform: none;
+    white-space: normal; text-align: center; line-height: 0.92;
+    font-size: 22vw;
+  }
+  .watermark--about { font-size: 17vw; }
+  .section--watermark { padding-bottom: calc(var(--section) + 24vw); }
+  .section--watermark-about { padding-bottom: calc(var(--section) + 20vw); }
+}
+
 /* ---------- 03 Solução ---------- */
 /* Painel escuro arredondado sobre o creme, no mesmo vocabulário dos cards (seções 2, 4 e 5). */
 .section--solution { padding-top: 24px; }

@@ -101,7 +101,6 @@ export const about = {
 
 export const faq = {
   eyebrow: 'Perguntas frequentes',
-  // Título novo, no formato da referência (aguarda aprovação da copy).
   headline: 'Tudo o que você precisa saber antes de entrar em contato.',
   accent: 'antes de entrar em contato.',
   items: [

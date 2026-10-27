@@ -70,7 +70,7 @@ export const Watermark = (text = 'Parada Técnica', mod = '') =>
 const signIcons = ['batteryLow', 'signpost', 'home', 'trendingDown'];
 
 export const Identification = () => `
-<section class="section theme-cream section--watermark" aria-labelledby="identificacao-title" data-section="02-identificacao">
+<section class="section theme-cream" aria-labelledby="identificacao-title" data-section="02-identificacao">
   <div class="container split">
     <header class="split__head">
       <h2 id="identificacao-title">${headlineWithAccent(c.identification)}</h2>
@@ -92,14 +92,13 @@ export const Identification = () => `
       </div>
     </div>
   </div>
-  ${Watermark()}
 </section>`;
 
 // Um ícone por parágrafo: quem conduz, recursos usados, documento final.
 const solutionIcons = ['person', 'search', 'document'];
 
 export const Solution = () => `
-<section class="section theme-cream section--solution" aria-labelledby="solucao-title" data-section="03-solucao">
+<section class="section theme-cream section--solution section--watermark" aria-labelledby="solucao-title" data-section="03-solucao">
   <div class="container">
     <div class="solution theme-dark">
       <div class="solution__intro">
@@ -120,6 +119,7 @@ export const Solution = () => `
       </ul>
     </div>
   </div>
+  ${Watermark()}
 </section>`;
 
 const stepIcons = ['chat', 'clock', 'document'];

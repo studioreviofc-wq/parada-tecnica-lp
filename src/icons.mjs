@@ -13,6 +13,9 @@ const paths = {
   arrowUpRight: '<path d="M7 17L17 7M9 7h8v8"/>',
   chat: '<path d="M20.5 11.5a8.5 8.5 0 0 1-12.4 7.6L3.5 20.5l1.4-4.4A8.5 8.5 0 1 1 20.5 11.5z"/>',
   plus: '<path d="M12 6v12M6 12h12"/>',
+  batteryLow: '<rect x="2.5" y="7" width="16" height="10" rx="2"/><path d="M21.5 10.5v3M6 10.5v3"/>',
+  home: '<path d="M4 10.5L12 4l8 6.5V20H4z"/><path d="M9.5 20v-5.5h5V20"/>',
+  trendingDown: '<path d="M3 7l6.5 6.5 4-4L21 17"/><path d="M15 17h6v-6"/>',
   chevron: '<path d="M6 9l6 6 6-6"/>',
 };
 

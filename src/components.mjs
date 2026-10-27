@@ -67,6 +67,9 @@ export const Hero = () => `
 export const Watermark = (text = 'Parada Técnica', mod = '') =>
   `<p class="watermark${mod ? ` watermark--${mod}` : ''}" aria-hidden="true">${esc(text)}</p>`;
 
+// Um ícone por sinal: cansaço, decisões, sobrecarga em casa, disposição em queda.
+const signIcons = ['batteryLow', 'signpost', 'home', 'trendingDown'];
+
 export const Identification = () => `
 <section class="section theme-cream section--watermark" aria-labelledby="identificacao-title" data-section="02-identificacao">
   <div class="container split">
@@ -78,8 +81,8 @@ export const Identification = () => `
       <ul class="signs">
         ${c.identification.signs
           .map(
-            (s) => `<li class="sign-card">
-          ${icon('arrow', 'icon sign-card__icon')}
+            (s, i) => `<li class="sign-card">
+          ${icon(signIcons[i], 'icon sign-card__icon')}
           <div><h3>${esc(s.title)}</h3><p>${esc(s.text)}</p></div>
         </li>`
           )

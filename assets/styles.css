@@ -336,7 +336,7 @@ strong { font-weight: 600; }
   padding: 24px 28px; background: var(--warm-white);
   border: 1px solid var(--input-border); border-radius: var(--radius-card-lg);
 }
-.sign-card__icon { margin-top: 3px; color: var(--ink); }
+.sign-card__icon { margin-top: 2px; color: var(--gold-display); }
 .sign-card h3 { font-family: var(--font-sans); font-weight: 600; font-size: var(--fs-body); line-height: 1.4; margin-bottom: 4px; }
 .sign-card p { color: var(--text-2); }
 .signs__n, .step-card__n, .next-steps li::before { font-variant-numeric: lining-nums; }

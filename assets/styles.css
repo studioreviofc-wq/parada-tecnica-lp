@@ -289,12 +289,14 @@ strong { font-weight: 600; }
 }
 /* Desktop: a imagem enviada (creme à esquerda + foto à direita) vira o fundo da Hero inteira,
    centralizada; o texto ocupa a metade esquerda, sobre a faixa creme da própria imagem.
-   Abaixo de 1200px a coluna de texto ficaria estreita demais: usa o layout empilhado. */
+   A altura segue a proporção da imagem (1920×753), então ela ocupa a largura toda, de ponta a ponta,
+   sem ampliar nem cortar as laterais. Só cresce além disso se o texto precisar (aí corta igual dos dois lados).
+   Abaixo de 1200px a foto ficaria ampliada demais: usa o layout empilhado. */
 @media (min-width: 1200px) {
   .hero__grid {
     position: relative;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    min-height: clamp(620px, 100vh, 820px);
+    aspect-ratio: 1920 / 753;
   }
   .hero__media { position: absolute; inset: 0; z-index: 0; }
   .hero .photo--hero { aspect-ratio: auto; position: absolute; inset: 0; }
@@ -302,7 +304,7 @@ strong { font-weight: 600; }
   .hero__text {
     position: relative; z-index: 1;
     justify-content: center;
-    padding-block: 56px;
+    padding-block: 40px;
     padding-left: max(var(--gutter), calc((100vw - 1200px) / 2 + var(--gutter)));
     padding-right: 40px;
   }

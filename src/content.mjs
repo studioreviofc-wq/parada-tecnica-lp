@@ -87,7 +87,6 @@ export const deliverables = {
 };
 
 export const about = {
-  eyebrow: 'QUEM CONDUZ A PARADA TÉCNICA',
   name: 'Alessandra Mangoni Galves Trentin',
   subtitle: 'Psicóloga clínica | CRP 07/14095',
   photo: { src: '', alt: 'Retrato profissional da psicóloga Alessandra Mangoni Galves Trentin', position: '50% 20%' },
@@ -96,7 +95,6 @@ export const about = {
     'A Parada Técnica foi estruturada para oferecer uma experiência individual, com etapas definidas, avaliação cuidadosa e devolutiva por escrito.',
   ],
   trust: ['Atendimento individual', 'Sigilo profissional', 'Farroupilha/RS'],
-  pendingNote: 'Inserir tempo de experiência e formação complementar após validação da cliente.',
 };
 
 export const faq = {

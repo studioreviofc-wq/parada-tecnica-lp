@@ -151,7 +151,6 @@ export const Deliverables = () => `
   </div>
 </section>`;
 
-const trustIcons = ['person', 'lock', 'pin'];
 
 export const About = () => `
 <section class="section theme-warm" aria-labelledby="sobre-title" data-section="06-sobre">
@@ -160,14 +159,12 @@ export const About = () => `
       ${Photo(c.about.photo, 'photo--portrait')}
     </div>
     <div class="about__text">
-      ${Eyebrow(c.about.eyebrow)}
       <h2 id="sobre-title">${esc(c.about.name)}</h2>
       <p class="about__credential">${esc(c.about.subtitle)}</p>
       ${paragraphs(c.about.description)}
       <ul class="trust" aria-label="Elementos de confiança">
-        ${c.about.trust.map((t, i) => `<li>${icon(trustIcons[i])}<span>${esc(t)}</span></li>`).join('\n')}
+        ${c.about.trust.map((t) => `<li>${esc(t)}</li>`).join('\n')}
       </ul>
-      ${Note(c.about.pendingNote)}
     </div>
   </div>
 </section>`;

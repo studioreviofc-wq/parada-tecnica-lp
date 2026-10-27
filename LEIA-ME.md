@@ -32,12 +32,12 @@ Tudo sai do mesmo `node build.mjs`, com CSS, JS e imagens compartilhados. O que 
 Em `src/content.mjs` → `commercial` (só a Versão B usa):
 - `price`: **R$ 2.500** (confirmado).
 - `installments`: **em até 12x** (confirmado; é com juros, mas o cliente pediu para não citar na página).
-- `rebate` (abatimento no protocolo terapêutico posterior): **pendente de confirmação da Alessandra**. Aparece abaixo do botão da oferta com a etiqueta "pendente de confirmação" e some ao desmarcar "Pendências" na barra de revisão. Quando confirmado, mude `confirmed` para `true` (a etiqueta sai e o bloco fica sempre visível).
+- `rebate` (abatimento no protocolo posterior): **não exibido** (removido a pedido do cliente).
 
 A barra de revisão (topo) tem os links **Versão A** e **Versão B** para alternar entre as páginas.
 
 ### Navegação comercial (só Versão B)
 
-- Botões **antes** da oferta (Hero, solução e entregáveis): "VER INVESTIMENTO E DETALHES" → rolam até `#investimento` (seção de oferta).
+- Botões **antes** da oferta (Hero, solução e entregáveis): mesmos textos da Versão A → rolam até `#investimento` (seção de oferta).
 - Botões **da oferta em diante** (oferta, FAQ e chamada final): "QUERO FAZER MINHA PARADA TÉCNICA" → checkout SumUp.
 - O link direto `/versao-b/#investimento` abre já na seção de oferta.

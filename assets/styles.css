@@ -393,6 +393,8 @@ strong { font-weight: 600; }
 @media (min-width: 1024px) {
   .section--watermark { padding-bottom: calc(var(--section) + 7vw - 100px); }
   .watermark { transform: translate(-50%, 6%); }
+  /* Seção 3: base das letras encostando na seção de baixo (com um leve corte). */
+  .section--solution .watermark { transform: translate(-50%, 13%); }
 }
 
 /* Sobre: nome da Alessandra ao fundo, menor que o da seção 2 (o nome é mais longo). */
@@ -613,24 +615,6 @@ strong { font-weight: 600; }
 .offer__terms { margin: 0 0 16px; color: var(--on-dark-muted); font-size: 1rem; }
 .offer__price .btn { width: 100%; }
 .offer__micro { margin: 8px 0 0; font-size: 0.9375rem; line-height: 1.55; color: var(--on-dark-muted); }
-.offer__rebate {
-  display: grid; grid-template-columns: 28px 1fr; gap: 12px; align-items: start; margin-top: 8px;
-  padding: 16px; border-radius: 14px;
-  background: rgba(217, 183, 131, 0.06); border: 1px solid rgba(217, 183, 131, 0.30);
-}
-.offer__rebate-icon {
-  display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%;
-  background: rgba(217, 183, 131, 0.14); color: var(--champagne);
-}
-.offer__rebate-icon .icon { width: 16px; height: 16px; }
-.offer__rebate-title { margin: 0 0 4px; font-family: var(--font-sans); font-weight: 600; font-size: 1rem; line-height: 1.45; color: var(--cream); }
-.offer__rebate-text { margin: 0; font-size: 0.9375rem; line-height: 1.6; color: var(--on-dark-muted); }
-.offer__rebate .placeholder-flag { display: inline-block; margin-bottom: 8px; white-space: nowrap; }
-@media (max-width: 599px) {
-  .offer__rebate { grid-template-columns: 1fr; gap: 10px; padding: 16px 14px; }
-}
-/* Pendente: visível na revisão (com a etiqueta); some ao desmarcar "Pendências" (visão de comprador). */
-body.hide-notes .offer__rebate.is-pending { display: none; }
 .offer .pending-note { margin-top: 12px; }
 /* Placeholder comercial: claramente marcado como pendente, nunca com cara de valor real. */
 .is-placeholder { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; }

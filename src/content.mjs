@@ -161,8 +161,8 @@ export const footer = {
 export const commercial = {
   price: { confirmed: true, value: 'R$ 2.500' },           // confirmado pelo cliente em 2026-10-27
   installments: { confirmed: true, value: 'em até 12x' },  // confirmado (com juros; o cliente pediu para não citar na página)
-  // Abatimento no protocolo terapêutico posterior. Pendente de confirmação da Alessandra:
-  // enquanto `confirmed` for false, o bloco aparece marcado como pendente (e some ao desmarcar "Pendências").
+  // Abatimento no protocolo terapêutico posterior: NÃO exibido na página (removido a pedido do cliente).
+  // Fica registrado aqui só como referência da condição em negociação.
   rebate: {
     confirmed: false,
     title: 'Seu investimento pode ser aproveitado na continuidade do tratamento.',
@@ -173,7 +173,6 @@ export const commercial = {
 export const versionB = {
   stepOneTitle: 'Confirme sua Parada Técnica',
   // CTAs antes da oferta levam até ela (#investimento); da oferta em diante, direto ao checkout.
-  toOfferCta: 'VER INVESTIMENTO E DETALHES',
   buyCta: 'QUERO FAZER MINHA PARADA TÉCNICA',
   offer: {
     eyebrow: 'SUA PARADA TÉCNICA',

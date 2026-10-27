@@ -6,8 +6,8 @@ import { icon } from './icons.mjs';
 // Versão em renderização: 'a' (original, intocada) ou 'b' (ajustes comerciais). Definida por Page().
 let variant = 'a';
 const isB = () => variant === 'b';
-// Versão B: CTAs anteriores à oferta rolam até ela; na A seguem para o checkout com o texto original.
-const toOffer = (label) => (isB() ? { label: c.versionB.toOfferCta, href: '#investimento' } : { label });
+// Versão B: CTAs anteriores à oferta rolam até ela (mesmo texto); na A seguem para o checkout.
+const toOffer = (label) => (isB() ? { label, href: '#investimento' } : { label });
 
 const esc = (s) =>
   String(s).replace(/[&<>"]/g, (ch) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[ch]);
@@ -254,14 +254,6 @@ export const Offer = () => {
         ${commercialValue(k.price, o.pricePlaceholder, 'offer__value')}
         ${commercialValue(k.installments, o.installmentsPlaceholder, 'offer__terms')}
         ${Button({ label: o.cta, variant: 'gold', cta: 'oferta', iconBox: 'arrowUpRight' })}
-        <div class="offer__rebate${k.rebate.confirmed ? '' : ' is-pending'}">
-          <span class="offer__rebate-icon" aria-hidden="true">${icon('check', 'icon')}</span>
-          <div>
-            ${k.rebate.confirmed ? '' : '<small class="placeholder-flag">pendente de confirmação</small>'}
-            <p class="offer__rebate-title">${esc(k.rebate.title)}</p>
-            <p class="offer__rebate-text">${esc(k.rebate.text)}</p>
-          </div>
-        </div>
         <p class="offer__micro">${esc(o.microcopy)}</p>
       </div>
     </div>

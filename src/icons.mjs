@@ -10,6 +10,7 @@ const paths = {
   lock: '<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>',
   pin: '<path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/>',
   arrow: '<path d="M5 12h14M13 6l6 6-6 6"/>',
+  arrowUpRight: '<path d="M7 17L17 7M9 7h8v8"/>',
 };
 
 export const icon = (name, cls = 'icon') =>

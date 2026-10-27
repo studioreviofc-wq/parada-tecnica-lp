@@ -15,15 +15,22 @@ const accent = (text) => esc(text).replace(/Parada Técnica/g, '<span class="acc
 // Pendência de conteúdo: continua visível até ser resolvida (pode ser ocultada pela barra de revisão).
 export const Note = (text) => `<p class="pending-note" role="note"><strong>Pendência:</strong> ${esc(text)}</p>`;
 
-export const Button = ({ label, href = '#formulario', variant = 'dark', cta, arrow = false }) =>
-  `<a class="btn btn--${variant}" href="${href}"${cta ? ` data-cta="${cta}"` : ''}><span>${esc(label)}</span>${arrow ? icon('arrow', 'btn__arrow') : ''}</a>`;
+export const Button = ({ label, href = '#formulario', variant = 'dark', cta, arrow = false, iconBox = '' }) =>
+  `<a class="btn btn--${variant}" href="${href}"${cta ? ` data-cta="${cta}"` : ''}><span>${esc(label)}</span>${arrow ? icon('arrow', 'btn__arrow') : ''}${iconBox ? `<span class="btn__iconbox">${icon(iconBox)}</span>` : ''}</a>`;
+
+// Selo flutuante com nome e registro, sobre a foto da primeira dobra.
+export const PhotoBadge = ({ name, role, avatar }) => `
+  <div class="photo-badge">
+    <span class="photo-badge__avatar">${avatar ? `<img src="${esc(avatar)}" alt="">` : icon('person')}</span>
+    <span class="photo-badge__text"><strong>${esc(name)}</strong><span>${esc(role)}</span></span>
+  </div>`;
 
 // Foto oficial: com `src` renderiza <img>; sem `src`, um placeholder identificado do mesmo tamanho.
 export const Photo = ({ src, alt, position }, frame) =>
   src
     ? `<figure class="photo ${frame}"><img src="${esc(src)}" alt="${esc(alt)}" style="object-position:${position}" loading="${frame === 'photo--hero' ? 'eager' : 'lazy'}" decoding="async"></figure>`
     : `<figure class="photo ${frame} photo--placeholder" role="img" aria-label="Espaço reservado: ${esc(alt)}">
-    <figcaption class="photo__label">FOTO OFICIAL DA ALESSANDRA<small>${frame === 'photo--hero' ? 'mobile 4:3 · desktop 4:5' : 'proporção 4:5'}</small></figcaption>
+    <figcaption class="photo__label">FOTO OFICIAL DA ALESSANDRA<small>${frame === 'photo--hero' ? 'vertical, rosto no terço superior · ocupa a metade direita no desktop' : 'proporção 4:5'}</small></figcaption>
   </figure>`;
 
 export const Eyebrow = (text, rule = true) =>
@@ -37,25 +44,28 @@ export const Masthead = () => `
   </div>
 </header>`;
 
+const headlineWithAccent = ({ headline, accent }) =>
+  accent && headline.endsWith(accent)
+    ? `${esc(headline.slice(0, -accent.length))}<em class="display__accent">${esc(accent)}</em>`
+    : esc(headline);
+
 export const Hero = (variant) => `
 <section class="hero" aria-labelledby="hero-title" data-section="01-primeira-dobra">
-  <div class="container hero__grid">
+  <div class="hero__grid">
     <div class="hero__text">
-      ${Eyebrow(c.hero.eyebrow)}
-      <h1 id="hero-title" class="display" data-variant-slot="headline">${esc(variant.headline)}</h1>
+      ${Eyebrow(c.hero.eyebrow, false)}
+      <h1 id="hero-title" class="display" data-variant-slot="headline">${headlineWithAccent(variant)}</h1>
       <div class="hero__desc" data-variant-slot="description">
         ${paragraphs(variant.description)}
       </div>
-      <ul class="hero__benefits" aria-label="Destaques">
-        ${c.hero.benefits.map((b, i) => `<li>${icon(i === 0 ? 'clock' : 'document')}<span>${esc(b)}</span></li>`).join('\n')}
-      </ul>
       <div class="hero__cta" id="hero-cta">
-        ${Button({ label: c.hero.cta, cta: 'hero', arrow: true })}
+        ${Button({ label: c.hero.cta, variant: 'gold', cta: 'hero', iconBox: 'arrowUpRight' })}
         <p class="microcopy">${esc(c.hero.microcopy)}</p>
       </div>
     </div>
     <div class="hero__media">
       ${Photo(c.hero.photo, 'photo--hero')}
+      ${PhotoBadge(c.hero.badge)}
     </div>
   </div>
 </section>`;
@@ -304,7 +314,7 @@ export const Page = (variant) => `<!doctype html>
 <title>Parada Técnica — Versão ${variant.id.toUpperCase()}</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Raleway:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="../assets/styles.css">
 </head>
 <body data-variant="${variant.id}">

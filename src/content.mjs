@@ -7,14 +7,16 @@ export const heroVariants = {
     id: 'a',
     label: 'Versão A — Acolhimento',
     headline: 'Você cuida de tantas responsabilidades. Mas há quanto tempo não olha para si mesmo?',
+    accent: 'olha para si mesmo?', // trecho final em dourado itálico (mesma regra nas duas versões)
     description: [
-      'Conheça a Parada Técnica: uma avaliação psicológica estruturada de 3 horas para empresários que enfrentam sobrecarga, dificuldades nas decisões ou mudanças no próprio bem-estar.',
+      'Conheça a Parada Técnica: Uma sessão de três horas com testes psicológicos e biofeedback, e um documento escrito com o que apareceu. Para o empresário que ainda está de pé, mas anda no limite.',
     ],
   },
   b: {
     id: 'b',
     label: 'Versão B — Dor empresarial',
     headline: 'Sua empresa continua funcionando. Mas você sente que já não consegue tomar decisões como antes?',
+    accent: 'tomar decisões como antes?',
     description: [
       'Anos de responsabilidades, pressão e decisões importantes podem afetar seu bem-estar, sua disposição e até a maneira como você conduz o negócio.',
       'A Parada Técnica é uma avaliação psicológica estruturada de 3 horas, criada para ajudar empresários a compreender essas dificuldades e identificar os próximos passos.',
@@ -31,10 +33,10 @@ export const masthead = {
 // Fotos: quando a foto oficial chegar, basta preencher `src` (ex.: '../assets/img/alessandra-hero.jpg').
 export const hero = {
   eyebrow: 'PARADA TÉCNICA | PARA EMPRESÁRIOS',
-  benefits: ['3 horas de avaliação individual', 'Plano escrito em até 7 dias úteis'],
   cta: 'QUERO ENTENDER COMO FUNCIONA',
-  microcopy: 'Preencha um formulário rápido para saber mais e conversar pelo WhatsApp.',
+  microcopy: 'Preencha um formulário rápido e receba as informações pelo WhatsApp.',
   photo: { src: '', alt: 'Psicóloga Alessandra Trentin', position: '50% 25%' },
+  badge: { name: 'Alessandra Trentin', role: 'Psicóloga · CRP 07/14095', avatar: '' },
 };
 
 export const identification = {

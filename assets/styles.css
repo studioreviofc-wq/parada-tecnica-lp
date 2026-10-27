@@ -15,7 +15,12 @@
   --border: #E3DBCF;         /* bordas e divisórias */
 
   /* Derivados para acessibilidade (documentados no relatório) */
-  --gold-ink: #8A6435;       /* dourado para TEXTO sobre fundo claro: 4.9:1 no creme (o #B78A50 dá 2.8:1) */
+  --gold-ink: #8A6435;
+  --gold-display: #9C7442;   /* dourado de títulos grandes (itálico da headline): 3.8:1 no creme */
+  --gold-btn: linear-gradient(90deg, #7A5629 0%, #9C7442 100%); /* CTA dourado: texto branco ≥ 4.8:1 sob o rótulo */
+  --gold-btn-hover: linear-gradient(90deg, #6C4C23 0%, #8E6A3C 100%);
+  --glass: rgba(23, 20, 17, 0.55);  /* selo sobre a foto: escuro translúcido p/ contraste do texto */
+  --glass-border: rgba(248, 245, 238, 0.28);       /* dourado para TEXTO sobre fundo claro: 4.9:1 no creme (o #B78A50 dá 2.8:1) */
   --on-dark: #F8F5EE;        /* texto sobre escuro */
   --on-dark-muted: #C9C0B2;  /* texto secundário sobre escuro: 10:1 */
   --on-dark-line: #3A342D;   /* divisória sobre escuro */
@@ -39,7 +44,7 @@
 
   /* Tipografia */
   --font-serif: "Playfair Display", Georgia, "Times New Roman", serif;
-  --font-sans: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --font-sans: Raleway, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
   --fs-display: clamp(2.125rem, 1.6rem + 2.2vw, 3.25rem);   /* 34 → 52 */
   --fs-h2: clamp(1.75rem, 1.35rem + 1.7vw, 2.625rem);       /* 28 → 42 */
   --fs-h3: clamp(1.375rem, 1.25rem + 0.5vw, 1.625rem);      /* 22 → 26 */
@@ -87,6 +92,7 @@ body {
   font-size: var(--fs-body);
   line-height: var(--lh-body);
   -webkit-font-smoothing: antialiased;
+  font-variant-numeric: lining-nums; /* Raleway usa algarismos antigos por padrão */
   text-rendering: optimizeLegibility;
 }
 
@@ -167,6 +173,18 @@ strong { font-weight: 600; }
 .btn--dark:hover { background: var(--graphite); border-color: var(--graphite); }
 .theme-dark .btn--dark { border-color: var(--champagne); }
 
+.btn--gold { background: var(--gold-btn); color: var(--white); border: 0; padding: 8px 8px 8px 28px; gap: 24px; min-height: 64px; letter-spacing: 0.02em; font-size: 1rem; }
+.btn--gold:hover { background: var(--gold-btn-hover); }
+.btn__iconbox {
+  width: 48px; height: 48px; flex: none; display: grid; place-items: center;
+  background: var(--ink); color: var(--white); border-radius: var(--radius-btn);
+  transition: transform var(--dur) var(--ease);
+}
+.btn__iconbox .icon { width: 22px; height: 22px; }
+.btn--gold:hover .btn__iconbox { transform: translate(2px, -2px); }
+.btn--gold.btn { justify-content: space-between; }
+@media (prefers-reduced-motion: reduce) { .btn, .btn__arrow, .btn__iconbox { transition: none; } }
+
 .btn--champagne { background: var(--champagne); color: var(--ink); border-color: var(--champagne); }
 .btn--champagne:hover { background: var(--champagne-hover); border-color: var(--champagne-hover); }
 
@@ -235,38 +253,73 @@ strong { font-weight: 600; }
 }
 
 /* ---------- 01 Primeira dobra ---------- */
-.hero { background: var(--cream); padding-block: 24px 64px; }
-.hero__grid { display: grid; gap: 40px; }
-.hero__text { display: flex; flex-direction: column; }
-.hero .eyebrow { margin-bottom: 18px; }
-.display { font-size: var(--fs-display); line-height: 1.08; letter-spacing: -0.018em; }
+/* Desktop: texto sobre creme à esquerda, foto sangrando até a borda direita (print aprovado).
+   Mobile: texto e CTA primeiro; foto em largura total logo abaixo. */
+.hero { background: var(--cream); border-bottom: 6px solid var(--gold); }
+.hero__grid { display: grid; }
+.hero__text {
+  display: flex; flex-direction: column;
+  padding: 28px var(--gutter) 40px;
+}
+.hero .eyebrow { margin-bottom: 16px; }
+.display { font-size: var(--fs-display); line-height: 1.1; letter-spacing: -0.012em; }
+.display__accent { font-style: italic; color: var(--gold-display); }
 .hero__desc { margin-top: 20px; color: var(--graphite); }
-.hero__desc p { margin-bottom: 0.75em; }
+.hero__desc p { margin-bottom: 0.75em; max-width: 46ch; }
 .hero__desc p:last-child { margin-bottom: 0; }
 
-.hero__benefits { display: grid; gap: 12px; padding-top: 20px; margin-top: 24px; border-top: 1px solid var(--border); }
-.hero__benefits li { display: flex; align-items: center; gap: 12px; font-weight: 500; }
-.hero__benefits .icon { color: var(--gold-ink); }
 
+.hero__cta { margin-top: 28px; }
 .hero__cta .btn { width: 100%; }
-.microcopy { font-size: var(--fs-small); color: var(--muted); margin-top: 12px; }
+.microcopy { font-size: var(--fs-small); color: var(--graphite); margin-top: 14px; }
 
-/* CTA logo após a descrição; benefícios em seguida. Mantém o botão dentro da primeira tela
-   mesmo com a descrição mais longa da Versão B (mesma ordem nas duas variantes). */
-.hero__cta { order: 3; margin-top: 24px; }
-.hero__benefits { order: 4; margin-top: 28px; }
-.hero__desc { order: 2; }
-.hero__benefits li span { white-space: nowrap; }
+.hero__media { position: relative; background: var(--graphite); }
+.hero .photo--hero { aspect-ratio: 4 / 5; border-radius: 0; height: 100%; }
+.hero .photo--placeholder { outline-offset: -16px; }
+.hero .photo__label { max-width: 32ch; margin-inline: auto; }
+
+.photo-badge {
+  position: absolute; left: var(--gutter); bottom: 24px; right: auto;
+  display: flex; align-items: center; gap: 12px; max-width: calc(100% - 2 * var(--gutter));
+  padding: 8px 20px 8px 8px; border-radius: 999px;
+  background: var(--glass); border: 1px solid var(--glass-border);
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  color: var(--on-dark);
+}
+.photo-badge__avatar {
+  width: 48px; height: 48px; flex: none; border-radius: 50%; overflow: hidden;
+  display: grid; place-items: center; background: var(--graphite); color: var(--champagne);
+  border: 2px solid var(--on-dark);
+}
+.photo-badge__avatar img { width: 100%; height: 100%; object-fit: cover; }
+.photo-badge__text { display: grid; line-height: 1.35; white-space: nowrap; }
+.photo-badge__text strong { font-weight: 600; font-size: 1rem; }
+.photo-badge__text span { font-size: 0.875rem; color: var(--on-dark-muted); }
+
 @media (min-width: 600px) and (max-width: 1023px) {
   .hero__cta .btn { width: auto; }
-  .hero__benefits { grid-template-columns: 1fr 1fr; }
+  .hero .photo--hero { aspect-ratio: 4 / 3; }
 }
 @media (min-width: 1024px) {
-  .hero { padding-block: 48px 112px; }
-  .hero__grid { grid-template-columns: 3fr 2fr; gap: 64px; align-items: center; }
-  .hero__benefits { grid-template-columns: auto auto; justify-content: start; column-gap: 32px; }
-  .hero__desc { margin-top: 20px; }
+  .hero__grid {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    min-height: clamp(620px, calc(100vh - 72px), 780px);
+  }
+  .hero__text {
+    justify-content: center;
+    padding-block: 64px;
+    padding-left: max(var(--gutter), calc((100vw - 1200px) / 2 + var(--gutter)));
+    padding-right: 40px;
+  }
   .hero__cta .btn { width: auto; }
+  .hero .photo--hero { aspect-ratio: auto; position: absolute; inset: 0; }
+  .photo-badge { left: auto; right: clamp(24px, 10%, 160px); bottom: 18%; }
+}
+/* A partir de 1400px a divisão fica meio a meio, como no print (abaixo disso o texto ganha mais largura
+   para o CTA da Versão B continuar na primeira tela). */
+@media (min-width: 1400px) {
+  .hero__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .hero__text { padding-right: 56px; }
 }
 
 /* ---------- 02 Identificação ---------- */

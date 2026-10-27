@@ -514,6 +514,7 @@ strong { font-weight: 600; }
 .faq { display: grid; gap: 12px; }
 .faq__item {
   background: var(--warm-white); border: 1px solid transparent; border-radius: 20px;
+  box-shadow: 0 6px 20px -14px rgba(23, 20, 17, 0.14);
   transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
 }
 .faq__item[open] { border-color: var(--border); box-shadow: 0 10px 30px -14px rgba(23, 20, 17, 0.18); }

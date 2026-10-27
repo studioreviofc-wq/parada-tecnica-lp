@@ -53,7 +53,6 @@ export const Hero = () => `
       </div>
       <div class="hero__cta" id="hero-cta">
         ${Button({ label: c.hero.cta, variant: 'gold', cta: 'hero', iconBox: 'arrowUpRight' })}
-        <p class="microcopy">${esc(c.hero.microcopy)}</p>
       </div>
     </div>
     <div class="hero__media">

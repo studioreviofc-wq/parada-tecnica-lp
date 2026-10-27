@@ -254,8 +254,6 @@ strong { font-weight: 600; }
 
 .hero__cta { margin-top: 28px; }
 .hero__cta .btn { width: 100%; }
-.microcopy { font-size: var(--fs-small); color: var(--graphite); margin-top: 14px; }
-.hero .microcopy { max-width: 42ch; }
 
 .hero__media { position: relative; background: var(--hero-cream); }
 .hero .photo--hero:not(.photo--placeholder) { background: var(--hero-cream); }

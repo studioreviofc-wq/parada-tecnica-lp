@@ -230,7 +230,7 @@ export const Footer = () => `
 export const StickyCta = () => `
 <div class="sticky-cta theme-dark" id="sticky-cta" aria-hidden="true">
   <a class="sticky-cta__link" href="${checkoutHref()}" data-cta="sticky-mobile" tabindex="-1">
-    <span>${esc(c.hero.cta)}</span>${icon('arrow', 'btn__arrow')}
+    <span>${esc(c.hero.stickyCta)}</span>${icon('arrow', 'btn__arrow')}
   </a>
 </div>`;
 

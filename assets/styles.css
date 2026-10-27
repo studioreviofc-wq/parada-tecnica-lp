@@ -402,10 +402,10 @@ strong { font-weight: 600; }
 /* Celular e tablet: nome maior, numa linha só que passa das laterais (cortando as pontas),
    e inteiro na altura, sem ser cortado pela seção de baixo. */
 @media (max-width: 1023px) {
-  .watermark { bottom: 8px; transform: translateX(-50%); font-size: 22vw; line-height: 0.92; }
+  .watermark { bottom: 0; transform: translate(-50%, 8%); font-size: 22vw; line-height: 0.92; }
   .watermark--about { font-size: 17vw; }
-  .section--watermark { padding-bottom: calc(var(--section) + 14vw); }
-  .section--watermark-about { padding-bottom: calc(var(--section) + 11vw); }
+  .section--watermark { padding-bottom: calc(var(--section) + 11vw); }
+  .section--watermark-about { padding-bottom: calc(var(--section) + 8vw); }
 }
 
 /* ---------- 03 Solução ---------- */

@@ -322,8 +322,8 @@ strong { font-weight: 600; }
     transform: translate(-50%, -50%);
   }
   .photo-badge {
-    /* 300px mais ao centro que o pulso (pedido do cliente), mesmo encostando na coluna de texto. */
-    left: calc(900 / 1920 * 100% - 32px); top: calc(590 / 753 * 100%);
+    /* 150px mais ao centro que o pulso (ajuste do cliente). */
+    left: calc(1050 / 1920 * 100% - 32px); top: calc(590 / 753 * 100%);
     right: auto; bottom: auto; transform: translateY(-50%);
   }
 }

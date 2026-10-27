@@ -100,9 +100,8 @@ export const about = {
 };
 
 export const faq = {
-  eyebrow: 'Perguntas frequentes',
-  headline: 'Tudo o que você precisa saber antes de entrar em contato.',
-  accent: 'antes de entrar em contato.',
+  headline: 'Perguntas frequentes',
+  accent: 'frequentes',
   items: [
     {
       q: 'A Parada Técnica é uma terapia?',

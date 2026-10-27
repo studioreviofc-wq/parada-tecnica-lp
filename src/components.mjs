@@ -174,7 +174,6 @@ export const Faq = () => `
 <section class="section theme-cream" aria-labelledby="faq-title" data-section="07-faq">
   <div class="container faq-wrap">
     <header class="faq__head">
-      ${Eyebrow(c.faq.eyebrow, false)}
       <h2 id="faq-title">${headlineWithAccent(c.faq)}</h2>
     </header>
     <div class="faq">

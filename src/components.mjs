@@ -82,7 +82,7 @@ export const Identification = () => `
         ${c.identification.signs
           .map(
             (s, i) => `<li class="sign-card">
-          ${icon(signIcons[i], 'icon sign-card__icon')}
+          <span class="sign-card__iconbox" aria-hidden="true">${icon(signIcons[i], 'icon sign-card__icon')}</span>
           <div><h3>${esc(s.title)}</h3><p>${esc(s.text)}</p></div>
         </li>`
           )

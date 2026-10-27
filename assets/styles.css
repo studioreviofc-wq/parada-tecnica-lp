@@ -18,8 +18,8 @@
   --gold-ink: #8A6435;
   --hero-cream: #FAF5EC;     /* creme exato da faixa esquerda de hero.webp: emenda invisível com a foto */
   --gold-display: #9C7442;   /* dourado de títulos grandes (itálico da headline): 3.8:1 no creme */
-  --gold-btn: linear-gradient(90deg, #7A5629 0%, #9C7442 100%); /* CTA dourado: texto branco ≥ 4.8:1 sob o rótulo */
-  --gold-btn-hover: linear-gradient(90deg, #6C4C23 0%, #8E6A3C 100%);
+  --gold-btn: linear-gradient(90deg, #6B4A20 0%, #8A6435 55%, #C9A26A 100%); /* CTA dourado: do escuro (sob o rótulo) ao claro (sob o ícone) */
+  --gold-btn-hover: linear-gradient(90deg, #5E411C 0%, #7C5A2F 55%, #BC955E 100%);
   --glass: rgba(23, 20, 17, 0.55);  /* selo sobre a foto: escuro translúcido p/ contraste do texto */
   --glass-border: rgba(248, 245, 238, 0.28);       /* dourado para TEXTO sobre fundo claro: 4.9:1 no creme (o #B78A50 dá 2.8:1) */
   --on-dark: #F8F5EE;        /* texto sobre escuro */
@@ -332,13 +332,21 @@ strong { font-weight: 600; }
 /* ---------- 02 Identificação ---------- */
 .signs { display: grid; gap: 16px; }
 .sign-card {
-  display: grid; grid-template-columns: 24px 1fr; gap: 18px; align-items: start;
-  padding: 24px 28px; background: var(--warm-white);
-  border: 1px solid var(--input-border); border-radius: var(--radius-card-lg);
+  position: relative; display: grid; grid-template-columns: 48px 1fr; gap: 20px; align-items: start;
+  padding: 28px; background: var(--warm-white); border-radius: 20px;
+  box-shadow: 0 1px 2px rgba(23, 20, 17, 0.04), 0 14px 40px -12px rgba(23, 20, 17, 0.12);
 }
-.sign-card__icon { margin-top: 2px; color: var(--gold-display); }
-.sign-card h3 { font-family: var(--font-sans); font-weight: 600; font-size: var(--fs-body); line-height: 1.4; margin-bottom: 4px; }
-.sign-card p { color: var(--text-2); }
+.sign-card::before {
+  content: ""; position: absolute; top: 0; left: 28px; width: 56px; height: 3px; border-radius: 0 0 3px 3px;
+  background: linear-gradient(90deg, var(--gold), var(--champagne));
+}
+.sign-card__iconbox {
+  display: grid; place-items: center; width: 48px; height: 48px;
+  border-radius: 14px; background: var(--cream); color: var(--gold-display);
+}
+.sign-card__icon { width: 22px; height: 22px; }
+.sign-card h3 { font-family: var(--font-serif); font-weight: 600; font-size: 1.1875rem; line-height: 1.35; margin: 2px 0 6px; }
+.sign-card p { color: var(--text-2); font-size: 0.9375rem; line-height: 1.65; }
 .signs__n, .step-card__n, .next-steps li::before { font-variant-numeric: lining-nums; }
 
 /* Fechamento em destaque: card escuro com traço dourado, para virar o "respiro" da seção. */

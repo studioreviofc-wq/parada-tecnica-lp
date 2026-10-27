@@ -334,10 +334,6 @@ strong { font-weight: 600; }
   padding: 28px; background: var(--warm-white); border-radius: 20px;
   box-shadow: 0 1px 2px rgba(23, 20, 17, 0.04), 0 14px 40px -12px rgba(23, 20, 17, 0.12);
 }
-.sign-card::before {
-  content: ""; position: absolute; top: 0; left: 28px; width: 56px; height: 3px; border-radius: 0 0 3px 3px;
-  background: linear-gradient(90deg, var(--gold), var(--champagne));
-}
 .sign-card__iconbox {
   display: grid; place-items: center; width: 48px; height: 48px;
   border-radius: 14px; background: var(--cream); color: var(--gold-display);
@@ -379,15 +375,41 @@ strong { font-weight: 600; }
 @media (min-width: 1024px) { .section--watermark-about .watermark { transform: translate(-50%, 18%); } }
 
 /* ---------- 03 Solução ---------- */
-.solution .eyebrow { margin-bottom: 24px; }
-.solution h2 { font-size: clamp(2rem, 1.4rem + 2.4vw, 3.25rem); max-width: 18ch; }
-.solution__body { margin-top: 32px; color: var(--on-dark-muted); }
-.solution__body p:first-child { color: var(--on-dark); }
-.solution__highlight {
-  margin: 40px 0; padding-block: 24px; border-block: 1px solid var(--gold);
-  font-family: var(--font-serif); font-weight: 600; font-size: var(--fs-h3); line-height: 1.4; color: var(--champagne);
+/* Painel escuro arredondado sobre o creme, no mesmo vocabulário dos cards (seções 2, 4 e 5). */
+.section--solution { padding-top: 24px; }
+.solution {
+  display: grid; gap: 40px; padding: 40px 24px; border-radius: 28px;
+  background:
+    radial-gradient(70% 90% at 0% 0%, rgba(217, 183, 131, 0.10), transparent 60%),
+    var(--ink);
 }
-@media (max-width: 599px) { .solution .btn { width: 100%; } }
+.solution .eyebrow { margin-bottom: 20px; color: var(--champagne); }
+.solution h2 { font-size: clamp(2rem, 1.5rem + 1.6vw, 2.75rem); max-width: 18ch; color: var(--cream); }
+.solution .display__accent { color: var(--champagne); }
+.solution__highlight {
+  margin: 24px 0 32px; max-width: 40ch; color: var(--on-dark-muted); font-size: 1.0625rem; line-height: 1.65;
+}
+.solution__list { display: grid; gap: 12px; }
+.solution__item {
+  display: grid; grid-template-columns: 48px 1fr; gap: 18px; align-items: start;
+  padding: 22px 24px; border-radius: 20px;
+  background: rgba(248, 245, 238, 0.04); border: 1px solid rgba(248, 245, 238, 0.10);
+}
+.solution__iconbox {
+  display: grid; place-items: center; width: 48px; height: 48px; border-radius: 14px;
+  background: rgba(248, 245, 238, 0.08); color: var(--champagne);
+}
+.solution__iconbox .icon { width: 22px; height: 22px; }
+.solution__item p { margin: 0; color: var(--on-dark); font-size: 0.9375rem; line-height: 1.65; }
+@media (max-width: 599px) {
+  .solution { padding: 36px 20px 20px; }
+  .solution .btn { width: 100%; }
+  .solution__item { grid-template-columns: 40px 1fr; gap: 14px; padding: 18px 16px; }
+  .solution__iconbox { width: 40px; height: 40px; border-radius: 12px; }
+}
+@media (min-width: 1024px) {
+  .solution { grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; padding: 72px 64px; }
+}
 
 /* ---------- 04 Como funciona ---------- */
 .steps__head { margin-bottom: 40px; }

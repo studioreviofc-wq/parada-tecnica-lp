@@ -46,6 +46,7 @@ export const identification = {
 export const solution = {
   eyebrow: 'CONHEÇA A PARADA TÉCNICA',
   headline: 'Três horas dedicadas a compreender o que merece sua atenção.',
+  accent: 'o que merece sua atenção.',
   description: [
     'A Parada Técnica é uma avaliação psicológica estruturada, conduzida pela psicóloga Alessandra Trentin.',
     'Durante o encontro, são utilizados recursos de avaliação psicológica, incluindo testes e biofeedback cardiovascular, conforme a indicação profissional, para ampliar a compreensão da sua situação.',

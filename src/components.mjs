@@ -95,16 +95,30 @@ export const Identification = () => `
   ${Watermark()}
 </section>`;
 
+// Um ícone por parágrafo: quem conduz, recursos usados, documento final.
+const solutionIcons = ['person', 'search', 'document'];
+
 export const Solution = () => `
-<section class="section theme-dark" aria-labelledby="solucao-title" data-section="03-solucao">
-  <div class="container container--text solution">
-    ${Eyebrow(c.solution.eyebrow)}
-    <h2 id="solucao-title">${accent(c.solution.headline)}</h2>
-    <div class="solution__body">
-      ${paragraphs(c.solution.description)}
+<section class="section theme-cream section--solution" aria-labelledby="solucao-title" data-section="03-solucao">
+  <div class="container">
+    <div class="solution theme-dark">
+      <div class="solution__intro">
+        ${Eyebrow(c.solution.eyebrow, false)}
+        <h2 id="solucao-title">${headlineWithAccent(c.solution)}</h2>
+        <p class="solution__highlight">${esc(c.solution.highlight)}</p>
+        ${Button({ label: c.solution.cta, variant: 'gold', cta: 'solucao', iconBox: 'arrowUpRight' })}
+      </div>
+      <ul class="solution__list">
+        ${c.solution.description
+          .map(
+            (t, i) => `<li class="solution__item">
+          <span class="solution__iconbox" aria-hidden="true">${icon(solutionIcons[i], 'icon')}</span>
+          <p>${esc(t)}</p>
+        </li>`
+          )
+          .join('\n')}
+      </ul>
     </div>
-    <p class="solution__highlight">${esc(c.solution.highlight)}</p>
-    ${Button({ label: c.solution.cta, variant: 'champagne', cta: 'solucao', arrow: true })}
   </div>
 </section>`;
 

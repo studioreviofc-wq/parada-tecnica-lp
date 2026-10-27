@@ -159,6 +159,10 @@ export const About = () => `
   <div class="container about">
     <div class="about__media">
       ${Photo(c.about.photo, 'photo--portrait')}
+      <div class="about__namecard" aria-hidden="true">
+        <strong>${esc(c.hero.badge.name)}</strong>
+        <span>${esc(c.about.subtitle)}</span>
+      </div>
     </div>
     <div class="about__text">
       <h2 id="sobre-title">${esc(c.about.name)}</h2>

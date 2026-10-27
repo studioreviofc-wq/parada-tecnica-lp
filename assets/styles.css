@@ -419,7 +419,20 @@ strong { font-weight: 600; }
 
 /* ---------- 06 Sobre ---------- */
 .about { display: grid; gap: 40px; }
-.about__media { max-width: 440px; width: 100%; }
+.about__media { position: relative; max-width: 440px; width: 100%; border-radius: var(--radius-card-lg); overflow: hidden; }
+.about__media .photo { border-radius: inherit; }
+.about__media .photo--placeholder { outline: 0; }
+.about__media .photo--placeholder .photo__label { transform: translateY(-48px); }
+.about__namecard {
+  position: absolute; left: 16px; right: 16px; bottom: 16px;
+  display: grid; gap: 4px; padding: 18px 20px 20px;
+  background: rgba(23, 20, 17, 0.62); border: 1px solid rgba(248, 245, 238, 0.14); border-radius: var(--radius-card);
+  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+  color: var(--on-dark);
+}
+.about__namecard strong { font-family: var(--font-serif); font-weight: 600; font-size: 1.25rem; line-height: 1.25; }
+.about__namecard span { font-size: 0.875rem; color: var(--champagne); }
+.about__namecard::after { content: ""; height: 1px; margin-top: 12px; background: rgba(248, 245, 238, 0.18); }
 .about h2 { font-size: clamp(1.875rem, 1.4rem + 1.8vw, 2.75rem); }
 .about__credential {
   margin: 12px 0 28px; font-size: var(--fs-small); font-weight: 500; letter-spacing: 0.04em; color: var(--muted);

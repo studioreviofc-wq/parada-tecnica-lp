@@ -540,15 +540,12 @@ strong { font-weight: 600; }
 .next-steps li::before { content: counter(n, decimal-leading-zero); font-family: var(--font-serif); font-weight: 600; color: var(--gold-ink); }
 
 /* ---------- Rodapé ---------- */
-.footer { background: var(--graphite); --bg: var(--graphite); padding-block: 56px; font-size: var(--fs-small); border-top: 1px solid var(--gold); }
-.footer p { margin-bottom: 4px; color: var(--on-dark-muted); }
+.footer { text-align: center; background: var(--graphite); --bg: var(--graphite); padding-block: 56px; font-size: var(--fs-small); border-top: 1px solid var(--gold); }
+.footer p { margin-inline: auto; margin-bottom: 4px; color: var(--on-dark-muted); }
 .footer__brand { margin-bottom: 16px !important; font-size: 1.25rem; }
 .footer__line { color: var(--on-dark) !important; font-weight: 500; }
-.footer__links { display: grid; gap: 16px; margin: 32px 0; }
-.footer__ph { border: 1px dashed var(--on-dark-border); border-radius: var(--radius-btn); padding: 14px 16px; }
-.footer__h { font-family: var(--font-sans); font-size: var(--fs-small); font-weight: 600; letter-spacing: 0; margin-bottom: 4px; color: var(--on-dark); }
-.footer__disclaimer { padding-top: 24px; border-top: 1px solid var(--on-dark-line); font-size: 0.875rem; }
-@media (min-width: 768px) { .footer__links { grid-template-columns: 1fr 1fr; } }
+.footer__links { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 28px; margin: 28px 0; padding: 0; list-style: none; color: var(--on-dark); font-weight: 600; }
+.footer__disclaimer { max-width: 62ch; margin-inline: auto; padding-top: 24px; border-top: 1px solid var(--on-dark-line); font-size: 0.875rem; }
 
 /* ---------- Barra editorial fixa (mobile) ---------- */
 .sticky-cta { display: none; }

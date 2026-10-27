@@ -263,16 +263,10 @@ export const Footer = () => `
     <p class="masthead__brand footer__brand"><span>${esc(c.masthead.brand[0])}</span> <span class="masthead__gold">${esc(c.masthead.brand[1])}</span></p>
     <p class="footer__line">${esc(c.footer.line)}</p>
     <p>${esc(c.footer.city)}</p>
-    <div class="footer__links">
-      <div class="footer__ph" id="politica-privacidade" tabindex="-1">
-        <h2 class="footer__h">Política de Privacidade</h2>
-        <p>[Espaço reservado — texto e link da Política de Privacidade a definir.]</p>
-      </div>
-      <div class="footer__ph">
-        <h2 class="footer__h">Informações de contato</h2>
-        <p>[Espaço reservado — informações de contato a confirmar.]</p>
-      </div>
-    </div>
+    <ul class="footer__links">
+      <li id="politica-privacidade" tabindex="-1">Política de Privacidade</li>
+      <li>Informações de contato</li>
+    </ul>
     <p class="footer__disclaimer">${esc(c.footer.disclaimer)}</p>
   </div>
 </footer>`;

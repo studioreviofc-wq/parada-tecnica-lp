@@ -61,30 +61,33 @@ export const Hero = () => `
   </div>
 </section>`;
 
+// Marca d'água com o nome do serviço no pé da seção (decorativa).
+export const Watermark = () => `<p class="watermark" aria-hidden="true">Parada Técnica</p>`;
+
 export const Identification = () => `
-<section class="section theme-cream" aria-labelledby="identificacao-title" data-section="02-identificacao">
+<section class="section theme-cream section--watermark" aria-labelledby="identificacao-title" data-section="02-identificacao">
   <div class="container split">
     <header class="split__head">
-      <span class="rule" aria-hidden="true"></span>
-      <h2 id="identificacao-title">${accent(c.identification.headline)}</h2>
+      <h2 id="identificacao-title">${headlineWithAccent(c.identification)}</h2>
       <p class="lead">${esc(c.identification.intro)}</p>
     </header>
     <div class="split__body">
       <ul class="signs">
         ${c.identification.signs
           .map(
-            (s, i) => `<li class="signs__item">
-          <span class="signs__n" aria-hidden="true">${String(i + 1).padStart(2, '0')}</span>
+            (s) => `<li class="sign-card">
+          ${icon('arrow', 'icon sign-card__icon')}
           <div><h3>${esc(s.title)}</h3><p>${esc(s.text)}</p></div>
         </li>`
           )
           .join('\n')}
       </ul>
-      <div class="closing">
+      <div class="closing-card">
         ${paragraphs(c.identification.closing)}
       </div>
     </div>
   </div>
+  ${Watermark()}
 </section>`;
 
 export const Solution = () => `

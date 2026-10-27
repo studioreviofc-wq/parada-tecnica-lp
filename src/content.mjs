@@ -23,6 +23,7 @@ export const hero = {
 
 export const identification = {
   headline: 'Você continua dando conta de tudo. Mas nem sempre se sente como antes.',
+  accent: 'nem sempre se sente como antes.', // trecho final em dourado itálico, como na Hero
   intro: 'Administrar uma empresa exige decisões, responsabilidades e atenção constante. Com o tempo, algumas mudanças podem começar a fazer parte da rotina.',
   signs: [
     { title: 'O descanso já não parece suficiente.', text: 'Mesmo depois de uma noite de sono, a sensação de cansaço continua.' },

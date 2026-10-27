@@ -61,6 +61,7 @@
   --section: 72px;
   --radius-btn: 6px;
   --radius-card: 10px;
+  --radius-card-lg: 14px;
   --tap: 52px;
 
   --ease: cubic-bezier(.2, .6, .2, 1);
@@ -329,18 +330,38 @@ strong { font-weight: 600; }
 }
 
 /* ---------- 02 Identificação ---------- */
-.signs { border-top: 1px solid var(--line); }
-.signs__item {
-  display: grid; grid-template-columns: 44px 1fr; gap: 12px;
-  padding-block: 24px; border-bottom: 1px solid var(--line);
+.signs { display: grid; gap: 16px; }
+.sign-card {
+  display: grid; grid-template-columns: 24px 1fr; gap: 18px; align-items: start;
+  padding: 24px 28px; background: var(--warm-white);
+  border: 1px solid var(--input-border); border-radius: var(--radius-card-lg);
 }
+.sign-card__icon { margin-top: 3px; color: var(--ink); }
+.sign-card h3 { font-family: var(--font-sans); font-weight: 600; font-size: var(--fs-body); line-height: 1.4; margin-bottom: 4px; }
+.sign-card p { color: var(--text-2); }
 .signs__n, .steps__n, .next-steps li::before { font-variant-numeric: lining-nums; }
-.signs__n { font-family: var(--font-serif); font-weight: 600; font-size: 1.125rem; color: var(--gold-ink); line-height: 1.6; }
-.signs h3 { font-family: var(--font-serif); font-weight: 600; margin-bottom: 6px; }
-.signs p { color: var(--text-2); }
-.closing { margin-top: 40px; padding-left: 20px; border-left: 2px solid var(--gold); }
-.closing p:first-child { font-family: var(--font-serif); font-weight: 600; font-size: var(--fs-h3); line-height: 1.35; }
-.closing p + p { color: var(--text-2); }
+
+/* Fechamento em destaque: card escuro com traço dourado, para virar o "respiro" da seção. */
+.closing-card {
+  margin-top: 32px; padding: 32px; border-radius: var(--radius-card-lg);
+  background: var(--ink); border: 1px solid var(--gold); color: var(--on-dark);
+}
+.closing-card p:first-child {
+  font-family: var(--font-serif); font-weight: 600; font-size: var(--fs-h3); line-height: 1.35; color: var(--champagne);
+}
+.closing-card p + p { color: var(--on-dark-muted); margin-top: 16px; }
+@media (min-width: 600px) { .closing-card { padding: 40px; } }
+
+/* Marca d'água com o nome do serviço no pé da seção. */
+.section--watermark { position: relative; overflow: hidden; padding-bottom: calc(var(--section) + 7vw); }
+.section--watermark > .container { position: relative; z-index: 1; }
+.watermark {
+  position: absolute; left: 50%; bottom: 0; z-index: 0; margin: 0; max-width: none;
+  transform: translate(-50%, 30%);
+  font-family: var(--font-serif); font-weight: 600; font-size: clamp(4.5rem, 15vw, 17rem);
+  line-height: 1; letter-spacing: -0.01em; white-space: nowrap;
+  color: var(--ink); opacity: 0.05; pointer-events: none; user-select: none;
+}
 
 /* ---------- 03 Solução ---------- */
 .solution .eyebrow { margin-bottom: 24px; }

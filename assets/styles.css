@@ -18,8 +18,8 @@
   --gold-ink: #8A6435;
   --hero-cream: #FAF5EC;     /* creme exato da faixa esquerda de hero.webp: emenda invisível com a foto */
   --gold-display: #9C7442;   /* dourado de títulos grandes (itálico da headline): 3.8:1 no creme */
-  --gold-btn: linear-gradient(90deg, #5C3A0E 0%, #8F5E1E 45%, #B9832F 75%, #E2B45F 100%); /* CTA dourado vivo: do escuro (sob o rótulo) ao claro (sob o ícone) */
-  --gold-btn-hover: linear-gradient(90deg, #4F320C 0%, #80531A 45%, #AA772A 75%, #D6A752 100%);
+  --gold-btn: linear-gradient(90deg, #AC7A40 0%, #D1A66A 100%); /* CTA dourado: cores de referência do cliente */
+  --gold-btn-hover: linear-gradient(90deg, #9C6D37 0%, #C4985B 100%);
   --glass: rgba(23, 20, 17, 0.55);  /* selo sobre a foto: escuro translúcido p/ contraste do texto */
   --glass-border: rgba(248, 245, 238, 0.28);       /* dourado para TEXTO sobre fundo claro: 4.9:1 no creme (o #B78A50 dá 2.8:1) */
   --on-dark: #F8F5EE;        /* texto sobre escuro */

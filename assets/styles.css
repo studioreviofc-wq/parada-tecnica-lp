@@ -520,13 +520,9 @@ strong { font-weight: 600; }
 }
 
 /* ---------- Rodapé ---------- */
-.footer { text-align: center; background: var(--graphite); --bg: var(--graphite); padding-block: 56px; font-size: var(--fs-small); border-top: 1px solid var(--gold); }
+.footer { text-align: center; background: var(--graphite); --bg: var(--graphite); padding-block: 32px; font-size: var(--fs-small); border-top: 1px solid var(--gold); }
 .footer p { margin-inline: auto; margin-bottom: 4px; color: var(--on-dark-muted); }
-.footer__brand { margin-bottom: 16px !important; font-size: 1.25rem; }
-.footer__brand span { color: var(--champagne); }
 .footer__line { color: var(--on-dark) !important; font-weight: 500; }
-.footer__links { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 28px; margin: 28px 0; padding: 0; list-style: none; color: var(--on-dark); font-weight: 600; }
-.footer__disclaimer { max-width: 62ch; margin-inline: auto; padding-top: 24px; border-top: 1px solid var(--on-dark-line); font-size: 0.875rem; }
 
 /* ---------- Barra editorial fixa (mobile) ---------- */
 .sticky-cta { display: none; }
@@ -544,7 +540,7 @@ strong { font-weight: 600; }
   }
   .sticky-cta__link:focus-visible { outline-offset: -6px; }
   /* Espaço no fim da página para a barra nunca cobrir o rodapé. */
-  body.has-sticky .footer { padding-bottom: calc(56px + 64px + env(safe-area-inset-bottom)); }
+  body.has-sticky .footer { padding-bottom: calc(32px + 64px + env(safe-area-inset-bottom)); }
 }
 @media (max-width: 767px) and (prefers-reduced-motion: no-preference) {
   .sticky-cta { transition: transform 220ms var(--ease), visibility 220ms; }

@@ -172,16 +172,16 @@ export const About = () => `
 
 export const Faq = () => `
 <section class="section theme-cream" aria-labelledby="faq-title" data-section="07-faq">
-  <div class="container split">
-    <header class="split__head">
-      <span class="rule" aria-hidden="true"></span>
-      <h2 id="faq-title">${accent(c.faq.headline)}</h2>
+  <div class="container faq-wrap">
+    <header class="faq__head">
+      ${Eyebrow(c.faq.eyebrow, false)}
+      <h2 id="faq-title">${headlineWithAccent(c.faq)}</h2>
     </header>
-    <div class="split__body faq">
+    <div class="faq">
       ${c.faq.items
         .map(
           (f) => `<details class="faq__item">
-        <summary><h3>${esc(f.q)}</h3><span class="faq__icon" aria-hidden="true"></span></summary>
+        <summary><h3>${esc(f.q)}</h3>${icon('chevron', 'faq__icon')}</summary>
         <div class="faq__answer">
           ${f.pending ? `<p class="tag">Provisória — pendente de confirmação</p>${Note(f.a)}` : `<p>${esc(f.a)}</p>`}
         </div>

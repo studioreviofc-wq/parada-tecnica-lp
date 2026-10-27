@@ -1,42 +1,24 @@
 // Copy aprovada (consolidada). Etapa 03 altera só a apresentação, nunca o texto.
 // Entregáveis e FAQ: copy consolidada recebida em 2026-10-26.
 
-// A única diferença entre as variantes: headline + descrição da primeira dobra.
-export const heroVariants = {
-  a: {
-    id: 'a',
-    label: 'Versão A — Acolhimento',
-    headline: 'Você cuida de tantas responsabilidades. Mas há quanto tempo não olha para si mesmo?',
-    accent: 'olha para si mesmo?', // trecho final em dourado itálico (mesma regra nas duas versões)
-    description: [
-      'Conheça a Parada Técnica: Uma sessão de três horas com testes psicológicos e biofeedback, e um documento escrito com o que apareceu. Para o empresário que ainda está de pé, mas anda no limite.',
-    ],
-  },
-  b: {
-    id: 'b',
-    label: 'Versão B — Dor empresarial',
-    headline: 'Sua empresa continua funcionando. Mas você sente que já não consegue tomar decisões como antes?',
-    accent: 'tomar decisões como antes?',
-    description: [
-      'Anos de responsabilidades, pressão e decisões importantes podem afetar seu bem-estar, sua disposição e até a maneira como você conduz o negócio.',
-      'A Parada Técnica é uma avaliação psicológica estruturada de 3 horas, criada para ajudar empresários a compreender essas dificuldades e identificar os próximos passos.',
-    ],
-  },
-};
-
 // Marca exibida no rodapé.
 export const masthead = {
   brand: ['PARADA', 'TÉCNICA'],
 };
 
-// Fotos: quando a foto oficial chegar, basta preencher `src` (ex.: '../assets/img/alessandra-hero.jpg').
+// Primeira dobra. Fotos ficam em assets/img/.
 export const hero = {
   eyebrow: 'PARADA TÉCNICA | PARA EMPRESÁRIOS',
+  headline: 'Você cuida de tantas responsabilidades. Mas há quanto tempo não olha para si mesmo?',
+  accent: 'olha para si mesmo?', // trecho final da headline em dourado itálico
+  description: [
+    'Conheça a Parada Técnica: Uma sessão de três horas com testes psicológicos e biofeedback, e um documento escrito com o que apareceu. Para o empresário que ainda está de pé, mas anda no limite.',
+  ],
   cta: 'QUERO ENTENDER COMO FUNCIONA',
   microcopy: 'Preencha um formulário rápido e receba as informações pelo WhatsApp.',
   // hero.webp já vem com a faixa creme à esquerda; o enquadramento centraliza a Alessandra.
-  photo: { src: '../assets/img/hero.webp', alt: 'Psicóloga Alessandra Trentin', position: '' }, // enquadramento no CSS (.hero .photo--hero img)
-  badge: { name: 'Alessandra Trentin', role: 'Psicóloga · CRP 07/14095', avatar: '../assets/img/avatar.webp' },
+  photo: { src: 'assets/img/hero.webp', alt: 'Psicóloga Alessandra Trentin', position: '' }, // enquadramento no CSS (.hero .photo--hero img)
+  badge: { name: 'Alessandra Trentin', role: 'Psicóloga · CRP 07/14095', avatar: 'assets/img/avatar.webp' },
 };
 
 export const identification = {

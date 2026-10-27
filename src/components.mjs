@@ -1,5 +1,5 @@
 // Componentes reutilizáveis: funções puras que recebem conteúdo e devolvem HTML.
-// As duas rotas usam exatamente os mesmos componentes; só `Hero` recebe a variante.
+// A página é montada em `Page` e gerada por build.mjs.
 import * as c from './content.mjs';
 import { icon } from './icons.mjs';
 
@@ -8,8 +8,7 @@ const esc = (s) =>
 
 const paragraphs = (list, cls = '') => list.map((p) => `<p${cls ? ` class="${cls}"` : ''}>${esc(p)}</p>`).join('\n');
 
-// Destaque editorial em dourado: aplicado ao nome do serviço sempre que aparece num título,
-// por regra única (não por variante), para manter A e B visualmente idênticas.
+// Destaque editorial em dourado: aplicado ao nome do serviço sempre que aparece num título.
 const accent = (text) => esc(text).replace(/Parada Técnica/g, '<span class="accent">Parada Técnica</span>');
 
 // Pendência de conteúdo: continua visível até ser resolvida (pode ser ocultada pela barra de revisão).
@@ -41,14 +40,14 @@ const headlineWithAccent = ({ headline, accent }) =>
     ? `${esc(headline.slice(0, -accent.length))}<em class="display__accent">${esc(accent)}</em>`
     : esc(headline);
 
-export const Hero = (variant) => `
+export const Hero = () => `
 <section class="hero" aria-labelledby="hero-title" data-section="01-primeira-dobra">
   <div class="hero__grid">
     <div class="hero__text">
       ${Eyebrow(c.hero.eyebrow, false)}
-      <h1 id="hero-title" class="display" data-variant-slot="headline">${headlineWithAccent(variant)}</h1>
-      <div class="hero__desc" data-variant-slot="description">
-        ${paragraphs(variant.description)}
+      <h1 id="hero-title" class="display">${headlineWithAccent(c.hero)}</h1>
+      <div class="hero__desc">
+        ${paragraphs(c.hero.description)}
       </div>
       <div class="hero__cta" id="hero-cta">
         ${Button({ label: c.hero.cta, variant: 'gold', cta: 'hero', iconBox: 'arrowUpRight' })}
@@ -284,36 +283,32 @@ export const StickyCta = () => `
 </div>`;
 
 // Barra de revisão: ferramenta interna para alternar versões. Não faz parte da LP.
-export const ReviewBar = (variant) => `
+export const ReviewBar = () => `
 <aside class="review-bar" id="review-bar" aria-label="Barra de revisão">
-  <span class="review-bar__title">Revisão<span class="review-bar__label"> · ${esc(variant.label)}</span></span>
-  <nav class="review-bar__nav" aria-label="Alternar versão">
-    <a href="../versao-a/"${variant.id === 'a' ? ' aria-current="page"' : ''}>A</a>
-    <a href="../versao-b/"${variant.id === 'b' ? ' aria-current="page"' : ''}>B</a>
-  </nav>
+  <span class="review-bar__title">Revisão</span>
   <label class="review-bar__opt"><input type="checkbox" id="toggle-notes" checked> Pendências</label>
   <label class="review-bar__opt"><input type="checkbox" id="simulate-error"> Falha</label>
   <button type="button" id="hide-review" class="review-bar__close" aria-label="Ocultar barra de revisão">×</button>
 </aside>`;
 
-export const Page = (variant) => `<!doctype html>
+export const Page = () => `<!doctype html>
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#171411">
-<title>Parada Técnica — Versão ${variant.id.toUpperCase()}</title>
+<title>Parada Técnica — Alessandra Trentin</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Raleway:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="../assets/styles.css">
+<link rel="stylesheet" href="assets/styles.css">
 </head>
-<body data-variant="${variant.id}">
+<body>
 <a class="skip-link" href="#formulario">Ir para o formulário</a>
-${ReviewBar(variant)}
+${ReviewBar()}
 <main>
-${Hero(variant)}
+${Hero()}
 ${Identification()}
 ${Solution()}
 ${Steps()}
@@ -324,7 +319,7 @@ ${LeadForm()}
 </main>
 ${Footer()}
 ${StickyCta()}
-<script src="../assets/main.js" defer></script>
+<script src="assets/main.js" defer></script>
 </body>
 </html>
 `;

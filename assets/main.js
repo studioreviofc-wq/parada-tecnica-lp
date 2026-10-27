@@ -3,7 +3,6 @@
 (function () {
   'use strict';
 
-  var variant = document.body.getAttribute('data-variant');
   var store = {
     get: function (k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
     set: function (k, v) { try { localStorage.setItem(k, v); } catch (e) { /* sem storage */ } },
@@ -14,7 +13,7 @@
   // form_submit, form_submit_success, form_submit_error. Abandono = form_start sem form_submit_success.
   window.dataLayer = window.dataLayer || [];
   function track(event, data) {
-    var payload = Object.assign({ event: event, variant: variant }, data || {});
+    var payload = Object.assign({ event: event }, data || {});
     window.dataLayer.push(payload);
     if (window.console) console.info('[wireframe:track]', payload);
   }

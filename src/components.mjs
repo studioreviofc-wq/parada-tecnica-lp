@@ -64,7 +64,8 @@ export const Hero = () => `
 </section>`;
 
 // Marca d'água com o nome do serviço no pé da seção (decorativa).
-export const Watermark = () => `<p class="watermark" aria-hidden="true">Parada Técnica</p>`;
+export const Watermark = (text = 'Parada Técnica', mod = '') =>
+  `<p class="watermark${mod ? ` watermark--${mod}` : ''}" aria-hidden="true">${esc(text)}</p>`;
 
 export const Identification = () => `
 <section class="section theme-cream section--watermark" aria-labelledby="identificacao-title" data-section="02-identificacao">
@@ -155,14 +156,11 @@ export const Deliverables = () => `
 const trustIcons = ['person', 'lock', 'pin'];
 
 export const About = () => `
-<section class="section theme-warm" aria-labelledby="sobre-title" data-section="06-sobre">
+<section class="section theme-warm section--watermark section--watermark-about" aria-labelledby="sobre-title" data-section="06-sobre">
   <div class="container about">
     <div class="about__media">
       ${Photo(c.about.photo, 'photo--portrait')}
-      <div class="about__namecard" aria-hidden="true">
-        <strong>${esc(c.hero.badge.name)}</strong>
-        <span>${esc(c.about.subtitle)}</span>
-      </div>
+      ${PhotoBadge(c.hero.badge)}
     </div>
     <div class="about__text">
       <h2 id="sobre-title">${esc(c.about.name)}</h2>
@@ -173,6 +171,7 @@ export const About = () => `
       </ul>
     </div>
   </div>
+  ${Watermark(c.hero.badge.name, 'about')}
 </section>`;
 
 export const Faq = () => `

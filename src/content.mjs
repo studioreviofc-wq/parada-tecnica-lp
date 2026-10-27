@@ -1,3 +1,10 @@
+import { existsSync } from 'node:fs';
+
+// Foto da bio: basta salvar o arquivo em assets/img/ com um destes nomes e rodar `node build.mjs`.
+const aboutPhoto = ['sobre.webp', 'sobre.jpg', 'sobre.jpeg', 'sobre.png']
+  .map((f) => `assets/img/${f}`)
+  .find((f) => existsSync(new URL(`../${f}`, import.meta.url))) || '';
+
 // Copy aprovada (consolidada). Etapa 03 altera só a apresentação, nunca o texto.
 // Entregáveis e FAQ: copy consolidada recebida em 2026-10-26.
 
@@ -89,7 +96,7 @@ export const deliverables = {
 export const about = {
   name: 'Alessandra Mangoni Galves Trentin',
   subtitle: 'Psicóloga clínica | CRP 07/14095',
-  photo: { src: '', alt: 'Retrato profissional da psicóloga Alessandra Mangoni Galves Trentin', position: '50% 20%' },
+  photo: { src: aboutPhoto, alt: 'Retrato profissional da psicóloga Alessandra Mangoni Galves Trentin', position: '50% 20%' },
   description: [
     'Com atuação clínica em Farroupilha, Alessandra utiliza recursos da Psicologia, incluindo avaliação psicológica, testes e biofeedback cardiovascular, em seu trabalho profissional.',
     'A Parada Técnica foi estruturada para oferecer uma experiência individual, com etapas definidas, avaliação cuidadosa e devolutiva por escrito.',

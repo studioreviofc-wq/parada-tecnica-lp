@@ -47,7 +47,7 @@
   --font-serif: "Playfair Display", Georgia, "Times New Roman", serif;
   --font-sans: Raleway, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
   --fs-display: clamp(2.125rem, 1.6rem + 2.2vw, 3.25rem);   /* 34 → 52 */
-  --fs-h2: clamp(1.75rem, 1.35rem + 1.7vw, 2.625rem);       /* 28 → 42 */
+  --fs-h2: clamp(2rem, 1.5rem + 1.5vw, 2.75rem);            /* títulos de seção: 32 (celular) → 44 (desktop) */
   --fs-h3: clamp(1.375rem, 1.25rem + 0.5vw, 1.625rem);      /* 22 → 26 */
   --fs-body: clamp(1.0625rem, 1rem + 0.25vw, 1.125rem);     /* 17 → 18 */
   --fs-small: 0.9375rem;                                    /* 15 */
@@ -418,7 +418,7 @@ strong { font-weight: 600; }
     var(--ink);
 }
 .solution .eyebrow { margin-bottom: 20px; color: var(--champagne); }
-.solution h2 { font-size: clamp(2rem, 1.5rem + 1.6vw, 2.75rem); max-width: 18ch; color: var(--cream); }
+.solution h2 { max-width: 18ch; color: var(--cream); }
 .solution .display__accent { color: var(--champagne); }
 .solution__highlight {
   margin: 24px 0 32px; max-width: 40ch; color: var(--on-dark-muted); font-size: 1.0625rem; line-height: 1.65;
@@ -447,7 +447,7 @@ strong { font-weight: 600; }
 
 /* ---------- 04 Como funciona ---------- */
 .steps__head { margin-bottom: 40px; text-align: center; }
-.steps__head h2 { font-size: clamp(2rem, 1.4rem + 2.4vw, 3.25rem); max-width: 22ch; margin-inline: auto; }
+.steps__head h2 { max-width: 22ch; margin-inline: auto; }
 .steps { display: grid; gap: 16px; }
 .step-card {
   display: flex; flex-direction: column; gap: 0;
@@ -485,7 +485,7 @@ strong { font-weight: 600; }
 
 /* ---------- 05 Entregáveis ---------- */
 .deliv__head { text-align: center; margin: 0 auto 48px; max-width: 1040px; }
-.deliv__head h2 { font-size: clamp(2rem, 1.4rem + 2.4vw, 3.25rem); margin-bottom: 16px; }
+.deliv__head h2 { margin-bottom: 16px; }
 .deliv__head .lead { margin-inline: auto; max-width: 58ch; color: var(--text-2); }
 .cards { display: grid; gap: 20px; }
 .card {
@@ -527,7 +527,6 @@ strong { font-weight: 600; }
 .about__media .photo--placeholder { outline: 0; }
 .about__media .photo--placeholder .photo__label { transform: translateY(-32px); }
 .about__media .photo-badge { left: 16px; bottom: 16px; top: auto; right: auto; transform: none; max-width: calc(100% - 32px); }
-.about h2 { font-size: clamp(1.875rem, 1.4rem + 1.8vw, 2.75rem); }
 .about__credential {
   margin: 12px 0 28px; font-size: var(--fs-small); font-weight: 500; letter-spacing: 0.04em; color: var(--muted);
 }

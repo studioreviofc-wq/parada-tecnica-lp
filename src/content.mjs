@@ -127,9 +127,9 @@ export const faq = {
   ],
 };
 
-// Link de checkout dos botões. Pendente: enquanto vazio, os botões não levam a lugar nenhum.
+// Link de checkout dos botões (vazio = os botões não levam a lugar nenhum).
 export const checkout = {
-  url: '',
+  url: 'https://pay.sumup.com/b2c/QX5EAYO5',
 };
 
 export const footer = {

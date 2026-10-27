@@ -169,6 +169,7 @@ export const Deliverables = () => `
         .join('\n')}
     </ul>
     <p class="pull">${esc(c.deliverables.closing)}</p>
+    <div class="section-cta">${Button({ label: c.deliverables.cta, variant: 'gold', cta: 'entregaveis', iconBox: 'arrowUpRight' })}</div>
   </div>
 </section>`;
 
@@ -214,6 +215,7 @@ export const Faq = () => `
         )
         .join('\n')}
     </div>
+    <div class="section-cta">${Button({ label: c.faq.cta, variant: 'gold', cta: 'faq', iconBox: 'arrowUpRight' })}</div>
   </div>
 </section>`;
 

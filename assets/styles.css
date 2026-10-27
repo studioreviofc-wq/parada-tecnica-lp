@@ -482,6 +482,10 @@ strong { font-weight: 600; }
 }
 .pull::before { content: ""; display: block; width: 56px; height: 2px; background: var(--gold); margin: 0 auto 24px; }
 
+/* CTA ao fim de uma seção (alternando com as que não têm botão). */
+.section-cta { display: flex; justify-content: center; margin-top: 48px; }
+@media (max-width: 599px) { .section-cta .btn { width: 100%; } }
+
 /* ---------- 06 Sobre ---------- */
 .about { display: grid; gap: 40px; }
 .about__media { position: relative; max-width: 440px; width: 100%; border-radius: var(--radius-card-lg); overflow: hidden; }

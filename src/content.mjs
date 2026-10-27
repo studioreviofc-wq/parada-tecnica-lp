@@ -96,6 +96,7 @@ export const deliverables = {
     { title: 'Plano de próximos passos', text: 'Orientações individualizadas e eventuais recomendações de acompanhamento.' },
   ],
   closing: 'Você participa ativamente das decisões sobre a continuidade do seu cuidado.',
+  cta: 'QUERO MINHA PARADA TÉCNICA',
 };
 
 export const about = {
@@ -112,6 +113,7 @@ export const about = {
 
 export const faq = {
   eyebrow: 'DÚVIDAS',
+  cta: 'QUERO GARANTIR MINHA PARADA TÉCNICA',
   headline: 'Perguntas frequentes',
   accent: 'frequentes',
   items: [

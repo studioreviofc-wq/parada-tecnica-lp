@@ -20,7 +20,7 @@ writeFileSync(join(root, 'index.html'), versioned(Page('a')));
 console.log('ok  /            (versão A)');
 
 // Rotas de comparação: mesma base de CSS/JS/imagens, só os caminhos sobem um nível.
-const nested = (html) => html.replace(/(href|src)="assets\//g, '$1="../assets/');
+const nested = (html) => html.replace(/(href|src)="(assets|versao-[ab])\//g, '$1="../$2/');
 for (const [dir, v] of [['versao-a', 'a'], ['versao-b', 'b']]) {
   mkdirSync(join(root, dir), { recursive: true });
   writeFileSync(join(root, dir, 'index.html'), nested(versioned(Page(v))));

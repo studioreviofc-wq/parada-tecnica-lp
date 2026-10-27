@@ -585,6 +585,7 @@ strong { font-weight: 600; }
 }
 
 /* ---------- Versão B: oferta (painel escuro no mesmo vocabulário da seção 3) ---------- */
+.section--offer { background: #F3F1EC; }
 .offer {
   display: grid; gap: 32px; padding: 36px 20px 20px; border-radius: 28px;
   background:
@@ -660,6 +661,13 @@ body.hide-notes .pending-note { display: none; }
 .review-bar[hidden] { display: none; }
 .review-bar__title { font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
 .review-bar__opt { display: inline-flex; align-items: center; gap: 4px; min-height: 32px; cursor: pointer; white-space: nowrap; }
+.review-bar__versions { display: inline-flex; gap: 4px; }
+.review-bar__versions a {
+  display: inline-flex; align-items: center; min-height: 32px; padding: 0 10px; border-radius: 4px;
+  border: 1px solid var(--input-border); color: var(--ink); text-decoration: none; font-weight: 600; white-space: nowrap;
+}
+.review-bar__versions a:hover { border-color: var(--ink); }
+.review-bar__versions a[aria-current="page"] { background: var(--ink); border-color: var(--ink); color: var(--cream); }
 .review-bar__close {
   margin-left: auto; min-width: 32px; min-height: 32px; background: none; color: inherit;
   border: 1px solid var(--input-border); border-radius: 4px; font-size: 1rem; cursor: pointer;

@@ -159,8 +159,8 @@ export const footer = {
 // Condições comerciais centralizadas. Enquanto `confirmed` for false, a página mostra
 // placeholders marcados como pendência — nunca valores hipotéticos como se fossem reais.
 export const commercial = {
-  price: { confirmed: false, value: '' },          // ex.: 'R$ 2.500' — só preencher com valor confirmado
-  installments: { confirmed: false, value: '' },   // ex.: 'em até 10x no cartão' — idem
+  price: { confirmed: true, value: 'R$ 2.500' },           // confirmado pelo cliente em 2026-10-27
+  installments: { confirmed: true, value: 'em até 12x' },  // confirmado (com juros; o cliente pediu para não citar na página)
   rebate: {
     confirmed: false,
     text: 'Se você decidir continuar o acompanhamento: o valor investido na Parada Técnica poderá ser abatido do protocolo posterior, conforme as condições confirmadas pela Alessandra.',
@@ -189,8 +189,7 @@ export const versionB = {
   faqExtra: [
     {
       q: 'Qual é o investimento para fazer a Parada Técnica?',
-      a: 'O investimento é de R$ [VALOR CONFIRMADO], com possibilidade de pagamento [CONDIÇÕES CONFIRMADAS]. Você pode consultar os detalhes antes de concluir a compra.',
-      pending: true, // depende de commercial.price e commercial.installments
+      a: 'O investimento é de R$ 2.500, com possibilidade de pagamento em até 12x. Você pode consultar os detalhes antes de concluir a compra.',
     },
     {
       q: 'Como funciona o pagamento?',

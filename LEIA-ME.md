@@ -27,9 +27,11 @@ O formulário foi removido. Os botões (Hero, seção 3 e barra fixa do celular)
 
 Tudo sai do mesmo `node build.mjs`, com CSS, JS e imagens compartilhados. O que é só da versão B está em `src/content.mjs` → `versionB` e `commercial`, e nos componentes `Offer` e `FinalCta` de `src/components.mjs`.
 
-### Condições comerciais (pendentes)
+### Condições comerciais
 
-Em `src/content.mjs` → `commercial`:
-- `price` e `installments`: enquanto `confirmed: false`, a página mostra `R$ [VALOR CONFIRMADO]` e `[CONDIÇÕES DE PARCELAMENTO]` marcados como "pendente de confirmação". Para publicar, preencha `value` e mude `confirmed` para `true`.
-- `rebate` (abatimento no protocolo posterior): enquanto não confirmado, aparece só como pendência, nunca como condição válida.
-- A resposta do FAQ sobre investimento também está marcada como pendente.
+Em `src/content.mjs` → `commercial` (só a Versão B usa):
+- `price`: **R$ 2.500** (confirmado).
+- `installments`: **em até 12x** (confirmado; é com juros, mas o cliente pediu para não citar na página).
+- `rebate` (abatimento no protocolo posterior): **não confirmado** — não aparece na página. Para exibir, mude `confirmed` para `true`.
+
+A barra de revisão (topo) tem os links **Versão A** e **Versão B** para alternar entre as páginas.

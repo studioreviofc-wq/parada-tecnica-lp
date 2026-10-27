@@ -253,7 +253,7 @@ export const Offer = () => {
         ${commercialValue(k.installments, o.installmentsPlaceholder, 'offer__terms')}
         ${Button({ label: o.cta, variant: 'gold', cta: 'oferta', iconBox: 'arrowUpRight' })}
         <p class="offer__micro">${esc(o.microcopy)}</p>
-        ${k.rebate.confirmed ? `<p class="offer__rebate">${esc(k.rebate.text)}</p>` : Note(`Benefício a confirmar (não exibir como condição válida): “${k.rebate.text}”`)}
+        ${k.rebate.confirmed ? `<p class="offer__rebate">${esc(k.rebate.text)}</p>` : ''}
       </div>
     </div>
   </div>
@@ -286,6 +286,11 @@ export const Footer = () => `
 export const ReviewBar = () => `
 <aside class="review-bar" id="review-bar" aria-label="Barra de revisão">
   <span class="review-bar__title">Revisão</span>
+  <nav class="review-bar__versions" aria-label="Versões da página">
+    ${[['a', 'Versão A'], ['b', 'Versão B']]
+      .map(([v, label]) => `<a href="versao-${v}/"${v === variant ? ' aria-current="page"' : ''}>${label}</a>`)
+      .join('')}
+  </nav>
   <label class="review-bar__opt"><input type="checkbox" id="toggle-notes" checked> Pendências</label>
   <button type="button" id="hide-review" class="review-bar__close" aria-label="Ocultar barra de revisão">×</button>
 </aside>`;

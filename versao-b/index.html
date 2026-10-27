@@ -9,13 +9,16 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Raleway:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="../assets/styles.css?v=477f916e">
+<link rel="stylesheet" href="../assets/styles.css?v=25de3fa0">
 </head>
 <body>
 <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
 
 <aside class="review-bar" id="review-bar" aria-label="Barra de revisão">
   <span class="review-bar__title">Revisão</span>
+  <nav class="review-bar__versions" aria-label="Versões da página">
+    <a href="../versao-a/">Versão A</a><a href="../versao-b/" aria-current="page">Versão B</a>
+  </nav>
   <label class="review-bar__opt"><input type="checkbox" id="toggle-notes" checked> Pendências</label>
   <button type="button" id="hide-review" class="review-bar__close" aria-label="Ocultar barra de revisão">×</button>
 </aside>
@@ -218,11 +221,11 @@
       </div>
       <div class="offer__price">
         <p class="offer__price-label">INVESTIMENTO</p>
-        <p class="offer__value is-placeholder"><span>R$ [VALOR CONFIRMADO]</span><small class="placeholder-flag">pendente de confirmação</small></p>
-        <p class="offer__terms is-placeholder"><span>[CONDIÇÕES DE PARCELAMENTO]</span><small class="placeholder-flag">pendente de confirmação</small></p>
+        <p class="offer__value">R$ 2.500</p>
+        <p class="offer__terms">em até 12x</p>
         <a class="btn btn--gold" href="https://pay.sumup.com/b2c/QX5EAYO5" data-cta="oferta"><span>QUERO FAZER MINHA PARADA TÉCNICA</span><span class="btn__iconbox"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17L17 7M9 7h8v8"/></svg></span></a>
         <p class="offer__micro">Pagamento pelo checkout. Após a confirmação, a equipe entra em contato para orientar o agendamento.</p>
-        <p class="pending-note" role="note"><strong>Pendência:</strong> Benefício a confirmar (não exibir como condição válida): “Se você decidir continuar o acompanhamento: o valor investido na Parada Técnica poderá ser abatido do protocolo posterior, conforme as condições confirmadas pela Alessandra.”</p>
+        
       </div>
     </div>
   </div>
@@ -268,7 +271,7 @@
 <details class="faq__item">
         <summary><h3>Qual é o investimento para fazer a Parada Técnica?</h3><span class="faq__toggle" aria-hidden="true"><svg class="faq__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 6v12M6 12h12"/></svg></span></summary>
         <div class="faq__answer">
-          <p class="tag">Provisória — pendente de confirmação</p><p class="pending-note" role="note"><strong>Pendência:</strong> O investimento é de R$ [VALOR CONFIRMADO], com possibilidade de pagamento [CONDIÇÕES CONFIRMADAS]. Você pode consultar os detalhes antes de concluir a compra.</p>
+          <p>O investimento é de R$ 2.500, com possibilidade de pagamento em até 12x. Você pode consultar os detalhes antes de concluir a compra.</p>
         </div>
       </details>
 <details class="faq__item">

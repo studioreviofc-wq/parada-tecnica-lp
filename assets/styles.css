@@ -362,6 +362,11 @@ strong { font-weight: 600; }
   line-height: 1; letter-spacing: -0.01em; white-space: nowrap;
   color: var(--ink); opacity: 0.05; pointer-events: none; user-select: none;
 }
+/* Desktop: nome mais visível (menos cortado) e 100px a menos no pé da seção. */
+@media (min-width: 1024px) {
+  .section--watermark { padding-bottom: calc(var(--section) + 7vw - 100px); }
+  .watermark { transform: translate(-50%, 6%); }
+}
 
 /* ---------- 03 Solução ---------- */
 .solution .eyebrow { margin-bottom: 24px; }

@@ -12,6 +12,7 @@ const paths = {
   arrow: '<path d="M5 12h14M13 6l6 6-6 6"/>',
   arrowUpRight: '<path d="M7 17L17 7M9 7h8v8"/>',
   chat: '<path d="M20.5 11.5a8.5 8.5 0 0 1-12.4 7.6L3.5 20.5l1.4-4.4A8.5 8.5 0 1 1 20.5 11.5z"/>',
+  plus: '<path d="M12 6v12M6 12h12"/>',
   chevron: '<path d="M6 9l6 6 6-6"/>',
 };
 

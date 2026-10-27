@@ -482,22 +482,28 @@ strong { font-weight: 600; }
 .faq__head { text-align: center; margin-bottom: 48px; }
 .faq__head .eyebrow { margin-bottom: 16px; color: var(--muted); font-weight: 500; letter-spacing: 0.2em; }
 .faq__head h2 { max-width: 24ch; margin-inline: auto; }
-.faq { display: grid; gap: 16px; }
+.section--faq { background: #EFE6D6; }
+.faq { display: grid; gap: 12px; }
 .faq__item {
-  border: 1px solid var(--border); border-radius: var(--radius-card-lg);
-  background: var(--warm-white); transition: border-color var(--dur) var(--ease);
+  background: var(--warm-white); border: 1px solid transparent; border-radius: 20px;
+  transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
 }
-.faq__item:hover, .faq__item[open] { border-color: var(--champagne); }
+.faq__item[open] { border-color: var(--border); box-shadow: 0 10px 30px -14px rgba(23, 20, 17, 0.18); }
 .faq__item summary {
   display: flex; align-items: center; justify-content: space-between; gap: 20px;
-  min-height: 68px; padding: 20px 28px; cursor: pointer; list-style: none; border-radius: inherit;
+  min-height: 80px; padding: 22px 28px; cursor: pointer; list-style: none; border-radius: inherit;
 }
 .faq__item summary::-webkit-details-marker { display: none; }
-.faq__item summary h3 { font-family: var(--font-sans); font-weight: 500; font-size: var(--fs-body); line-height: 1.45; color: var(--graphite); }
+.faq__item summary h3 { font-family: var(--font-sans); font-weight: 600; font-size: 1.0625rem; line-height: 1.45; color: var(--ink); }
 .faq__item summary:hover h3 { color: var(--gold-ink); }
-.faq__icon { width: 20px; height: 20px; color: var(--gold-display); transition: transform var(--dur) var(--ease); }
-.faq__item[open] .faq__icon { transform: rotate(180deg); }
-.faq__answer { padding: 0 64px 24px 28px; color: var(--text-2); }
+.faq__toggle {
+  display: grid; place-items: center; width: 32px; height: 32px; flex: none; border-radius: 50%;
+  background: #EADFCB; color: var(--gold-ink);
+  transition: background-color var(--dur) var(--ease), color var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+.faq__icon { width: 16px; height: 16px; stroke-width: 2; }
+.faq__item[open] .faq__toggle { background: var(--gold); color: var(--white); transform: rotate(45deg); }
+.faq__answer { padding: 0 72px 28px 28px; color: var(--text-2); line-height: 1.7; }
 @media (max-width: 599px) {
   .faq__head { margin-bottom: 32px; }
   .faq__item summary { padding: 18px 20px; }

@@ -176,7 +176,7 @@ export const About = () => `
 </section>`;
 
 export const Faq = () => `
-<section class="section theme-cream" aria-labelledby="faq-title" data-section="07-faq">
+<section class="section theme-cream section--faq" aria-labelledby="faq-title" data-section="07-faq">
   <div class="container faq-wrap">
     <header class="faq__head">
       <h2 id="faq-title">${headlineWithAccent(c.faq)}</h2>
@@ -185,7 +185,7 @@ export const Faq = () => `
       ${c.faq.items
         .map(
           (f) => `<details class="faq__item">
-        <summary><h3>${esc(f.q)}</h3>${icon('chevron', 'faq__icon')}</summary>
+        <summary><h3>${esc(f.q)}</h3><span class="faq__toggle" aria-hidden="true">${icon('plus', 'faq__icon')}</span></summary>
         <div class="faq__answer">
           ${f.pending ? `<p class="tag">Provisória — pendente de confirmação</p>${Note(f.a)}` : `<p>${esc(f.a)}</p>`}
         </div>

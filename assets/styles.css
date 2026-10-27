@@ -422,18 +422,30 @@ strong { font-weight: 600; }
 }
 
 /* ---------- 05 Entregáveis ---------- */
-.cards { display: grid; gap: 16px; }
+.deliv__head { text-align: center; margin: 0 auto 48px; max-width: 1040px; }
+.deliv__head h2 { font-size: clamp(2rem, 1.4rem + 2.4vw, 3.25rem); margin-bottom: 16px; }
+.deliv__head .lead { margin-inline: auto; max-width: 58ch; color: var(--text-2); }
+.cards { display: grid; gap: 20px; }
 .card {
-  background: var(--warm-white); border: 1px solid var(--border); border-radius: var(--radius-card);
-  padding: 28px 24px;
+  position: relative; padding: 32px 28px 36px;
+  background: var(--warm-white); border-radius: 20px;
+  box-shadow: 0 1px 2px rgba(23, 20, 17, 0.04), 0 14px 40px -12px rgba(23, 20, 17, 0.12);
 }
-.card__icon { width: 32px; height: 32px; color: var(--gold); margin-bottom: 20px; }
-.card h3 { font-family: var(--font-serif); font-weight: 600; margin-bottom: 8px; }
-.card p { color: var(--text-2); }
+.card::before {
+  content: ""; position: absolute; top: 0; left: 28px; width: 56px; height: 3px; border-radius: 0 0 3px 3px;
+  background: linear-gradient(90deg, var(--gold), var(--champagne));
+}
+.card__iconbox {
+  display: grid; place-items: center; width: 52px; height: 52px; margin-bottom: 24px;
+  border-radius: 14px; background: var(--cream); color: var(--gold-display);
+}
+.card__icon { width: 24px; height: 24px; }
+.card h3 { font-family: var(--font-serif); font-weight: 600; font-size: 1.375rem; margin-bottom: 8px; }
+.card p { color: var(--text-2); font-size: 0.9375rem; line-height: 1.65; }
 @media (min-width: 600px) { .cards { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 1024px) {
   .cards { grid-template-columns: repeat(6, 1fr); gap: 24px; }
-  .card { grid-column: span 2; padding: 32px; }
+  .card { grid-column: span 2; padding: 36px 32px 40px; }
   .card:nth-child(4) { grid-column: 2 / span 2; }
 }
 .pull {

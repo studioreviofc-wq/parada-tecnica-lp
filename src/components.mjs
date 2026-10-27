@@ -134,16 +134,15 @@ const deliverableIcons = ['clipboard', 'search', 'signpost', 'calendar', 'docume
 export const Deliverables = () => `
 <section class="section theme-cream" aria-labelledby="entregaveis-title" data-section="05-entregaveis">
   <div class="container">
-    <header class="section__head">
-      <span class="rule" aria-hidden="true"></span>
-      <h2 id="entregaveis-title">${accent(c.deliverables.headline)}</h2>
+    <header class="deliv__head">
+      <h2 id="entregaveis-title">${headlineWithAccent(c.deliverables)}</h2>
       <p class="lead">${esc(c.deliverables.intro)}</p>
     </header>
     <ul class="cards">
       ${c.deliverables.items
         .map(
           (d, i) => `<li class="card">
-        ${icon(deliverableIcons[i], 'icon card__icon')}
+        <span class="card__iconbox" aria-hidden="true">${icon(deliverableIcons[i], 'icon card__icon')}</span>
         <h3>${esc(d.title)}</h3>
         <p>${esc(d.text)}</p>
       </li>`

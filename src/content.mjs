@@ -83,6 +83,7 @@ export const steps = {
 
 export const deliverables = {
   headline: 'O que você recebe com a Parada Técnica?',
+  accent: 'com a Parada Técnica?',
   intro: 'Uma avaliação organizada e um documento individualizado para compreender melhor sua situação.',
   items: [
     { title: 'Avaliação psicológica', text: 'Informações obtidas por meio dos procedimentos e instrumentos utilizados na sessão.' },

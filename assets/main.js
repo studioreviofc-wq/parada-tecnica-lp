@@ -167,7 +167,7 @@
         summary.focus();
         return;
       }
-      track('form_submit_success', { interesse: (form.interesse.value || null) });
+      track('form_submit_success');
       document.getElementById('success-phone').textContent = whatsapp.value;
       form.hidden = true;
       success.hidden = false;

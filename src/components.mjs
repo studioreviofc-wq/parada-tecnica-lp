@@ -195,50 +195,33 @@ export const LeadForm = () => `
 <section class="section theme-dark section--form" id="formulario" aria-labelledby="form-title" data-section="08-formulario">
   <div class="container form-layout">
     <header class="form-layout__intro">
-      <span class="rule" aria-hidden="true"></span>
       <h2 id="form-title" tabindex="-1">${esc(c.form.headline)}</h2>
       ${paragraphs(c.form.text)}
     </header>
 
     <div class="form-card">
-      <p class="demo-banner" role="note">Formulário demonstrativo — nenhum dado é enviado ou armazenado nesta etapa.</p>
-
       <form id="lead-form" novalidate>
         <div class="form-error-summary" id="form-error-summary" role="alert" tabindex="-1" hidden></div>
 
         <div class="field" data-field="nome">
-          <label for="nome">${esc(c.form.nameLabel)} <span class="field__req">(obrigatório)</span></label>
-          <input id="nome" name="nome" type="text" autocomplete="name" autocapitalize="words" placeholder="${esc(c.form.namePlaceholder)}" required aria-describedby="nome-erro">
+          <label for="nome" class="visually-hidden">${esc(c.form.nameLabel)} (obrigatório)</label>
+          <input id="nome" name="nome" type="text" autocomplete="name" autocapitalize="words" placeholder="${esc(c.form.nameLabel)}*" required aria-describedby="nome-erro">
           <p class="field__error" id="nome-erro" hidden></p>
         </div>
 
         <div class="field" data-field="whatsapp">
-          <label for="whatsapp">${esc(c.form.phoneLabel)} <span class="field__req">(obrigatório)</span></label>
-          <input id="whatsapp" name="whatsapp" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="${esc(c.form.phonePlaceholder)}" maxlength="15" required aria-describedby="whatsapp-dica whatsapp-erro">
-          <p class="field__hint" id="whatsapp-dica">Usaremos este número para o primeiro contato.</p>
+          <label for="whatsapp" class="visually-hidden">${esc(c.form.phoneLabel)} com DDD (obrigatório)</label>
+          <input id="whatsapp" name="whatsapp" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="${esc(c.form.phoneLabel)}*" maxlength="15" required aria-describedby="whatsapp-erro">
           <p class="field__error" id="whatsapp-erro" hidden></p>
         </div>
 
-        <fieldset class="field">
-          <legend>${esc(c.form.interestLabel)} <span class="field__req">(opcional)</span></legend>
-          <div class="choices">
-            ${c.form.interests
-              .map(
-                (opt, i) => `<label class="choice">
-              <input type="radio" name="interesse" value="${esc(opt)}" id="interesse-${i + 1}">
-              <span>${esc(opt)}</span>
-            </label>`
-              )
-              .join('\n')}
-          </div>
-        </fieldset>
-
-        <button type="submit" class="btn btn--dark btn--block" id="submit-btn">
+        <button type="submit" class="btn btn--submit btn--block" id="submit-btn">
           <span class="btn__label">${esc(c.form.cta)}</span>
           <span class="btn__loading" aria-hidden="true">Enviando…</span>
         </button>
         <p class="form-legal">${esc(c.form.microcopy)} <a href="#politica-privacidade">${esc(c.form.privacyLabel)}</a>.</p>
         <p class="visually-hidden" id="form-status" aria-live="polite"></p>
+        ${Note('Formulário demonstrativo — nenhum dado é enviado ou armazenado nesta etapa.')}
       </form>
 
       <div class="form-success" id="form-success" hidden>

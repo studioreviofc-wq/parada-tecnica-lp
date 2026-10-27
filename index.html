@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Raleway:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="assets/styles.css?v=30c2c4df">
+<link rel="stylesheet" href="assets/styles.css?v=5492c978">
 </head>
 <body>
 <a class="skip-link" href="#formulario">Ir para o formulário</a>
@@ -225,55 +225,34 @@
 <section class="section theme-dark section--form" id="formulario" aria-labelledby="form-title" data-section="08-formulario">
   <div class="container form-layout">
     <header class="form-layout__intro">
-      <span class="rule" aria-hidden="true"></span>
       <h2 id="form-title" tabindex="-1">Reserve um momento para olhar para você.</h2>
       <p>Se você deseja compreender melhor a Parada Técnica e descobrir como ela funciona, preencha seus dados abaixo.</p>
 <p>A equipe entrará em contato pelo WhatsApp para explicar o atendimento e esclarecer suas dúvidas.</p>
     </header>
 
     <div class="form-card">
-      <p class="demo-banner" role="note">Formulário demonstrativo — nenhum dado é enviado ou armazenado nesta etapa.</p>
-
       <form id="lead-form" novalidate>
         <div class="form-error-summary" id="form-error-summary" role="alert" tabindex="-1" hidden></div>
 
         <div class="field" data-field="nome">
-          <label for="nome">Nome <span class="field__req">(obrigatório)</span></label>
-          <input id="nome" name="nome" type="text" autocomplete="name" autocapitalize="words" placeholder="Seu nome completo" required aria-describedby="nome-erro">
+          <label for="nome" class="visually-hidden">Nome (obrigatório)</label>
+          <input id="nome" name="nome" type="text" autocomplete="name" autocapitalize="words" placeholder="Nome*" required aria-describedby="nome-erro">
           <p class="field__error" id="nome-erro" hidden></p>
         </div>
 
         <div class="field" data-field="whatsapp">
-          <label for="whatsapp">WhatsApp <span class="field__req">(obrigatório)</span></label>
-          <input id="whatsapp" name="whatsapp" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="Seu número com DDD" maxlength="15" required aria-describedby="whatsapp-dica whatsapp-erro">
-          <p class="field__hint" id="whatsapp-dica">Usaremos este número para o primeiro contato.</p>
+          <label for="whatsapp" class="visually-hidden">WhatsApp com DDD (obrigatório)</label>
+          <input id="whatsapp" name="whatsapp" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="WhatsApp*" maxlength="15" required aria-describedby="whatsapp-erro">
           <p class="field__error" id="whatsapp-erro" hidden></p>
         </div>
 
-        <fieldset class="field">
-          <legend>Qual é o seu principal interesse? <span class="field__req">(opcional)</span></legend>
-          <div class="choices">
-            <label class="choice">
-              <input type="radio" name="interesse" value="Entender melhor como funciona" id="interesse-1">
-              <span>Entender melhor como funciona</span>
-            </label>
-<label class="choice">
-              <input type="radio" name="interesse" value="Saber valores e disponibilidade" id="interesse-2">
-              <span>Saber valores e disponibilidade</span>
-            </label>
-<label class="choice">
-              <input type="radio" name="interesse" value="Conversar sobre minha situação" id="interesse-3">
-              <span>Conversar sobre minha situação</span>
-            </label>
-          </div>
-        </fieldset>
-
-        <button type="submit" class="btn btn--dark btn--block" id="submit-btn">
+        <button type="submit" class="btn btn--submit btn--block" id="submit-btn">
           <span class="btn__label">QUERO RECEBER AS INFORMAÇÕES</span>
           <span class="btn__loading" aria-hidden="true">Enviando…</span>
         </button>
         <p class="form-legal">Seus dados serão utilizados para responder à sua solicitação de contato, conforme a <a href="#politica-privacidade">Política de Privacidade</a>.</p>
         <p class="visually-hidden" id="form-status" aria-live="polite"></p>
+        <p class="pending-note" role="note"><strong>Pendência:</strong> Formulário demonstrativo — nenhum dado é enviado ou armazenado nesta etapa.</p>
       </form>
 
       <div class="form-success" id="form-success" hidden>
@@ -310,6 +289,6 @@
     <span>QUERO ENTENDER COMO FUNCIONA</span><svg class="btn__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
   </a>
 </div>
-<script src="assets/main.js?v=debe8e33" defer></script>
+<script src="assets/main.js?v=30286894" defer></script>
 </body>
 </html>

@@ -273,6 +273,9 @@ strong { font-weight: 600; }
   -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
   color: var(--on-dark);
 }
+.hero__overlay { position: absolute; inset: 0; pointer-events: none; }
+.hero__overlay > * { pointer-events: auto; }
+
 .photo-badge__avatar {
   width: 48px; height: 48px; flex: none; border-radius: 50%; overflow: hidden;
   display: grid; place-items: center; background: var(--graphite); color: var(--champagne);
@@ -309,7 +312,19 @@ strong { font-weight: 600; }
     padding-right: 40px;
   }
   .hero__cta .btn { width: auto; }
-  .photo-badge { left: auto; right: clamp(24px, 12%, 220px); bottom: 16%; }
+  /* Camada com o mesmo recorte "cover" da imagem: o selo fica preso a um ponto da foto
+     (o pulso da Alessandra, x 1200 · y 590 em hero.webp) em qualquer largura. */
+  .hero__media { container-type: size; overflow: hidden; }
+  .hero__overlay {
+    inset: auto; left: 50%; top: 50%;
+    width: max(100cqw, 100cqh * 1920 / 753);
+    height: max(100cqh, 100cqw * 753 / 1920);
+    transform: translate(-50%, -50%);
+  }
+  .photo-badge {
+    left: calc(1200 / 1920 * 100% - 32px); top: calc(590 / 753 * 100%);
+    right: auto; bottom: auto; transform: translateY(-50%);
+  }
 }
 
 /* ---------- 02 Identificação ---------- */

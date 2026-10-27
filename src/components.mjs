@@ -57,7 +57,7 @@ export const Hero = (variant) => `
     </div>
     <div class="hero__media">
       ${Photo(c.hero.photo, 'photo--hero')}
-      ${PhotoBadge(c.hero.badge)}
+      <div class="hero__overlay">${PhotoBadge(c.hero.badge)}</div>
     </div>
   </div>
 </section>`;

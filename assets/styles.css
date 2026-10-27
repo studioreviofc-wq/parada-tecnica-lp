@@ -426,10 +426,12 @@ strong { font-weight: 600; }
 }
 .trust { display: flex; flex-wrap: wrap; gap: 8px; margin: 28px 0 0; }
 .trust li {
-  padding: 9px 16px; border: 1px solid var(--input-border); border-radius: 999px; background: var(--warm-white);
-  font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--graphite);
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 14px 8px 11px; border: 1px solid var(--input-border); border-radius: 999px; background: var(--warm-white);
+  font-size: 0.75rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--graphite);
   white-space: nowrap;
 }
+.trust .icon { width: 16px; height: 16px; color: var(--gold-ink); }
 @media (min-width: 1024px) {
   .about { grid-template-columns: 5fr 7fr; gap: 80px; align-items: center; }
 }

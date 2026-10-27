@@ -161,9 +161,12 @@ export const footer = {
 export const commercial = {
   price: { confirmed: true, value: 'R$ 2.500' },           // confirmado pelo cliente em 2026-10-27
   installments: { confirmed: true, value: 'em até 12x' },  // confirmado (com juros; o cliente pediu para não citar na página)
+  // Abatimento no protocolo terapêutico posterior. Pendente de confirmação da Alessandra:
+  // enquanto `confirmed` for false, o bloco aparece marcado como pendente (e some ao desmarcar "Pendências").
   rebate: {
     confirmed: false,
-    text: 'Se você decidir continuar o acompanhamento: o valor investido na Parada Técnica poderá ser abatido do protocolo posterior, conforme as condições confirmadas pela Alessandra.',
+    title: 'Seu investimento pode ser aproveitado na continuidade do tratamento.',
+    text: 'Caso você decida seguir com o protocolo terapêutico recomendado, o valor investido na Parada Técnica será abatido do tratamento, conforme as condições acordadas.',
   },
 };
 

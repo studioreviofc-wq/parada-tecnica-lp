@@ -254,8 +254,15 @@ export const Offer = () => {
         ${commercialValue(k.price, o.pricePlaceholder, 'offer__value')}
         ${commercialValue(k.installments, o.installmentsPlaceholder, 'offer__terms')}
         ${Button({ label: o.cta, variant: 'gold', cta: 'oferta', iconBox: 'arrowUpRight' })}
+        <div class="offer__rebate${k.rebate.confirmed ? '' : ' is-pending'}">
+          <span class="offer__rebate-icon" aria-hidden="true">${icon('check', 'icon')}</span>
+          <div>
+            ${k.rebate.confirmed ? '' : '<small class="placeholder-flag">pendente de confirmação</small>'}
+            <p class="offer__rebate-title">${esc(k.rebate.title)}</p>
+            <p class="offer__rebate-text">${esc(k.rebate.text)}</p>
+          </div>
+        </div>
         <p class="offer__micro">${esc(o.microcopy)}</p>
-        ${k.rebate.confirmed ? `<p class="offer__rebate">${esc(k.rebate.text)}</p>` : ''}
       </div>
     </div>
   </div>

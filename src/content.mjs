@@ -58,6 +58,7 @@ export const solution = {
 
 export const steps = {
   headline: 'Simples de começar. Estruturado do início ao fim.',
+  accent: 'Estruturado do início ao fim.',
   items: [
     {
       n: '01',

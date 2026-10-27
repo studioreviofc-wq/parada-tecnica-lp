@@ -11,6 +11,7 @@ const paths = {
   pin: '<path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/>',
   arrow: '<path d="M5 12h14M13 6l6 6-6 6"/>',
   arrowUpRight: '<path d="M7 17L17 7M9 7h8v8"/>',
+  chat: '<path d="M20.5 11.5a8.5 8.5 0 0 1-12.4 7.6L3.5 20.5l1.4-4.4A8.5 8.5 0 1 1 20.5 11.5z"/>',
   chevron: '<path d="M6 9l6 6 6-6"/>',
 };
 

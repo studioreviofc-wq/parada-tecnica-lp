@@ -106,18 +106,20 @@ export const Solution = () => `
   </div>
 </section>`;
 
+const stepIcons = ['chat', 'clock', 'document'];
+
 export const Steps = () => `
 <section class="section theme-warm" aria-labelledby="como-funciona-title" data-section="04-como-funciona">
   <div class="container">
-    <header class="section__head">
-      <span class="rule" aria-hidden="true"></span>
-      <h2 id="como-funciona-title">${accent(c.steps.headline)}</h2>
+    <header class="steps__head">
+      <h2 id="como-funciona-title">${headlineWithAccent(c.steps)}</h2>
     </header>
     <ol class="steps">
       ${c.steps.items
         .map(
-          (s) => `<li class="steps__item">
-        <span class="steps__n" aria-hidden="true">${s.n}</span>
+          (s, i) => `<li class="step-card${i === 0 ? ' step-card--accent' : ''}">
+        <span class="step-card__n" aria-hidden="true">${s.n}</span>
+        <div class="step-card__visual" aria-hidden="true"><span class="step-card__icon">${icon(stepIcons[i])}</span></div>
         <h3><span class="visually-hidden">Etapa ${s.n}: </span>${esc(s.title)}</h3>
         ${paragraphs(s.text)}
       </li>`

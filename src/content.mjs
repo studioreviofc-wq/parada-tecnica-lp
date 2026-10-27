@@ -177,8 +177,9 @@ export const versionB = {
   offer: {
     eyebrow: 'SUA PARADA TÉCNICA',
     headline: 'Um primeiro passo para compreender o que está acontecendo e decidir como seguir.',
+    accent: 'decidir como seguir.',
     description: 'Reserve três horas para uma avaliação psicológica individual, com testes, biofeedback cardiovascular conforme indicação profissional e um documento escrito com orientações para os próximos passos.',
-    includedTitle: 'O que está incluído:',
+    includedTitle: 'O QUE ESTÁ INCLUÍDO',
     included: [
       'Avaliação individual de 3 horas.',
       'Recursos de avaliação psicológica, conforme indicação profissional.',

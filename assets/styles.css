@@ -596,25 +596,32 @@ strong { font-weight: 600; }
     var(--ink);
 }
 .offer .eyebrow { color: var(--champagne); }
-.offer h2 { color: var(--cream); max-width: 24ch; }
-.offer__desc { margin: 20px 0 28px; color: var(--on-dark-muted); font-size: 1.0625rem; line-height: 1.65; max-width: 52ch; }
-.offer__subtitle { font-family: var(--font-sans); font-size: 1rem; font-weight: 600; color: var(--cream); margin-bottom: 14px; }
-.offer__list { display: grid; gap: 12px; }
-.offer__list li { display: grid; grid-template-columns: 32px 1fr; gap: 14px; align-items: start; color: var(--on-dark); font-size: 1rem; line-height: 1.55; }
+.offer h2 { color: var(--cream); max-width: 18ch; }
+.offer .display__accent { color: var(--champagne); }
+.offer__desc { margin: 24px 0 0; color: var(--on-dark-muted); font-size: 1.0625rem; line-height: 1.7; max-width: 46ch; }
+
+/* Card comercial: concentra preço, CTA, condições e o que está incluído. */
+.offer__card {
+  display: grid; gap: 8px; align-content: start; padding: 28px 22px; border-radius: 20px;
+  background: rgba(248, 245, 238, 0.05); border: 1px solid rgba(248, 245, 238, 0.12);
+}
+.offer__price-label { margin: 0; font-size: var(--fs-eyebrow); font-weight: 600; letter-spacing: 0.16em; color: var(--champagne); }
+.offer__value { margin: 0; font-family: var(--font-serif); font-weight: 700; font-size: clamp(2.25rem, 1.8rem + 1.6vw, 3.25rem); line-height: 1.1; color: var(--cream); font-variant-numeric: lining-nums; }
+.offer__terms { margin: 0 0 16px; color: var(--on-dark-muted); font-size: 1.0625rem; }
+.offer__card .btn { width: 100%; }
+.offer__micro { margin: 8px 0 0; font-size: 0.9375rem; line-height: 1.6; color: var(--on-dark-muted); }
+.offer__divider { width: 100%; height: 0; margin: 20px 0 16px; border: 0; border-top: 1px solid rgba(248, 245, 238, 0.12); }
+.offer__subtitle { margin: 0 0 8px; font-family: var(--font-sans); font-size: var(--fs-eyebrow); font-weight: 600; letter-spacing: 0.16em; color: var(--champagne); }
+.offer__list { display: grid; gap: 14px; }
+.offer__list li { display: grid; grid-template-columns: 32px 1fr; gap: 14px; align-items: center; color: var(--on-dark); font-size: 1rem; line-height: 1.55; }
 .offer__check {
   display: grid; place-items: center; width: 32px; height: 32px; border-radius: 10px;
   background: rgba(248, 245, 238, 0.08); color: var(--champagne);
 }
 .offer__check .icon { width: 18px; height: 18px; }
-.offer__price {
-  display: grid; gap: 8px; align-content: start; padding: 28px 24px; border-radius: 20px;
-  background: rgba(248, 245, 238, 0.04); border: 1px solid rgba(248, 245, 238, 0.12);
-}
-.offer__price-label { margin: 0; font-size: var(--fs-eyebrow); font-weight: 600; letter-spacing: 0.16em; color: var(--champagne); }
-.offer__value { margin: 0; font-family: var(--font-serif); font-weight: 700; font-size: clamp(2rem, 1.6rem + 1.4vw, 2.75rem); line-height: 1.1; color: var(--cream); font-variant-numeric: lining-nums; }
-.offer__terms { margin: 0 0 16px; color: var(--on-dark-muted); font-size: 1rem; }
-.offer__price .btn { width: 100%; }
-.offer__micro { margin: 8px 0 0; font-size: 0.9375rem; line-height: 1.55; color: var(--on-dark-muted); }
+.offer__rebate { margin-top: 20px; padding-top: 16px; border-top: 1px solid rgba(248, 245, 238, 0.12); }
+.offer__rebate-title { margin: 0 0 4px; font-weight: 600; color: var(--cream); }
+.offer__rebate-text { margin: 0; font-size: 0.9375rem; line-height: 1.6; color: var(--on-dark-muted); }
 .offer .pending-note { margin-top: 12px; }
 /* Placeholder comercial: claramente marcado como pendente, nunca com cara de valor real. */
 .is-placeholder { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; }
@@ -625,12 +632,14 @@ strong { font-weight: 600; }
 }
 body.hide-notes .placeholder-flag { display: none; }
 @media (max-width: 599px) {
-  .offer__price { padding: 22px 18px; }
-  .offer__price .btn { padding-left: 20px; gap: 12px; }
+  .offer { padding: 32px 14px 14px; }
+  .offer__intro { padding-inline: 6px; }
+  .offer__card { padding: 24px 18px; }
+  .offer__card .btn { padding-left: 18px; gap: 10px; }
 }
 @media (min-width: 1024px) {
-  .offer { grid-template-columns: 7fr 5fr; gap: 56px; align-items: center; padding: 72px 64px; }
-  .offer__price { padding: 36px 32px; }
+  .offer { grid-template-columns: 43fr 57fr; gap: 64px; align-items: center; padding: 72px 64px; }
+  .offer__card { padding: 44px 44px 40px; }
 }
 
 /* ---------- Versão B: chamada final ---------- */

@@ -242,19 +242,21 @@ export const Offer = () => {
     <div class="offer theme-dark">
       <div class="offer__intro">
         ${Eyebrow(o.eyebrow, false)}
-        <h2 id="oferta-title">${esc(o.headline)}</h2>
+        <h2 id="oferta-title">${headlineWithAccent(o)}</h2>
         <p class="offer__desc">${esc(o.description)}</p>
-        <h3 class="offer__subtitle">${esc(o.includedTitle)}</h3>
-        <ul class="offer__list">
-          ${o.included.map((t) => `<li><span class="offer__check" aria-hidden="true">${icon('check', 'icon')}</span><span>${esc(t)}</span></li>`).join('\n')}
-        </ul>
       </div>
-      <div class="offer__price">
+      <div class="offer__card">
         <p class="offer__price-label">${esc(o.priceLabel)}</p>
         ${commercialValue(k.price, o.pricePlaceholder, 'offer__value')}
         ${commercialValue(k.installments, o.installmentsPlaceholder, 'offer__terms')}
         ${Button({ label: o.cta, variant: 'gold', cta: 'oferta', iconBox: 'arrowUpRight' })}
         <p class="offer__micro">${esc(o.microcopy)}</p>
+        <hr class="offer__divider">
+        <h3 class="offer__subtitle">${esc(o.includedTitle)}</h3>
+        <ul class="offer__list">
+          ${o.included.map((t) => `<li><span class="offer__check" aria-hidden="true">${icon('check', 'icon')}</span><span>${esc(t)}</span></li>`).join('\n')}
+        </ul>
+        ${k.rebate.confirmed ? `<div class="offer__rebate"><p class="offer__rebate-title">${esc(k.rebate.title)}</p><p class="offer__rebate-text">${esc(k.rebate.text)}</p></div>` : ''}
       </div>
     </div>
   </div>

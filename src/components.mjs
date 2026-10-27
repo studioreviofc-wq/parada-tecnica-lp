@@ -28,7 +28,7 @@ export const PhotoBadge = ({ name, role, avatar }) => `
 // Foto oficial: com `src` renderiza <img>; sem `src`, um placeholder identificado do mesmo tamanho.
 export const Photo = ({ src, alt, position }, frame) =>
   src
-    ? `<figure class="photo ${frame}"><img src="${esc(src)}" alt="${esc(alt)}" style="object-position:${position}" loading="${frame === 'photo--hero' ? 'eager' : 'lazy'}" decoding="async"></figure>`
+    ? `<figure class="photo ${frame}"><img src="${esc(src)}" alt="${esc(alt)}"${position ? ` style="object-position:${position}"` : ''} loading="${frame === 'photo--hero' ? 'eager' : 'lazy'}" decoding="async"></figure>`
     : `<figure class="photo ${frame} photo--placeholder" role="img" aria-label="Espaço reservado: ${esc(alt)}">
     <figcaption class="photo__label">FOTO OFICIAL DA ALESSANDRA<small>${frame === 'photo--hero' ? 'vertical, rosto no terço superior · ocupa a metade direita no desktop' : 'proporção 4:5'}</small></figcaption>
   </figure>`;

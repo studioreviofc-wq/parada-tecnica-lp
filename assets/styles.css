@@ -16,6 +16,7 @@
 
   /* Derivados para acessibilidade (documentados no relatório) */
   --gold-ink: #8A6435;
+  --hero-cream: #FAF5EC;     /* creme exato da faixa esquerda de hero.webp: emenda invisível com a foto */
   --gold-display: #9C7442;   /* dourado de títulos grandes (itálico da headline): 3.8:1 no creme */
   --gold-btn: linear-gradient(90deg, #7A5629 0%, #9C7442 100%); /* CTA dourado: texto branco ≥ 4.8:1 sob o rótulo */
   --gold-btn-hover: linear-gradient(90deg, #6C4C23 0%, #8E6A3C 100%);
@@ -236,7 +237,7 @@ strong { font-weight: 600; }
 /* ---------- 01 Primeira dobra ---------- */
 /* Desktop: texto sobre creme à esquerda, foto sangrando até a borda direita (print aprovado).
    Mobile: texto e CTA primeiro; foto em largura total logo abaixo. */
-.hero { background: var(--cream); border-bottom: 6px solid var(--gold); }
+.hero { background: var(--hero-cream); border-bottom: 6px solid var(--gold); }
 .hero__grid { display: grid; }
 .hero__text {
   display: flex; flex-direction: column;
@@ -254,7 +255,12 @@ strong { font-weight: 600; }
 .hero__cta .btn { width: 100%; }
 .microcopy { font-size: var(--fs-small); color: var(--graphite); margin-top: 14px; }
 
-.hero__media { position: relative; background: var(--graphite); }
+.hero__media { position: relative; background: var(--hero-cream); }
+.hero .photo--hero:not(.photo--placeholder) { background: var(--hero-cream); }
+/* hero.webp tem uma faixa creme à esquerda: no mobile ela fica fora do recorte; no desktop ela
+   emenda com o fundo e o rosto fica no centro da coluna. */
+.hero .photo--hero img { object-position: 74% 20%; }
+@media (min-width: 1024px) { .hero .photo--hero img { object-position: 67% 20%; } }
 .hero .photo--hero { aspect-ratio: 4 / 5; border-radius: 0; height: 100%; }
 .hero .photo--placeholder { outline-offset: -16px; }
 .hero .photo__label { max-width: 32ch; margin-inline: auto; }

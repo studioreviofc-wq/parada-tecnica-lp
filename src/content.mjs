@@ -34,8 +34,9 @@ export const hero = {
   eyebrow: 'PARADA TÉCNICA | PARA EMPRESÁRIOS',
   cta: 'QUERO ENTENDER COMO FUNCIONA',
   microcopy: 'Preencha um formulário rápido e receba as informações pelo WhatsApp.',
-  photo: { src: '', alt: 'Psicóloga Alessandra Trentin', position: '50% 25%' },
-  badge: { name: 'Alessandra Trentin', role: 'Psicóloga · CRP 07/14095', avatar: '' },
+  // hero.webp já vem com a faixa creme à esquerda; o enquadramento centraliza a Alessandra.
+  photo: { src: '../assets/img/hero.webp', alt: 'Psicóloga Alessandra Trentin', position: '' }, // enquadramento no CSS (.hero .photo--hero img)
+  badge: { name: 'Alessandra Trentin', role: 'Psicóloga · CRP 07/14095', avatar: '../assets/img/avatar.webp' },
 };
 
 export const identification = {

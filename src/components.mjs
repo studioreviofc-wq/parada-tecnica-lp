@@ -73,6 +73,7 @@ export const Identification = () => `
 <section class="section theme-cream" aria-labelledby="identificacao-title" data-section="02-identificacao">
   <div class="container split">
     <header class="split__head">
+      ${Eyebrow(c.identification.eyebrow, false)}
       <h2 id="identificacao-title">${headlineWithAccent(c.identification)}</h2>
       <p class="lead">${esc(c.identification.intro)}</p>
     </header>
@@ -128,6 +129,7 @@ export const Steps = () => `
 <section class="section theme-warm" aria-labelledby="como-funciona-title" data-section="04-como-funciona">
   <div class="container">
     <header class="steps__head">
+      ${Eyebrow(c.steps.eyebrow, false)}
       <h2 id="como-funciona-title">${headlineWithAccent(c.steps)}</h2>
     </header>
     <ol class="steps">
@@ -151,6 +153,7 @@ export const Deliverables = () => `
 <section class="section theme-cream" aria-labelledby="entregaveis-title" data-section="05-entregaveis">
   <div class="container">
     <header class="deliv__head">
+      ${Eyebrow(c.deliverables.eyebrow, false)}
       <h2 id="entregaveis-title">${headlineWithAccent(c.deliverables)}</h2>
       <p class="lead">${esc(c.deliverables.intro)}</p>
     </header>
@@ -180,6 +183,7 @@ export const About = () => `
       ${PhotoBadge(c.hero.badge)}
     </div>
     <div class="about__text">
+      ${Eyebrow(c.about.eyebrow, false)}
       <h2 id="sobre-title">${esc(c.about.name)}</h2>
       <p class="about__credential">${esc(c.about.subtitle)}</p>
       ${paragraphs(c.about.description)}
@@ -195,6 +199,7 @@ export const Faq = () => `
 <section class="section theme-cream section--faq" aria-labelledby="faq-title" data-section="07-faq">
   <div class="container faq-wrap">
     <header class="faq__head">
+      ${Eyebrow(c.faq.eyebrow, false)}
       <h2 id="faq-title">${headlineWithAccent(c.faq)}</h2>
     </header>
     <div class="faq">

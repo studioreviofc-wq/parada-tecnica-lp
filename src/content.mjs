@@ -28,6 +28,7 @@ export const hero = {
 };
 
 export const identification = {
+  eyebrow: 'PARA QUEM É',
   headline: 'Você continua dando conta de tudo. Mas nem sempre se sente como antes.',
   accent: 'nem sempre se sente como antes.', // trecho final em dourado itálico, como na Hero
   intro: 'Administrar uma empresa exige decisões, responsabilidades e atenção constante. Com o tempo, algumas mudanças podem começar a fazer parte da rotina.',
@@ -57,6 +58,7 @@ export const solution = {
 };
 
 export const steps = {
+  eyebrow: 'COMO FUNCIONA',
   headline: 'Simples de começar. Estruturado do início ao fim.',
   accent: 'Estruturado do início ao fim.',
   items: [
@@ -82,6 +84,7 @@ export const steps = {
 };
 
 export const deliverables = {
+  eyebrow: 'O QUE ESTÁ INCLUÍDO',
   headline: 'O que você recebe com a Parada Técnica?',
   accent: 'com a Parada Técnica?',
   intro: 'Uma avaliação organizada e um documento individualizado para compreender melhor sua situação.',
@@ -96,6 +99,7 @@ export const deliverables = {
 };
 
 export const about = {
+  eyebrow: 'QUEM CONDUZ',
   name: 'Alessandra Mangoni Galves Trentin',
   subtitle: 'Psicóloga clínica | CRP 07/14095',
   photo: { src: aboutPhoto, alt: 'Retrato profissional da psicóloga Alessandra Mangoni Galves Trentin', position: '50% 20%' },
@@ -107,6 +111,7 @@ export const about = {
 };
 
 export const faq = {
+  eyebrow: 'DÚVIDAS',
   headline: 'Perguntas frequentes',
   accent: 'frequentes',
   items: [

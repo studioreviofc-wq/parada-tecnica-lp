@@ -63,7 +63,7 @@ export const steps = {
     {
       n: '01',
       title: 'Primeiro contato',
-      text: ['Preencha um formulário rápido com seus dados. A equipe entra em contato pelo WhatsApp para explicar o funcionamento da Parada Técnica e orientar sobre os próximos passos.'],
+      text: ['Garanta sua Parada Técnica pelo link de pagamento. Após a confirmação, a equipe entra em contato pelo WhatsApp para agendar a sessão e orientar sobre os próximos passos.'],
     },
     {
       n: '02',

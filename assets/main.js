@@ -1,4 +1,4 @@
-/* Comportamentos da página: CTAs de checkout, CTA fixo mobile e barra de revisão.
+/* Comportamentos da página: CTAs de checkout e barra de revisão.
    Os eventos de medição apenas vão para window.dataLayer. */
 (function () {
   'use strict';
@@ -26,23 +26,6 @@
       if (a.getAttribute('href') === '#checkout') e.preventDefault();
     });
   });
-
-  // ---------- CTA fixo no mobile ----------
-  // Aparece só depois que o CTA da primeira dobra sai da tela.
-  var sticky = document.getElementById('sticky-cta');
-  var heroCta = document.getElementById('hero-cta');
-
-  function updateSticky(show) {
-    sticky.classList.toggle('is-visible', show);
-    sticky.setAttribute('aria-hidden', show ? 'false' : 'true');
-    sticky.querySelector('a').tabIndex = show ? 0 : -1;
-  }
-  if ('IntersectionObserver' in window) {
-    new IntersectionObserver(function (entries) {
-      updateSticky(!(entries[0].isIntersecting || entries[0].boundingClientRect.top > 0));
-    }).observe(heroCta);
-  }
-  document.body.classList.add('has-sticky');
 
   // ---------- Barra de revisão ----------
   var bar = document.getElementById('review-bar');

@@ -22,7 +22,6 @@ export const hero = {
     'Conheça a Parada Técnica: Uma sessão de três horas com testes psicológicos e biofeedback, e um documento escrito com o que apareceu. Para o empresário que ainda está de pé, mas anda no limite.',
   ],
   cta: 'QUERO FAZER MINHA PARADA TÉCNICA',
-  stickyCta: 'QUERO MINHA PARADA TÉCNICA', // versão curta para a barra fixa do celular
   // hero.webp já vem com a faixa creme à esquerda; o enquadramento centraliza a Alessandra.
   photo: { src: 'assets/img/hero.webp', alt: 'Psicóloga Alessandra Trentin', position: '' }, // enquadramento no CSS (.hero .photo--hero img)
   badge: { name: 'Alessandra Trentin', role: 'Psicóloga · CRP 07/14095', avatar: 'assets/img/avatar.webp' },

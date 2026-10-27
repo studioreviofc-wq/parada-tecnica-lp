@@ -226,13 +226,6 @@ export const Footer = () => `
   </div>
 </footer>`;
 
-// Barra editorial fixa no mobile (inspirada na barra escura da referência).
-export const StickyCta = () => `
-<div class="sticky-cta theme-dark" id="sticky-cta" aria-hidden="true">
-  <a class="sticky-cta__link" href="${checkoutHref()}" data-cta="sticky-mobile" tabindex="-1">
-    <span>${esc(c.hero.stickyCta)}</span>${icon('arrow', 'btn__arrow')}
-  </a>
-</div>`;
 
 // Barra de revisão: ferramenta interna para alternar versões. Não faz parte da LP.
 export const ReviewBar = () => `
@@ -268,7 +261,6 @@ ${About()}
 ${Faq()}
 </main>
 ${Footer()}
-${StickyCta()}
 <script src="assets/main.js" defer></script>
 </body>
 </html>

@@ -24,8 +24,8 @@ console.log('ok  /            (versão A)');
 
 // Rotas de comparação: mesma base de CSS/JS/imagens, só os caminhos sobem um nível.
 const nested = (html) => html.replace(/(href|src|srcset)="(assets|versao-[ab])\//g, '$1="../$2/');
-for (const [dir, v] of [['versao-a', 'a'], ['versao-b', 'b']]) {
+for (const [dir, v, opts] of [['versao-a', 'a'], ['versao-b', 'b'], ['apresentacao', 'b', { presentation: true }]]) {
   mkdirSync(join(root, dir), { recursive: true });
-  writeFileSync(join(root, dir, 'index.html'), nested(versioned(Page(v))));
-  console.log(`ok  /${dir}/   (versão ${v.toUpperCase()})`);
+  writeFileSync(join(root, dir, 'index.html'), nested(versioned(Page(v, opts))));
+  console.log(`ok  /${dir}/   (versão ${v.toUpperCase()}${opts ? ', apresentação' : ''})`);
 }

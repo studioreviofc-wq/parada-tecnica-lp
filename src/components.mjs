@@ -5,6 +5,8 @@ import { icon } from './icons.mjs';
 
 // Versão em renderização: 'a' (original, intocada) ou 'b' (ajustes comerciais). Definida por Page().
 let variant = 'a';
+// Modo apresentação (/apresentacao/): página limpa para o cliente, sem barra de revisão nem itens pendentes.
+let presentation = false;
 const isB = () => variant === 'b';
 // Versão B: CTAs anteriores à oferta rolam até ela (mesmo texto); na A seguem para o checkout.
 const toOffer = (label) => (isB() ? { label, href: '#investimento' } : { label });
@@ -218,6 +220,7 @@ export const Faq = () => `
     </header>
     <div class="faq">
       ${(isB() ? [...c.faq.items, ...c.versionB.faqExtra] : c.faq.items)
+        .filter((f) => !(presentation && f.pending))
         .map(
           (f) => `<details class="faq__item">
         <summary><h3>${esc(f.q)}</h3><span class="faq__toggle" aria-hidden="true">${icon('plus', 'faq__icon')}</span></summary>
@@ -305,8 +308,9 @@ export const ReviewBar = () => `
   <button type="button" id="hide-review" class="review-bar__close" aria-label="Ocultar barra de revisão">×</button>
 </aside>`;
 
-export const Page = (v = 'a') => {
+export const Page = (v = 'a', opts = {}) => {
   variant = v;
+  presentation = !!opts.presentation;
   return `<!doctype html>
 <html lang="pt-BR">
 <head>
@@ -322,8 +326,7 @@ export const Page = (v = 'a') => {
 </head>
 <body${isB() ? ' class="version-b"' : ''}>
 <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
-${ReviewBar()}
-<main id="conteudo" tabindex="-1">
+${presentation ? '' : `${ReviewBar()}\n`}<main id="conteudo" tabindex="-1">
 ${Hero()}
 ${Identification()}
 ${Solution()}

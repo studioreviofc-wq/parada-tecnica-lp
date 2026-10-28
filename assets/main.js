@@ -52,6 +52,7 @@
   // ---------- Barra de revisão ----------
   var bar = document.getElementById('review-bar');
   var notes = document.getElementById('toggle-notes');
+  if (!bar || !notes) return; // página de apresentação: sem barra de revisão
   if (store.get('pt-wf-notes') === '0') { notes.checked = false; document.body.classList.add('hide-notes'); }
   notes.addEventListener('change', function () {
     document.body.classList.toggle('hide-notes', !notes.checked);

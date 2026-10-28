@@ -48,3 +48,7 @@ A barra de revisão (topo) tem os links **Versão A** e **Versão B** para alter
 - Revelação em sequência (opacidade 0→1, sobe 14px, 450ms, 85ms entre cards) nos cards das seções 2 (sinais), 4 (etapas) e 5 (entregáveis), uma única vez, via IntersectionObserver.
 - Hover discreto (sobe 3px + sombra) nesses cards, só com mouse.
 - Sem JS, sem IntersectionObserver ou com "reduzir movimento" ativo, tudo aparece normalmente, sem animação.
+
+## Apresentação ao cliente
+
+`/apresentacao/` = Versão B limpa: sem a barra de revisão e sem itens pendentes (a pergunta do FAQ sobre atendimento online fica de fora até ser confirmada). Gerada pelo mesmo `node build.mjs`.

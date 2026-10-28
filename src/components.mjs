@@ -33,10 +33,17 @@ export const PhotoBadge = ({ name, role, avatar }) => `
   </div>`;
 
 // Foto oficial: com `src` renderiza <img>; sem `src`, um placeholder identificado do mesmo tamanho.
-export const Photo = ({ src, alt, position }, frame) =>
-  src
-    ? `<figure class="photo ${frame}"><img src="${esc(src)}" alt="${esc(alt)}"${position ? ` style="object-position:${position}"` : ''} loading="${frame === 'photo--hero' ? 'eager' : 'lazy'}" decoding="async"></figure>`
-    : `<figure class="photo ${frame} photo--placeholder" role="img" aria-label="Espaço reservado: ${esc(alt)}">
+// Com `srcMobile`, telas abaixo de 1200px recebem a versão própria para celular/tablet.
+export const Photo = ({ src, srcMobile, alt, position }, frame) => {
+  if (!src) return PhotoPlaceholder(alt, frame);
+  const img = `<img src="${esc(src)}" alt="${esc(alt)}"${position ? ` style="object-position:${position}"` : ''} loading="${frame === 'photo--hero' ? 'eager' : 'lazy'}" decoding="async">`;
+  return `<figure class="photo ${frame}${srcMobile ? ' has-mobile' : ''}">${
+    srcMobile ? `<picture><source media="(max-width: 1199px)" srcset="${esc(srcMobile)}">${img}</picture>` : img
+  }</figure>`;
+};
+
+const PhotoPlaceholder = (alt, frame) =>
+  `<figure class="photo ${frame} photo--placeholder" role="img" aria-label="Espaço reservado: ${esc(alt)}">
     <figcaption class="photo__label">FOTO OFICIAL DA ALESSANDRA<small>${frame === 'photo--hero' ? 'vertical, rosto no terço superior · ocupa a metade direita no desktop' : 'proporção 4:5'}</small></figcaption>
   </figure>`;
 

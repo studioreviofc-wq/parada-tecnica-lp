@@ -15,14 +15,15 @@ const versioned = (html) =>
     .replace('assets/styles.css"', `assets/styles.css?v=${stamp('assets/styles.css')}"`)
     .replace('assets/main.js"', `assets/main.js?v=${stamp('assets/main.js')}"`)
     .replace('assets/motion.css"', `assets/motion.css?v=${stamp('assets/motion.css')}"`)
-    .replace('assets/motion.js"', `assets/motion.js?v=${stamp('assets/motion.js')}"`);
+    .replace('assets/motion.js"', `assets/motion.js?v=${stamp('assets/motion.js')}"`)
+    .replace(/assets\/img\/([\w.-]+)"/g, (m, f) => `assets/img/${f}?v=${stamp(`assets/img/${f}`)}"`);
 
 // Raiz = versão A (página aprovada; continua sendo o endereço principal).
 writeFileSync(join(root, 'index.html'), versioned(Page('a')));
 console.log('ok  /            (versão A)');
 
 // Rotas de comparação: mesma base de CSS/JS/imagens, só os caminhos sobem um nível.
-const nested = (html) => html.replace(/(href|src)="(assets|versao-[ab])\//g, '$1="../$2/');
+const nested = (html) => html.replace(/(href|src|srcset)="(assets|versao-[ab])\//g, '$1="../$2/');
 for (const [dir, v] of [['versao-a', 'a'], ['versao-b', 'b']]) {
   mkdirSync(join(root, dir), { recursive: true });
   writeFileSync(join(root, dir, 'index.html'), nested(versioned(Page(v))));

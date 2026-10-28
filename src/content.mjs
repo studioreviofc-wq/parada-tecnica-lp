@@ -23,7 +23,8 @@ export const hero = {
   ],
   cta: 'QUERO FAZER MINHA PARADA TÉCNICA',
   // hero.webp já vem com a faixa creme à esquerda; o enquadramento centraliza a Alessandra.
-  photo: { src: 'assets/img/hero.webp', alt: 'Psicóloga Alessandra Trentin', position: '' }, // enquadramento no CSS (.hero .photo--hero img)
+  // Desktop (≥1200px): hero.webp 1920×753 (creme + foto). Celular e tablet: hero-mobile.webp 1080×1350 (só a foto).
+  photo: { src: 'assets/img/hero.webp', srcMobile: 'assets/img/hero-mobile.webp', alt: 'Psicóloga Alessandra Trentin', position: '' }, // enquadramento no CSS (.hero .photo--hero img)
   badge: { name: 'Alessandra Trentin', role: 'Psicóloga · CRP 07/14095', avatar: 'assets/img/avatar.webp' },
 };
 

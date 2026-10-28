@@ -285,6 +285,9 @@ strong { font-weight: 600; }
 /* hero.webp tem uma faixa creme à esquerda: no mobile ela fica fora do recorte; no desktop ela
    emenda com o fundo e o rosto fica no centro da coluna. */
 .hero .photo--hero img { object-position: 74% 20%; }
+.photo picture { display: contents; }
+/* Celular e tablet com hero-mobile.webp (só a foto, 4:5): rosto centralizado no recorte. */
+@media (max-width: 1199px) { .hero .photo--hero.has-mobile img { object-position: 50% 22%; } }
 .hero .photo--hero { aspect-ratio: 4 / 5; border-radius: 0; height: 100%; }
 .hero .photo--placeholder { outline-offset: -16px; }
 .hero .photo__label { max-width: 32ch; margin-inline: auto; }

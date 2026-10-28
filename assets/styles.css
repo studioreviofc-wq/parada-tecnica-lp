@@ -532,6 +532,8 @@ strong { font-weight: 600; }
 .about__media .photo--placeholder { outline: 0; }
 .about__media .photo--placeholder .photo__label { transform: translateY(-32px); }
 .about__media .photo-badge { left: 16px; bottom: 16px; top: auto; right: auto; transform: none; max-width: calc(100% - 32px); }
+/* Na bio o selo fica sobre roupa clara: fundo mais escuro para manter o contraste do texto. */
+.about__media .photo-badge { background: rgba(23, 20, 17, 0.8); }
 .about__credential {
   margin: 12px 0 28px; font-size: var(--fs-small); font-weight: 500; letter-spacing: 0.04em; color: var(--muted);
 }

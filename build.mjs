@@ -13,7 +13,9 @@ const stamp = (file) => createHash('sha1').update(readFileSync(join(root, file))
 const versioned = (html) =>
   html
     .replace('assets/styles.css"', `assets/styles.css?v=${stamp('assets/styles.css')}"`)
-    .replace('assets/main.js"', `assets/main.js?v=${stamp('assets/main.js')}"`);
+    .replace('assets/main.js"', `assets/main.js?v=${stamp('assets/main.js')}"`)
+    .replace('assets/motion.css"', `assets/motion.css?v=${stamp('assets/motion.css')}"`)
+    .replace('assets/motion.js"', `assets/motion.js?v=${stamp('assets/motion.js')}"`);
 
 // Raiz = versão A (página aprovada; continua sendo o endereço principal).
 writeFileSync(join(root, 'index.html'), versioned(Page('a')));

@@ -41,3 +41,10 @@ A barra de revisão (topo) tem os links **Versão A** e **Versão B** para alter
 - Botões **antes** da oferta (Hero, solução e entregáveis): mesmos textos da Versão A → rolam até `#investimento` (seção de oferta).
 - Botões **da oferta em diante** (oferta, FAQ e chamada final): "QUERO FAZER MINHA PARADA TÉCNICA" → checkout SumUp.
 - O link direto `/versao-b/#investimento` abre já na seção de oferta.
+
+### Movimento (só Versão B)
+
+`assets/motion.css` + `assets/motion.js`, carregados apenas em `/versao-b/`:
+- Revelação em sequência (opacidade 0→1, sobe 14px, 450ms, 85ms entre cards) nos cards das seções 2 (sinais), 4 (etapas) e 5 (entregáveis), uma única vez, via IntersectionObserver.
+- Hover discreto (sobe 3px + sombra) nesses cards, só com mouse.
+- Sem JS, sem IntersectionObserver ou com "reduzir movimento" ativo, tudo aparece normalmente, sem animação.

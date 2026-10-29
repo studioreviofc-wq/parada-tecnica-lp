@@ -5,6 +5,12 @@ const aboutPhoto = ['sobre.webp', 'sobre.jpg', 'sobre.jpeg', 'sobre.png']
   .map((f) => `assets/img/${f}`)
   .find((f) => existsSync(new URL(`../${f}`, import.meta.url))) || '';
 
+// Imagem opcional: devolve o caminho se existir em assets/img/ (webp/jpg/png), senão '' (placeholder).
+const optionalImg = (name) =>
+  ['webp', 'jpg', 'jpeg', 'png']
+    .map((ext) => `assets/img/${name}.${ext}`)
+    .find((f) => existsSync(new URL(`../${f}`, import.meta.url))) || '';
+
 // Copy aprovada (consolidada). Etapa 03 altera só a apresentação, nunca o texto.
 // Entregáveis e FAQ: copy consolidada recebida em 2026-10-26.
 
@@ -219,4 +225,65 @@ export const versionB = {
     cta: 'QUERO FAZER MINHA PARADA TÉCNICA',
     microcopy: 'Após o pagamento, nossa equipe entrará em contato para orientar o agendamento.',
   },
+};
+
+// Versão B — seção única "Como a Parada Técnica acontece na prática" (substitui as seções 3 e 4).
+// Imagens: salvar em assets/img/ com o id de cada etapa (ex.: etapa-01-escuta.webp, 16:10)
+// e as páginas do documento como documento-01.webp, documento-02.webp (retrato, ~3:4).
+export const practice = {
+  eyebrow: 'CONHEÇA A PARADA TÉCNICA',
+  headline: 'Mais do que uma conversa. Uma avaliação para compreender o que está acontecendo com você.',
+  accent: 'compreender o que está acontecendo com você.',
+  intro: [
+    'A Parada Técnica é um encontro individual de três horas, conduzido pela psicóloga Alessandra Trentin, que combina escuta clínica, instrumentos de avaliação psicológica e recursos complementares, conforme a necessidade de cada pessoa.',
+    'Durante esse processo, diferentes informações são reunidas e analisadas para construir uma compreensão mais organizada do seu momento atual.',
+  ],
+  stepsTitle: 'Como acontece na prática?',
+  steps: [
+    {
+      id: 'etapa-01-escuta',
+      label: 'Escuta clínica',
+      title: 'Primeiro, entendemos o seu momento',
+      text: 'A avaliação começa com uma conversa aprofundada sobre sua rotina, responsabilidades, dificuldades e mudanças que você vem percebendo no trabalho e na vida pessoal.',
+      note: 'Compreender seu contexto é essencial para interpretar a avaliação de forma individualizada.',
+      alt: 'Alessandra Trentin em conversa profissional no ambiente de atendimento',
+    },
+    {
+      id: 'etapa-02-testes',
+      label: 'Testes psicológicos',
+      title: 'Utilizamos instrumentos de avaliação psicológica',
+      text: 'Ao longo do encontro, podem ser aplicados testes psicológicos e outros instrumentos profissionais, selecionados conforme os aspectos que precisam ser investigados.',
+      note: 'Esses recursos ajudam a complementar a conversa clínica e ampliar a compreensão do funcionamento psicológico.',
+      alt: 'Materiais profissionais de avaliação psicológica',
+    },
+    {
+      id: 'etapa-03-biofeedback',
+      label: 'Biofeedback cardiovascular',
+      title: 'Observamos também respostas do organismo',
+      text: 'Quando indicado, a avaliação pode incluir o biofeedback cardiovascular, um recurso que permite observar determinadas respostas fisiológicas durante o procedimento.',
+      note: 'Essas informações podem complementar a avaliação psicológica e contribuir para uma compreensão mais ampla do caso.',
+      alt: 'Equipamento de biofeedback cardiovascular utilizado na avaliação',
+    },
+    {
+      id: 'etapa-04-analise',
+      label: 'Análise integrada',
+      title: 'Integramos as informações levantadas',
+      text: 'Após o encontro, a Alessandra analisa os dados obtidos na conversa, nos instrumentos utilizados e nos demais recursos aplicados, considerando o contexto individual.',
+      note: 'A análise conjunta dessas informações orienta a interpretação profissional e as recomendações.',
+      alt: 'Alessandra Trentin organizando as informações da avaliação',
+    },
+  ].map((step) => ({ ...step, src: optionalImg(step.id) })),
+  document: {
+    eyebrow: 'O QUE VOCÊ RECEBE',
+    headline: 'As informações da sua avaliação, organizadas para orientar os próximos passos.',
+    text: [
+      'Em até sete dias úteis após a sessão, você recebe um documento individualizado com os principais pontos avaliados e as recomendações profissionais.',
+      'Também está prevista uma devolutiva para esclarecer o conteúdo e conversar sobre os possíveis caminhos de acompanhamento.',
+    ],
+    deadline: 'Até 7 dias úteis após a sessão',
+    pages: ['documento-01', 'documento-02'].map((id) => ({ id, src: optionalImg(id) })),
+    exampleLabel: 'Exemplo visual · documento ilustrativo',
+  },
+  closing: 'Não é apenas sobre o que você sente. É sobre compreender melhor o que essas informações podem revelar quando são avaliadas em conjunto.',
+  cta: 'VER INVESTIMENTO E DETALHES',
 };

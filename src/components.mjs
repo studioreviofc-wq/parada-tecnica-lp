@@ -235,6 +235,86 @@ export const Faq = () => `
   </div>
 </section>`;
 
+// ---------- Versão B: "Como a Parada Técnica acontece na prática" (substitui as seções 3 e 4) ----------
+const practiceIcons = ['chat', 'clipboard', 'pulse', 'search'];
+
+// Área visual de etapa: foto real quando existir (assets/img/<id>.webp), senão placeholder identificado.
+const PracticeVisual = (step, i) =>
+  step.src
+    ? `<img src="${esc(step.src)}" alt="${esc(step.alt)}" width="1600" height="1000" loading="lazy" decoding="async">`
+    : `<div class="practice-card__placeholder" role="img" aria-label="Espaço reservado para imagem: ${esc(step.alt)}" data-placeholder="${esc(step.id)}">
+          ${icon(practiceIcons[i], 'icon')}
+          <span>Imagem demonstrativa · ${esc(step.id)}</span>
+        </div>`;
+
+const DocumentPage = (page, i) =>
+  page.src
+    ? `<img class="doc-page doc-page--${i + 1}" src="${esc(page.src)}" alt="Página ${i + 1} do documento individualizado (exemplo)" width="900" height="1200" loading="lazy" decoding="async">`
+    : `<div class="doc-page doc-page--${i + 1} doc-page--placeholder" data-placeholder="${esc(page.id)}" aria-hidden="true">
+          <span class="doc-page__head"></span>
+          <span class="doc-page__line"></span><span class="doc-page__line"></span><span class="doc-page__line doc-page__line--short"></span>
+          <span class="doc-page__block"></span>
+          <span class="doc-page__line"></span><span class="doc-page__line doc-page__line--short"></span>
+        </div>`;
+
+export const Practice = () => {
+  const p = c.practice;
+  const d = p.document;
+  return `
+<section class="section theme-cream section--practice section--watermark" aria-labelledby="pratica-title" data-section="03-pratica">
+  <div class="container">
+    <header class="practice__intro">
+      <div>
+        ${Eyebrow(p.eyebrow, false)}
+        <h2 id="pratica-title">${headlineWithAccent(p)}</h2>
+      </div>
+      <div class="practice__lead">${paragraphs(p.intro)}</div>
+    </header>
+
+    <h3 class="practice__subtitle">${esc(p.stepsTitle)}</h3>
+    <ol class="practice__steps">
+      ${p.steps
+        .map(
+          (s, i) => `<li class="practice-card">
+        <div class="practice-card__media">
+          ${PracticeVisual(s, i)}
+          <span class="practice-card__n" aria-hidden="true">${String(i + 1).padStart(2, '0')}</span>
+        </div>
+        <div class="practice-card__body">
+          <p class="practice-card__label">${esc(s.label)}</p>
+          <h4><span class="visually-hidden">Etapa ${String(i + 1).padStart(2, '0')}: </span>${esc(s.title)}</h4>
+          <p>${esc(s.text)}</p>
+          <p class="practice-card__note">${esc(s.note)}</p>
+        </div>
+      </li>`
+        )
+        .join('\n')}
+    </ol>
+
+    <div class="practice-doc theme-dark">
+      <div class="practice-doc__text">
+        ${Eyebrow(d.eyebrow, false)}
+        <h3>${esc(d.headline)}</h3>
+        ${paragraphs(d.text)}
+        <p class="practice-doc__deadline">${icon('calendar', 'icon')}<span>${esc(d.deadline)}</span></p>
+      </div>
+      <figure class="practice-doc__visual">
+        <div class="practice-doc__pages">
+          ${d.pages.map(DocumentPage).join('\n')}
+        </div>
+        <figcaption>${esc(d.exampleLabel)}</figcaption>
+      </figure>
+    </div>
+
+    <div class="practice__closing">
+      <p>${esc(p.closing)}</p>
+      ${Button({ label: p.cta, href: '#investimento', variant: 'gold', cta: 'pratica', iconBox: 'arrowUpRight' })}
+    </div>
+  </div>
+  ${Watermark()}
+</section>`;
+};
+
 // ---------- Versão B ----------
 
 // Valor comercial: mostra o valor confirmado ou um placeholder identificado como pendência.
@@ -329,9 +409,7 @@ export const Page = (v = 'a', opts = {}) => {
 ${presentation ? '' : `${ReviewBar()}\n`}<main id="conteudo" tabindex="-1">
 ${Hero()}
 ${Identification()}
-${Solution()}
-${Steps()}
-${Deliverables()}
+${isB() ? `${Practice()}\n` : `${Solution()}\n${Steps()}\n`}${Deliverables()}
 ${About()}
 ${isB() ? `${Offer()}\n` : ''}${Faq()}
 ${isB() ? `${FinalCta()}\n` : ''}</main>

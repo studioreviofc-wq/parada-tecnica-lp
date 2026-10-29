@@ -10,6 +10,8 @@
     '[data-section="02-identificacao"] .sign-card',
     '[data-section="04-como-funciona"] .step-card',
     '[data-section="05-entregaveis"] .cards > .card',
+    '[data-section="03-pratica"] .practice-card',
+    '[data-section="03-pratica"] .practice-doc',
   ];
   var STEP = 85;       // ms entre cards do mesmo lote
   var DURATION = 450;  // ms da entrada (igual ao CSS)

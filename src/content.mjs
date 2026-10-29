@@ -285,5 +285,5 @@ export const practice = {
     exampleLabel: 'Exemplo visual · documento ilustrativo',
   },
   closing: 'Não é apenas sobre o que você sente. É sobre compreender melhor o que essas informações podem revelar quando são avaliadas em conjunto.',
-  cta: 'VER INVESTIMENTO E DETALHES',
+  cta: 'QUERO RESERVAR MINHA PARADA TÉCNICA',
 };

@@ -7,9 +7,20 @@ import { icon } from './icons.mjs';
 let variant = 'a';
 // Modo apresentação (/apresentacao/): página limpa para o cliente, sem barra de revisão nem itens pendentes.
 let presentation = false;
+// Versão 2 Online (/online/): copy, valores e checkout próprios, sobre a mesma estrutura.
+let online = false;
 const isB = () => variant === 'b';
 // Copy da seção na versão atual: na B, os campos de versionB substituem os da A; a A nunca é afetada.
-const copy = (key) => (isB() && c.versionB[key] ? { ...c[key], ...c.versionB[key] } : c[key]);
+const copy = (key) => ({
+  ...c[key],
+  ...(isB() ? c.versionB[key] : null),
+  ...(online ? c.online[key] : null),
+});
+// Botão de compra: na versão online usa só o checkout próprio; sem link confirmado, fica inativo.
+const buy = () => {
+  if (!online) return {};
+  return c.online.checkout.url ? { href: c.online.checkout.url } : { unavailable: true };
+};
 // Versão B: CTAs anteriores à oferta rolam até ela (mesmo texto); na A seguem para o checkout.
 const toOffer = (label) => (isB() ? { label, href: '#investimento' } : { label });
 
@@ -26,8 +37,8 @@ export const Note = (text) => `<p class="pending-note" role="note"><strong>Pend�
 
 const checkoutHref = () => c.checkout.url || '#checkout';
 
-export const Button = ({ label, href = checkoutHref(), variant = 'dark', cta, arrow = false, iconBox = '' }) =>
-  `<a class="btn btn--${variant}" href="${href}"${cta ? ` data-cta="${cta}"` : ''}><span>${esc(label)}</span>${arrow ? icon('arrow', 'btn__arrow') : ''}${iconBox ? `<span class="btn__iconbox">${icon(iconBox)}</span>` : ''}</a>`;
+export const Button = ({ label, href = checkoutHref(), variant = 'dark', cta, arrow = false, iconBox = '', unavailable = false }) =>
+  `<a class="btn btn--${variant}" ${unavailable ? 'role="link" aria-disabled="true"' : `href="${href}"`}${cta ? ` data-cta="${cta}"` : ''}><span>${esc(label)}${unavailable ? '<span class="visually-hidden"> — contratação online ainda não disponível</span>' : ''}</span>${arrow ? icon('arrow', 'btn__arrow') : ''}${iconBox ? `<span class="btn__iconbox">${icon(iconBox)}</span>` : ''}</a>`;
 
 // Selo flutuante com nome e registro, sobre a foto da primeira dobra.
 export const PhotoBadge = ({ name, role, avatar }) => `
@@ -206,7 +217,7 @@ export const About = () => `
       <p class="about__credential">${esc(copy('about').subtitle)}</p>
       ${paragraphs(copy('about').description)}
       <ul class="trust" aria-label="Elementos de confiança">
-        ${c.about.trust.map((t, i) => `<li>${icon(trustIcons[i])}<span>${esc(t)}</span></li>`).join('\n')}
+        ${copy('about').trust.map((t, i) => `<li>${icon((copy('about').trustIcons || trustIcons)[i])}<span>${esc(t)}</span></li>`).join('\n')}
       </ul>
     </div>
   </div>
@@ -221,8 +232,8 @@ export const Faq = () => `
       <h2 id="faq-title">${headlineWithAccent(c.faq)}</h2>
     </header>
     <div class="faq">
-      ${(isB() ? c.versionB.faqItems : c.faq.items)
-        .filter((f) => !(presentation && f.pending))
+      ${(online ? c.online.faqItems : isB() ? c.versionB.faqItems : c.faq.items)
+        .filter((f) => online || !(presentation && f.pending))
         .map(
           (f) => `<details class="faq__item">
         <summary><h3>${esc(f.q)}</h3><span class="faq__toggle" aria-hidden="true">${icon('plus', 'faq__icon')}</span></summary>
@@ -233,7 +244,7 @@ export const Faq = () => `
         )
         .join('\n')}
     </div>
-    <div class="section-cta">${Button({ label: isB() ? c.versionB.buyCta : c.faq.cta, variant: 'gold', cta: 'faq', iconBox: 'arrowUpRight' })}</div>
+    <div class="section-cta">${Button({ label: isB() ? c.versionB.buyCta : c.faq.cta, ...buy(), variant: 'gold', cta: 'faq', iconBox: 'arrowUpRight' })}</div>
   </div>
 </section>`;
 
@@ -245,7 +256,7 @@ const PracticeVisual = (step, i) =>
   step.src
     ? `<img src="${esc(step.src)}" alt="${esc(step.alt)}" width="1600" height="1000" loading="lazy" decoding="async">`
     : `<div class="practice-card__placeholder" role="img" aria-label="Espaço reservado para imagem: ${esc(step.alt)}" data-placeholder="${esc(step.id)}">
-          ${icon(practiceIcons[i], 'icon')}
+          ${icon(step.icon || practiceIcons[i], 'icon')}
           <span>Imagem demonstrativa · ${esc(step.id)}</span>
         </div>`;
 
@@ -260,7 +271,7 @@ const DocumentPage = (page, i) =>
         </div>`;
 
 export const Practice = () => {
-  const p = c.practice;
+  const p = copy('practice');
   const d = p.document;
   return `
 <section class="section theme-cream section--practice section--watermark" aria-labelledby="pratica-title" data-section="03-pratica">
@@ -305,7 +316,7 @@ export const Practice = () => {
         ${Eyebrow(d.eyebrow, false)}
         <h3>${esc(d.headline)}</h3>
         ${paragraphs(d.text)}
-        <p class="practice-doc__deadline">${icon('calendar', 'icon')}<span>${esc(d.deadline)}</span></p>
+        ${d.deadline ? `<p class="practice-doc__deadline">${icon('calendar', 'icon')}<span>${esc(d.deadline)}</span></p>` : ''}
       </div>
       <figure class="practice-doc__visual">
         <div class="practice-doc__pages">
@@ -333,8 +344,8 @@ const commercialValue = ({ confirmed, value }, placeholder, cls) =>
     : `<p class="${cls} is-placeholder"><span>${esc(placeholder)}</span><small class="placeholder-flag">pendente de confirmação</small></p>`;
 
 export const Offer = () => {
-  const o = c.versionB.offer;
-  const k = c.commercial;
+  const o = copy('offer');
+  const k = copy('commercial');
   return `
 <section class="section theme-warm section--offer" id="investimento" tabindex="-1" aria-labelledby="oferta-title" data-section="06b-oferta">
   <div class="container">
@@ -348,8 +359,8 @@ export const Offer = () => {
         <p class="offer__price-label">${esc(o.priceLabel)}</p>
         ${commercialValue(k.price, o.pricePlaceholder, 'offer__value')}
         ${commercialValue(k.installments, o.installmentsPlaceholder, 'offer__terms')}
-        ${Button({ label: o.cta, variant: 'gold', cta: 'oferta', iconBox: 'arrowUpRight' })}
-        <p class="offer__micro">${esc(o.microcopy)}</p>
+        ${Button({ label: o.cta, ...buy(), variant: 'gold', cta: 'oferta', iconBox: 'arrowUpRight' })}
+        <p class="offer__micro">${esc(o.microcopy)}</p>${o.unavailableNote && buy().unavailable ? Note(o.unavailableNote) : ''}
         <hr class="offer__divider">
         <h3 class="offer__subtitle">${esc(o.includedTitle)}</h3>
         <ul class="offer__list">
@@ -363,14 +374,14 @@ export const Offer = () => {
 };
 
 export const FinalCta = () => {
-  const f = c.versionB.finalCta;
+  const f = copy('finalCta');
   return `
 <section class="section theme-dark section--final" aria-labelledby="final-title" data-section="08-chamada-final">
   <div class="container final">
     ${Eyebrow(f.eyebrow, false)}
     <h2 id="final-title">${headlineWithAccent(f)}</h2>
     <p class="final__subtitle">${esc(f.subtitle)}</p>
-    <div class="section-cta">${Button({ label: f.cta, variant: 'gold', cta: 'chamada-final', iconBox: 'arrowUpRight' })}</div>
+    <div class="section-cta">${Button({ label: f.cta, ...buy(), variant: 'gold', cta: 'chamada-final', iconBox: 'arrowUpRight' })}</div>
     <p class="final__micro">${esc(f.microcopy)}</p>
   </div>
 </section>`;
@@ -400,6 +411,7 @@ export const ReviewBar = () => `
 export const Page = (v = 'a', opts = {}) => {
   variant = v;
   presentation = !!opts.presentation;
+  online = !!opts.online;
   return `<!doctype html>
 <html lang="pt-BR">
 <head>
@@ -407,7 +419,7 @@ export const Page = (v = 'a', opts = {}) => {
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#171411">
-<title>Parada Técnica — Alessandra Trentin</title>
+<title>${online ? esc(c.online.title) : 'Parada Técnica — Alessandra Trentin'}</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Raleway:wght@400;500;600;700&display=swap">

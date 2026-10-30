@@ -2,7 +2,7 @@
 
 Sem dependências (só Node). Fontes via Google Fonts (Playfair Display + Raleway).
 
-- `node build.mjs` — gera `index.html` (a página) a partir de `src/`, `/versao-2/` e o redirecionamento de `/apresentacao/`
+- `node build.mjs` — gera `index.html` (a página) a partir de `src/`, `/online/` e o redirecionamento de `/apresentacao/`
 - `node serve.mjs` — abre em http://localhost:8094
 
 Estrutura:
@@ -22,11 +22,11 @@ O formulário foi removido. Os botões (Hero, seção 3 e barra fixa do celular)
 
 ## Páginas
 
-- `/` — **página principal** (a aprovada pela cliente, antes em `/apresentacao/`).
-- `/versao-2/` — **versão 2**: duplicata da principal, para ajustes pontuais.
+- `/` — **Versão 1 Presencial**: página principal aprovada pela cliente (antes em `/apresentacao/`).
+- `/online/` — **Versão 2 Online**: em revisão, sujeita à validação da Alessandra. Sem links a partir da Versão 1.
 - `/apresentacao/` — só redireciona para `/`, porque esse link já foi enviado à cliente.
 
-As antigas `/versao-a/` e `/versao-b/` foram excluídas. Pontos de recuperação no Git: tags `versao-a-original` (página aprovada antes dos ajustes comerciais) e `antes-pagina-principal` (estado anterior a esta mudança).
+As antigas `/versao-a/` e `/versao-b/` foram excluídas. Pontos de recuperação no Git: tags `versao-a-original` (página aprovada antes dos ajustes comerciais) e `antes-pagina-principal` (estado anterior à troca de rotas) e `antes-versao-online` (antes de criar a Versão 2).
 
 ### Condições comerciais
 
@@ -60,3 +60,11 @@ Basta salvar o arquivo com o nome certo e rodar `node build.mjs`. Ponto de recup
 ### Revisão de copy da Alessandra (2026-10-30)
 
 A copy da Versão B fica em `src/content.mjs` → `versionB` (substitui só os campos listados) e `practice`. A Versão A não usa esses campos. Ponto de recuperação: tag `antes-revisao-copy`.
+
+### Versão 2 Online
+
+Copy, valores e checkout em `src/content.mjs` → `online`; os campos listados ali substituem os da Versão 1 só em `/online/`. CSS, JS e imagens são os mesmos.
+- **Checkout próprio:** `online.checkout.url`. Vazio = botões de compra inativos. Nunca usar o link da Versão 1.
+- **Preço e parcelamento:** `online.commercial`. Ao preencher `value`, mude `confirmed` para `true`, e a marcação de pendência sai.
+- **Prazo do documento:** `online.practice.document.deadline`. Vazio = selo oculto.
+- **Imagens das etapas:** `online-etapa-01-conversa`, `online-etapa-02-testes`, `online-etapa-03-aprofundamento`, `online-etapa-04-analise` (em `assets/img/`).

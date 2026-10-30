@@ -18,6 +18,7 @@ const paths = {
   trendingDown: '<path d="M3 7l6.5 6.5 4-4L21 17"/><path d="M15 17h6v-6"/>',
   check: '<path d="M5 12.5l4.5 4.5L19 7.5"/>',
   pulse: '<path d="M3 12h4l2.5-6 4 12 2.5-6H21"/>',
+  video: '<rect x="3" y="6.5" width="12.5" height="11" rx="2"/><path d="M15.5 10.5 21 7.5v9l-5.5-3"/>',
   chevron: '<path d="M6 9l6 6 6-6"/>',
 };
 

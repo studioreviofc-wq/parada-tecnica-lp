@@ -1,5 +1,5 @@
 // Gera a landing page a partir dos componentes. Uso: node build.mjs
-// Saída: / (página principal) e /versao-2/ (duplicata para o ajuste da versão 2).
+// Saída: / (Versão 1 Presencial) e /online/ (Versão 2 Online, em revisão).
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { dirname, join } from 'node:path';
@@ -23,11 +23,11 @@ const main = () => Page('b', { presentation: true });
 writeFileSync(join(root, 'index.html'), versioned(main()));
 console.log('ok  /             (página principal)');
 
-// Versão 2: duplicata da principal, com os mesmos CSS/JS/imagens (só os caminhos sobem um nível).
+// Versão 2 Online: mesma estrutura e os mesmos CSS/JS/imagens (só os caminhos sobem um nível).
 const nested = (html) => html.replace(/(href|src|srcset)="assets\//g, '$1="../assets/');
-mkdirSync(join(root, 'versao-2'), { recursive: true });
-writeFileSync(join(root, 'versao-2', 'index.html'), nested(versioned(main())));
-console.log('ok  /versao-2/    (versão 2)');
+mkdirSync(join(root, 'online'), { recursive: true });
+writeFileSync(join(root, 'online', 'index.html'), nested(versioned(Page('b', { presentation: true, online: true }))));
+console.log('ok  /online/      (versão 2 online)');
 
 // O link enviado à cliente continua funcionando: leva para a página principal.
 const redirect = `<!doctype html>

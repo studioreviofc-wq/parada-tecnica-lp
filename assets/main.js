@@ -43,7 +43,7 @@
         goToOffer(true);
       });
     });
-    // Link direto (…/versao-b/#investimento): garante a posição depois que fontes e imagens assentam.
+    // Link direto (…/#investimento): garante a posição depois que fontes e imagens assentam.
     if (location.hash === '#investimento') {
       window.addEventListener('load', function () { goToOffer(false); });
     }

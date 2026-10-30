@@ -2,7 +2,7 @@
 
 Sem dependências (só Node). Fontes via Google Fonts (Playfair Display + Raleway).
 
-- `node build.mjs` — gera `index.html` (a página) a partir de `src/`; `/versao-a/` e `/versao-b/` redirecionam para a raiz
+- `node build.mjs` — gera `index.html` (a página) a partir de `src/`, `/versao-2/` e o redirecionamento de `/apresentacao/`
 - `node serve.mjs` — abre em http://localhost:8094
 
 Estrutura:
@@ -20,12 +20,13 @@ Nunca edite o `index.html` gerado. `?review=0` esconde a barra de revisão.
 
 O formulário foi removido. Os botões (Hero, seção 3 e barra fixa do celular) levam ao link de checkout definido em `src/content.mjs` → `checkout.url`. Link atual: https://pay.sumup.com/b2c/QX5EAYO5. Para trocar, edite e rode `node build.mjs`.
 
-## Versões A e B
+## Páginas
 
-- `/` e `/versao-a/` — **Versão A**: página aprovada, sem ajustes comerciais. Estado original marcado na tag Git `versao-a-original`.
-- `/versao-b/` — **Versão B**: mesma página + ajustes comerciais (etapa 01 renomeada, seção de oferta, 4 perguntas no FAQ e chamada final).
+- `/` — **página principal** (a aprovada pela cliente, antes em `/apresentacao/`).
+- `/versao-2/` — **versão 2**: duplicata da principal, para ajustes pontuais.
+- `/apresentacao/` — só redireciona para `/`, porque esse link já foi enviado à cliente.
 
-Tudo sai do mesmo `node build.mjs`, com CSS, JS e imagens compartilhados. O que é só da versão B está em `src/content.mjs` → `versionB` e `commercial`, e nos componentes `Offer` e `FinalCta` de `src/components.mjs`.
+As antigas `/versao-a/` e `/versao-b/` foram excluídas. Pontos de recuperação no Git: tags `versao-a-original` (página aprovada antes dos ajustes comerciais) e `antes-pagina-principal` (estado anterior a esta mudança).
 
 ### Condições comerciais
 
@@ -35,24 +36,20 @@ Em `src/content.mjs` → `commercial` (só a Versão B usa):
 
 A barra de revisão (topo) tem os links **Versão A** e **Versão B** para alternar entre as páginas.
 
-### Navegação comercial (só Versão B)
+### Navegação comercial
 
 - Botões **antes** da oferta (Hero, solução e entregáveis): mesmos textos da Versão A → rolam até `#investimento` (seção de oferta).
 - Botões **da oferta em diante** (oferta, FAQ e chamada final): "QUERO FAZER MINHA PARADA TÉCNICA" → checkout SumUp.
-- O link direto `/versao-b/#investimento` abre já na seção de oferta.
+- O link direto `/#investimento` abre já na seção de oferta.
 
-### Movimento (só Versão B)
+### Movimento
 
-`assets/motion.css` + `assets/motion.js`, carregados apenas em `/versao-b/`:
+`assets/motion.css` + `assets/motion.js`, carregados nas páginas atuais:
 - Revelação em sequência (opacidade 0→1, sobe 14px, 450ms, 85ms entre cards) nos cards das seções 2 (sinais), 4 (etapas) e 5 (entregáveis), uma única vez, via IntersectionObserver.
 - Hover discreto (sobe 3px + sombra) nesses cards, só com mouse.
 - Sem JS, sem IntersectionObserver ou com "reduzir movimento" ativo, tudo aparece normalmente, sem animação.
 
-## Apresentação ao cliente
-
-`/apresentacao/` = Versão B limpa: sem a barra de revisão e sem itens pendentes (a pergunta do FAQ sobre atendimento online fica de fora até ser confirmada). Gerada pelo mesmo `node build.mjs`.
-
-### Seção "Como a Parada Técnica acontece na prática" (só Versão B e apresentação)
+### Seção "Como a Parada Técnica acontece na prática"
 
 Substitui as antigas seções 3 (Conheça) e 4 (Como funciona). Conteúdo em `src/content.mjs` → `practice`.
 Imagens (opcionais — enquanto não existirem, aparecem placeholders identificados):

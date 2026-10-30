@@ -238,7 +238,7 @@ export const Faq = () => `
 </section>`;
 
 // ---------- Versão B: "Como a Parada Técnica acontece na prática" (substitui as seções 3 e 4) ----------
-const practiceIcons = ['chat', 'clipboard', 'pulse', 'search', 'document'];
+const practiceIcons = ['chat', 'clipboard', 'pulse', 'search'];
 
 // Área visual de etapa: foto real quando existir (assets/img/<id>.webp), senão placeholder identificado.
 const PracticeVisual = (step, i) =>
@@ -285,7 +285,7 @@ export const Practice = () => {
     <ol class="practice__steps">
       ${p.steps
         .map(
-          (s, i) => `<li class="practice-card${i === 4 ? ' practice-card--wide' : ''}">
+          (s, i) => `<li class="practice-card">
         <div class="practice-card__media">
           ${PracticeVisual(s, i)}
           <span class="practice-card__n" aria-hidden="true">${String(i + 1).padStart(2, '0')}</span>

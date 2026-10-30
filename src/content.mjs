@@ -308,7 +308,7 @@ export const practice = {
   ],
   preparation: {
     title: 'Antes do encontro: uma preparação online',
-    text: 'Você recebe links para responder a um briefing e a formulários sobre aspectos como ansiedade, humor, sono, alimentação e energia. Essa etapa é realizada no seu próprio tempo, sem necessidade de agendar uma reunião online.',
+    text: 'Você recebe links para responder a um briefing e a formulários preparatórios sobre aspectos como ansiedade, humor, sono, alimentação e energia. Essa etapa é realizada online, sem necessidade de agendar uma reunião.',
   },
   stepsTitle: 'Como acontece na prática?',
   steps: [
@@ -340,26 +340,14 @@ export const practice = {
       text: ['Depois do encontro, a Alessandra analisa em conjunto a entrevista, os testes e os registros do biofeedback, quando utilizado, para elaborar uma interpretação individualizada.'],
       alt: 'Alessandra Trentin organizando as informações da avaliação',
     },
-    {
-      id: 'etapa-05-devolutiva',
-      label: '05 · DEVOLUTIVA',
-      title: 'Você recebe um documento completo e orientações para seguir',
-      text: [
-        'Em até sete dias úteis após a sessão, você recebe um documento individualizado que reúne as informações da avaliação, os aspectos que podem estar relacionados às dificuldades identificadas e recomendações para os próximos passos.',
-        'Quando utilizado, o biofeedback também pode contribuir com registros contextualizados sobre as respostas do organismo durante a conversa.',
-        'Uma devolutiva com a Alessandra permite esclarecer o conteúdo e conversar sobre as recomendações.',
-      ],
-      alt: 'Alessandra Trentin em devolutiva sobre o documento individualizado',
-    },
   ].map((step) => ({ ...step, src: optionalImg(step.id) })),
   document: {
     eyebrow: 'O QUE VOCÊ RECEBE',
     headline: 'As informações da sua avaliação, organizadas para orientar os próximos passos.',
     text: [
-      'Em até sete dias úteis após a sessão, você recebe um documento individualizado que reúne a interpretação dos instrumentos psicológicos, as informações da entrevista clínica e, quando utilizado, os registros do biofeedback cardiovascular.',
-      'A Alessandra analisa esses dados em conjunto, considerando também os momentos da conversa em que determinadas respostas fisiológicas foram observadas.',
-      'O documento apresenta os principais aspectos identificados, possíveis relações com as dificuldades relatadas e recomendações profissionais para os próximos passos.',
-      'Você também recebe uma devolutiva para compreender o conteúdo e esclarecer dúvidas.',
+      'Após o encontro, a Alessandra reúne os resultados dos instrumentos psicológicos, as informações da entrevista clínica e os registros do biofeedback, quando utilizado.',
+      'Essa análise é apresentada em um documento individualizado, que ajuda a compreender os aspectos identificados, os possíveis fatores associados às dificuldades e as recomendações profissionais para seguir adiante.',
+      'Em até 7 dias úteis após a sessão, você recebe o documento e conta com uma devolutiva para esclarecer o conteúdo e conversar sobre os próximos passos.',
     ],
     deadline: 'ATÉ 7 DIAS ÚTEIS APÓS A SESSÃO',
     pages: ['documento-01', 'documento-02'].map((id) => ({ id, src: optionalImg(id) })),

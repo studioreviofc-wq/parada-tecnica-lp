@@ -56,7 +56,7 @@ A barra de revisão (topo) tem os links **Versão A** e **Versão B** para alter
 
 Substitui as antigas seções 3 (Conheça) e 4 (Como funciona). Conteúdo em `src/content.mjs` → `practice`.
 Imagens (opcionais — enquanto não existirem, aparecem placeholders identificados):
-- Etapas (16:10, ex. 1600×1000): `assets/img/etapa-01-escuta.webp`, `etapa-02-testes.webp`, `etapa-03-biofeedback.webp`, `etapa-04-analise.webp`, `etapa-05-devolutiva.webp`.
+- Etapas (16:10, ex. 1600×1000): `assets/img/etapa-01-escuta.webp`, `etapa-02-testes.webp`, `etapa-03-biofeedback.webp`, `etapa-04-analise.webp`.
 - Documento (retrato 3:4, ex. 900×1200): `assets/img/documento-01.webp`, `documento-02.webp`.
 Basta salvar o arquivo com o nome certo e rodar `node build.mjs`. Ponto de recuperação anterior: tag `antes-secao-pratica`.
 

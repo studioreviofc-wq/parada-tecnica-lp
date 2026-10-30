@@ -501,6 +501,7 @@ strong { font-weight: 600; }
 }
 
 /* ---------- 05 Entregáveis ---------- */
+.version-b [data-section="05-entregaveis"] { background: #F1EFE9; }
 .deliv__head { text-align: center; margin: 0 auto 48px; max-width: 1040px; }
 .deliv__head h2 { margin-bottom: 16px; }
 .deliv__head .lead { margin-inline: auto; max-width: 58ch; color: var(--text-2); }

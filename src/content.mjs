@@ -362,19 +362,19 @@ export const practice = {
 // ---------------------------------------------------------------------------
 // Versão 2 — Online (/online/): proposta sujeita à validação da Alessandra.
 // Substitui só os campos listados; a página principal (presencial) não usa nada daqui.
-// Pendentes: preço, parcelamento, checkout, duração da sessão e prazo do documento.
+// Pendentes: duração da sessão e prazo do documento.
 // ---------------------------------------------------------------------------
 export const online = {
   title: 'Parada Técnica Online — Alessandra Trentin',
 
-  // Link SumUp exclusivo da modalidade online. Vazio = botões de compra inativos.
-  // Não usar o checkout da página presencial.
-  checkout: { url: '' },
+  // Checkout da modalidade online (hoje o mesmo link da presencial, confirmado em 2026-10-30).
+  // Vazio = botões de compra inativos.
+  checkout: { url: 'https://pay.sumup.com/b2c/QX5EAYO5' },
 
-  // Valores da modalidade online: enquanto `confirmed` for false, aparecem como pendência.
+  // Valores da modalidade online (confirmados em 2026-10-30: iguais aos da presencial).
   commercial: {
-    price: { confirmed: false, value: '' },
-    installments: { confirmed: false, value: '' },
+    price: { confirmed: true, value: 'R$ 2.500' },
+    installments: { confirmed: true, value: 'em até 12x' },
   },
 
   hero: {
@@ -464,7 +464,6 @@ export const online = {
       'Devolutiva com Alessandra para explicar o documento e esclarecer dúvidas.',
     ],
     microcopy: 'Após a confirmação da contratação, nossa equipe entra em contato para orientar o agendamento e os próximos passos.',
-    unavailableNote: 'Contratação online ainda não disponível: preço, parcelamento, link de pagamento e fluxo de contato dependem da confirmação da Alessandra.',
   },
 
   faqItems: [
@@ -512,13 +511,11 @@ export const online = {
     },
     {
       q: 'Qual é o investimento para fazer a Parada Técnica?',
-      a: '[Valor e condições de pagamento da modalidade online a confirmar com a Alessandra.]',
-      pending: true,
+      a: 'O investimento é de R$ 2.500, com possibilidade de pagamento em até 12x. Você pode consultar os detalhes antes de concluir a compra.',
     },
     {
       q: 'Como funciona o pagamento?',
-      a: '[Forma de pagamento e link da modalidade online a confirmar com a Alessandra.]',
-      pending: true,
+      a: 'Ao clicar no botão de contratação, você será direcionado para uma página de pagamento, onde poderá conferir as condições disponíveis e concluir a compra.',
     },
     {
       q: 'Como acontece o agendamento?',

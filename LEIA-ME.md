@@ -64,7 +64,7 @@ A copy da Versão B fica em `src/content.mjs` → `versionB` (substitui só os c
 ### Versão 2 Online
 
 Copy, valores e checkout em `src/content.mjs` → `online`; os campos listados ali substituem os da Versão 1 só em `/online/`. CSS, JS e imagens são os mesmos.
-- **Checkout próprio:** `online.checkout.url`. Vazio = botões de compra inativos. Nunca usar o link da Versão 1.
-- **Preço e parcelamento:** `online.commercial`. Ao preencher `value`, mude `confirmed` para `true`, e a marcação de pendência sai.
+- **Checkout:** `online.checkout.url` (hoje o mesmo link da Versão 1). Vazio = botões de compra inativos.
+- **Preço e parcelamento:** `online.commercial` (R$ 2.500 em até 12x).
 - **Prazo do documento:** `online.practice.document.deadline`. Vazio = selo oculto.
 - **Imagens das etapas:** `online-etapa-01-conversa`, `online-etapa-02-testes`, `online-etapa-03-aprofundamento`, `online-etapa-04-analise` (em `assets/img/`).

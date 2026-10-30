@@ -177,6 +177,8 @@ export const versionB = {
   // Revisão de copy da Alessandra (2026-10-30): substitui só os campos listados de cada seção.
   hero: {
     eyebrow: 'PARADA TÉCNICA | PARA EMPRESÁRIOS E EXECUTIVOS',
+    // Desktop próprio da Versão B: 1920×882 (a Versão A segue com hero.webp, 1920×753).
+    photo: { src: 'assets/img/hero-b.webp', srcMobile: 'assets/img/hero-mobile.webp', alt: 'Psicóloga Alessandra Trentin', position: '' },
     description: [
       'Conheça a Parada Técnica: uma avaliação psicológica estruturada, com preparação online e uma sessão presencial de três horas que reúne entrevista clínica, testes psicológicos e biofeedback cardiovascular, conforme indicação profissional.',
       'Depois, você recebe um documento individualizado com os principais pontos avaliados e orientações para os próximos passos.',

@@ -355,6 +355,18 @@ strong { font-weight: 600; }
   }
 }
 
+/* Versão B: Hero na proporção de hero-b.webp (1920×882) e com mais margem acima e abaixo do texto.
+   Em 1920px a seção tem 882px; em telas menores acompanha a proporção, sem ficar menor que o texto + margens. */
+@media (min-width: 1200px) {
+  .version-b .hero__grid { aspect-ratio: 1920 / 882; }
+  .version-b .hero__text { padding-block: 72px; }
+  .version-b .hero__overlay {
+    width: max(100cqw, 100cqh * 1920 / 882);
+    height: max(100cqh, 100cqw * 882 / 1920);
+  }
+  .version-b .hero__overlay .photo-badge { top: calc(620 / 882 * 100%); }
+}
+
 /* ---------- 02 Identificação ---------- */
 .signs { display: grid; gap: 16px; }
 .sign-card {

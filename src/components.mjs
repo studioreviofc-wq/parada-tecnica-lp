@@ -73,7 +73,7 @@ export const Hero = () => `
       </div>
     </div>
     <div class="hero__media">
-      ${Photo(c.hero.photo, 'photo--hero')}
+      ${Photo(copy('hero').photo, 'photo--hero')}
       <div class="hero__overlay">${PhotoBadge(c.hero.badge)}</div>
     </div>
   </div>

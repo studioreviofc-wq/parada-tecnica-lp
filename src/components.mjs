@@ -8,6 +8,8 @@ let variant = 'a';
 // Modo apresentação (/apresentacao/): página limpa para o cliente, sem barra de revisão nem itens pendentes.
 let presentation = false;
 const isB = () => variant === 'b';
+// Copy da seção na versão atual: na B, os campos de versionB substituem os da A; a A nunca é afetada.
+const copy = (key) => (isB() && c.versionB[key] ? { ...c[key], ...c.versionB[key] } : c[key]);
 // Versão B: CTAs anteriores à oferta rolam até ela (mesmo texto); na A seguem para o checkout.
 const toOffer = (label) => (isB() ? { label, href: '#investimento' } : { label });
 
@@ -61,10 +63,10 @@ export const Hero = () => `
 <section class="hero" aria-labelledby="hero-title" data-section="01-primeira-dobra">
   <div class="hero__grid">
     <div class="hero__text">
-      ${Eyebrow(c.hero.eyebrow, false)}
+      ${Eyebrow(copy('hero').eyebrow, false)}
       <h1 id="hero-title" class="display">${headlineWithAccent(c.hero)}</h1>
       <div class="hero__desc">
-        ${paragraphs(c.hero.description)}
+        ${paragraphs(copy('hero').description)}
       </div>
       <div class="hero__cta" id="hero-cta">
         ${Button({ ...toOffer(c.hero.cta), variant: 'gold', cta: 'hero', iconBox: 'arrowUpRight' })}
@@ -90,11 +92,11 @@ export const Identification = () => `
     <header class="split__head">
       ${Eyebrow(c.identification.eyebrow, false)}
       <h2 id="identificacao-title">${headlineWithAccent(c.identification)}</h2>
-      <p class="lead">${esc(c.identification.intro)}</p>
+      <p class="lead">${esc(copy('identification').intro)}</p>
     </header>
     <div class="split__body">
       <ul class="signs">
-        ${c.identification.signs
+        ${copy('identification').signs
           .map(
             (s, i) => `<li class="sign-card">
           <span class="sign-card__iconbox" aria-hidden="true">${icon(signIcons[i], 'icon sign-card__icon')}</span>
@@ -153,7 +155,7 @@ export const Steps = () => `
           (s, i) => `<li class="step-card${i === 0 ? ' step-card--accent' : ''}">
         <span class="step-card__n" aria-hidden="true">${s.n}</span>
         <div class="step-card__visual" aria-hidden="true"><span class="step-card__icon">${icon(stepIcons[i])}</span></div>
-        <h3><span class="visually-hidden">Etapa ${s.n}: </span>${esc(isB() && i === 0 ? c.versionB.stepOneTitle : s.title)}</h3>
+        <h3><span class="visually-hidden">Etapa ${s.n}: </span>${esc(s.title)}</h3>
         ${paragraphs(s.text)}
       </li>`
         )
@@ -170,10 +172,10 @@ export const Deliverables = () => `
     <header class="deliv__head">
       ${Eyebrow(c.deliverables.eyebrow, false)}
       <h2 id="entregaveis-title">${headlineWithAccent(c.deliverables)}</h2>
-      <p class="lead">${esc(c.deliverables.intro)}</p>
+      <p class="lead">${esc(copy('deliverables').intro)}</p>
     </header>
     <ul class="cards">
-      ${c.deliverables.items
+      ${copy('deliverables').items
         .map(
           (d, i) => `<li class="card">
         <span class="card__iconbox" aria-hidden="true">${icon(deliverableIcons[i], 'icon card__icon')}</span>
@@ -201,8 +203,8 @@ export const About = () => `
     <div class="about__text">
       ${Eyebrow(c.about.eyebrow, false)}
       <h2 id="sobre-title">${esc(c.about.name)}</h2>
-      <p class="about__credential">${esc(c.about.subtitle)}</p>
-      ${paragraphs(c.about.description)}
+      <p class="about__credential">${esc(copy('about').subtitle)}</p>
+      ${paragraphs(copy('about').description)}
       <ul class="trust" aria-label="Elementos de confiança">
         ${c.about.trust.map((t, i) => `<li>${icon(trustIcons[i])}<span>${esc(t)}</span></li>`).join('\n')}
       </ul>
@@ -219,13 +221,13 @@ export const Faq = () => `
       <h2 id="faq-title">${headlineWithAccent(c.faq)}</h2>
     </header>
     <div class="faq">
-      ${(isB() ? [...c.faq.items, ...c.versionB.faqExtra] : c.faq.items)
+      ${(isB() ? c.versionB.faqItems : c.faq.items)
         .filter((f) => !(presentation && f.pending))
         .map(
           (f) => `<details class="faq__item">
         <summary><h3>${esc(f.q)}</h3><span class="faq__toggle" aria-hidden="true">${icon('plus', 'faq__icon')}</span></summary>
         <div class="faq__answer">
-          ${f.pending ? `<p class="tag">Provisória — pendente de confirmação</p>${Note(f.a)}` : `<p>${esc(f.a)}</p>`}
+          ${f.pending ? `<p class="tag">Provisória — pendente de confirmação</p>${Note(f.a)}` : paragraphs([].concat(f.a))}
         </div>
       </details>`
         )
@@ -236,7 +238,7 @@ export const Faq = () => `
 </section>`;
 
 // ---------- Versão B: "Como a Parada Técnica acontece na prática" (substitui as seções 3 e 4) ----------
-const practiceIcons = ['chat', 'clipboard', 'pulse', 'search'];
+const practiceIcons = ['chat', 'clipboard', 'pulse', 'search', 'document'];
 
 // Área visual de etapa: foto real quando existir (assets/img/<id>.webp), senão placeholder identificado.
 const PracticeVisual = (step, i) =>
@@ -271,20 +273,27 @@ export const Practice = () => {
       <div class="practice__lead">${paragraphs(p.intro)}</div>
     </header>
 
+    <aside class="practice-prep" aria-labelledby="preparacao-title">
+      <span class="practice-prep__icon" aria-hidden="true">${icon('clipboard', 'icon')}</span>
+      <div>
+        <h3 id="preparacao-title">${esc(p.preparation.title)}</h3>
+        <p>${esc(p.preparation.text)}</p>
+      </div>
+    </aside>
+
     <h3 class="practice__subtitle">${esc(p.stepsTitle)}</h3>
     <ol class="practice__steps">
       ${p.steps
         .map(
-          (s, i) => `<li class="practice-card">
+          (s, i) => `<li class="practice-card${i === 4 ? ' practice-card--wide' : ''}">
         <div class="practice-card__media">
           ${PracticeVisual(s, i)}
           <span class="practice-card__n" aria-hidden="true">${String(i + 1).padStart(2, '0')}</span>
         </div>
         <div class="practice-card__body">
           <p class="practice-card__label">${esc(s.label)}</p>
-          <h4><span class="visually-hidden">Etapa ${String(i + 1).padStart(2, '0')}: </span>${esc(s.title)}</h4>
-          <p>${esc(s.text)}</p>
-          <p class="practice-card__note">${esc(s.note)}</p>
+          <h4>${esc(s.title)}</h4>
+          ${paragraphs(s.text)}
         </div>
       </li>`
         )
@@ -346,7 +355,7 @@ export const Offer = () => {
         <ul class="offer__list">
           ${o.included.map((t) => `<li><span class="offer__check" aria-hidden="true">${icon('check', 'icon')}</span><span>${esc(t)}</span></li>`).join('\n')}
         </ul>
-        ${k.rebate.confirmed ? `<div class="offer__rebate"><p class="offer__rebate-title">${esc(k.rebate.title)}</p><p class="offer__rebate-text">${esc(k.rebate.text)}</p></div>` : ''}
+        
       </div>
     </div>
   </div>

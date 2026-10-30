@@ -168,38 +168,106 @@ export const footer = {
 export const commercial = {
   price: { confirmed: true, value: 'R$ 2.500' },           // confirmado pelo cliente em 2026-10-27
   installments: { confirmed: true, value: 'em até 12x' },  // confirmado (com juros; o cliente pediu para não citar na página)
-  // Abatimento no protocolo terapêutico posterior: NÃO exibido na página (removido a pedido do cliente).
-  // Fica registrado aqui só como referência da condição em negociação.
-  rebate: {
-    confirmed: false,
-    title: 'Seu investimento pode ser aproveitado na continuidade do tratamento.',
-    text: 'Caso você decida seguir com o protocolo terapêutico recomendado, o valor investido na Parada Técnica será abatido do tratamento, conforme as condições acordadas.',
-  },
 };
 
 export const versionB = {
-  stepOneTitle: 'Confirme sua Parada Técnica',
   // CTAs antes da oferta levam até ela (#investimento); da oferta em diante, direto ao checkout.
   buyCta: 'QUERO FAZER MINHA PARADA TÉCNICA',
+
+  // Revisão de copy da Alessandra (2026-10-30): substitui só os campos listados de cada seção.
+  hero: {
+    eyebrow: 'PARADA TÉCNICA | PARA EMPRESÁRIOS E EXECUTIVOS',
+    description: [
+      'Conheça a Parada Técnica: uma avaliação psicológica estruturada, com preparação online e uma sessão presencial de três horas que reúne entrevista clínica, testes psicológicos e biofeedback cardiovascular, conforme indicação profissional.',
+      'Depois, você recebe um documento individualizado com os principais pontos avaliados e orientações para os próximos passos.',
+    ],
+  },
+  identification: {
+    intro: 'Liderar pessoas, assumir responsabilidades e tomar decisões importantes exige atenção constante. Com o tempo, algumas mudanças podem começar a fazer parte da rotina, mesmo quando você continua cumprindo todas as suas obrigações.',
+    signs: [
+      { title: 'O descanso já não parece suficiente.', text: 'Mesmo depois de uma noite de sono, a sensação de cansaço continua.' },
+      { title: 'As decisões ficaram mais difíceis.', text: 'Assuntos que antes eram resolvidos com facilidade agora exigem um esforço maior.' },
+      { title: 'A sobrecarga acompanha você para casa.', text: 'Desligar a mente do trabalho nem sempre é simples.' },
+      { title: 'Você sente falta da disposição de antes.', text: 'As responsabilidades continuam sendo cumpridas, mas você percebe mudanças em si mesmo.' },
+    ],
+  },
+  deliverables: {
+    intro: 'Cinco frentes de análise reunidas em um documento individualizado, com informações sobre seu momento atual e orientações para os próximos passos.',
+    items: [
+      { title: 'Medição com testes psicológicos', text: 'Instrumentos que ajudam a avaliar aspectos relevantes do seu momento atual, conforme as necessidades da avaliação.' },
+      { title: 'O que está por trás do sintoma', text: 'Uma interpretação clínica dos fatores que podem estar relacionados às dificuldades que você vem percebendo.' },
+      { title: 'O mapa das decisões travadas', text: 'Identificação das decisões que estão difíceis de avançar e dos possíveis obstáculos associados a elas.' },
+      { title: 'A conta: quanto isso já custou na sua vida', text: 'Uma análise dos impactos percebidos no trabalho, no sono, na disposição, nas relações e em outras áreas importantes da rotina.' },
+      { title: 'O plano escrito para os próximos passos', text: 'Recomendações individualizadas, incluindo possibilidades de acompanhamento ou tratamento, conforme a avaliação profissional.' },
+    ],
+  },
+  about: {
+    subtitle: 'Psicóloga Clínica | CRP 07/14095',
+    description: [
+      'Com atuação clínica em Farroupilha, Alessandra combina entrevista clínica, instrumentos de avaliação psicológica e biofeedback cardiovascular para investigar aspectos relacionados à sobrecarga e às dificuldades percebidas no cotidiano.',
+      'A Parada Técnica é uma avaliação individual com etapas definidas, análise integrada das informações e documento escrito em até sete dias úteis após a sessão.',
+    ],
+  },
   offer: {
     eyebrow: 'SUA PARADA TÉCNICA',
-    headline: 'Um primeiro passo para compreender o que está acontecendo e decidir como seguir.',
-    accent: 'decidir como seguir.',
-    description: 'Reserve três horas para uma avaliação psicológica individual, com testes, biofeedback cardiovascular conforme indicação profissional e um documento escrito com orientações para os próximos passos.',
+    headline: 'Para quem sente que o corpo e a mente estão no limite e quer entender o que está acontecendo.',
+    accent: 'entender o que está acontecendo.',
+    description: 'Uma avaliação psicológica individual de três horas, precedida de formulários preparatórios online, com análise integrada das informações, documento escrito e devolutiva para esclarecer os resultados e as recomendações.',
     includedTitle: 'O QUE ESTÁ INCLUÍDO',
     included: [
-      'Avaliação individual de 3 horas.',
-      'Recursos de avaliação psicológica, conforme indicação profissional.',
-      'Documento individualizado em até 7 dias úteis.',
-      'Devolutiva para esclarecer os resultados e as recomendações.',
+      'Avaliação psicológica individual de 3 horas, presencial em Farroupilha/RS.',
+      'Entrevista clínica, instrumentos psicológicos e biofeedback cardiovascular, conforme indicação profissional.',
+      'Preparação online por briefing e formulários, além da análise integrada das informações realizada pela Alessandra.',
+      'Documento individualizado com recomendações e plano de próximos passos, em até 7 dias úteis após a sessão.',
+      'Devolutiva com a Alessandra para explicar o documento e esclarecer dúvidas.',
     ],
     priceLabel: 'INVESTIMENTO',
     pricePlaceholder: 'R$ [VALOR CONFIRMADO]',
     installmentsPlaceholder: '[CONDIÇÕES DE PARCELAMENTO]',
-    cta: 'QUERO FAZER MINHA PARADA TÉCNICA',
-    microcopy: 'Pagamento pelo checkout. Após a confirmação, a equipe entra em contato para orientar o agendamento.',
+    cta: 'QUERO MINHA PARADA TÉCNICA',
+    microcopy: 'Após a confirmação do pagamento, nossa equipe entra em contato para orientar o agendamento e os próximos passos.',
   },
-  faqExtra: [
+  // FAQ completo da Versão B. As perguntas atuais continuam; agendamento + pós-compra foram consolidadas.
+  faqItems: [
+    {
+      q: 'A Parada Técnica é uma terapia?',
+      a: 'É uma avaliação psicológica estruturada, com duração prevista de 3 horas e devolutiva escrita. Caso seja indicado acompanhamento psicológico posterior, as possibilidades serão explicadas individualmente.',
+    },
+    {
+      q: 'Preciso já ter feito terapia?',
+      a: 'Não. Você pode entrar em contato mesmo que nunca tenha realizado acompanhamento psicológico.',
+    },
+    {
+      q: 'Uma única sessão de três horas é suficiente?',
+      a: [
+        'A Parada Técnica foi estruturada para reunir, em uma avaliação presencial de três horas, diferentes informações sobre seu momento atual. Antes do encontro, você também responde a formulários preparatórios online.',
+        'Depois, a Alessandra realiza a análise integrada e prepara o documento individualizado.',
+        'Esse processo tem uma proposta de avaliação e orientação. Se houver necessidade de acompanhamento terapêutico posterior, isso será explicado na devolutiva.',
+      ],
+    },
+    {
+      q: 'A Parada Técnica inclui hipnose?',
+      a: [
+        'Não. A Parada Técnica é uma avaliação psicológica estruturada, com entrevista clínica, instrumentos psicológicos e biofeedback cardiovascular, conforme indicação.',
+        'A hipnose terapêutica pode fazer parte de um tratamento posterior, caso seja recomendada para sua situação e você decida continuar.',
+      ],
+    },
+    {
+      q: 'E se eu quiser continuar o acompanhamento com a Alessandra?',
+      a: [
+        'Se houver indicação, a Alessandra poderá apresentar uma proposta individualizada de acompanhamento terapêutico.',
+        'Entre as possibilidades estão protocolos de terapia breve com hipnose terapêutica, que podem envolver de 3 a 10 encontros, conforme a avaliação e o plano indicado.',
+        'A continuidade não é obrigatória.',
+      ],
+    },
+    {
+      q: 'Como funciona o sigilo?',
+      a: 'As informações compartilhadas durante o atendimento são tratadas conforme o sigilo profissional e as regras aplicáveis à proteção dos dados pessoais.',
+    },
+    {
+      q: 'Posso fazer a Parada Técnica online?',
+      a: 'A preparação acontece online, por links que você responde no seu próprio tempo. A avaliação de três horas é presencial, em Farroupilha/RS.',
+    },
     {
       q: 'Qual é o investimento para fazer a Parada Técnica?',
       a: 'O investimento é de R$ 2.500, com possibilidade de pagamento em até 12x. Você pode consultar os detalhes antes de concluir a compra.',
@@ -209,17 +277,17 @@ export const versionB = {
       a: 'Ao clicar no botão de contratação, você será direcionado para uma página de pagamento, onde poderá conferir as condições disponíveis e concluir a compra.',
     },
     {
-      q: 'Como faço para agendar minha sessão?',
-      a: 'Após a confirmação do pagamento, nossa equipe entrará em contato pelo WhatsApp para orientar o agendamento e o preenchimento do questionário preparatório.',
+      q: 'Como faço para agendar e o que acontece depois que eu comprar?',
+      a: 'Após a confirmação do pagamento, nossa equipe entra em contato pelo WhatsApp para orientar o agendamento e a preparação online. Depois da avaliação presencial de 3 horas, a Alessandra prepara o documento individualizado, com os principais pontos avaliados e recomendações profissionais.',
     },
     {
-      q: 'O que acontece depois que eu comprar?',
-      a: 'Você receberá as orientações para agendar sua avaliação individual de 3 horas. Após a sessão, será preparado um documento com os principais pontos avaliados e recomendações profissionais, com entrega prevista em até 7 dias úteis.',
+      q: 'Em quanto tempo recebo o documento?',
+      a: 'O prazo previsto é de até 7 dias úteis após a sessão.',
     },
   ],
   finalCta: {
     eyebrow: 'O PRÓXIMO PASSO É SEU',
-    headline: 'Você já dedica tanto tempo à sua empresa. Que tal reservar três horas para olhar para você?',
+    headline: 'Você dedica tanto tempo às suas responsabilidades. Que tal reservar três horas para olhar para você?',
     accent: 'olhar para você?',
     subtitle: 'A Parada Técnica oferece um momento individual e estruturado para compreender melhor sua situação e receber orientações profissionais sobre os próximos passos.',
     cta: 'QUERO FAZER MINHA PARADA TÉCNICA',
@@ -235,54 +303,67 @@ export const practice = {
   headline: 'Mais do que uma conversa. Uma avaliação para compreender o que está acontecendo com você.',
   accent: 'compreender o que está acontecendo com você.',
   intro: [
-    'A Parada Técnica é um encontro individual de três horas, conduzido pela psicóloga Alessandra Trentin, que combina escuta clínica, instrumentos de avaliação psicológica e recursos complementares, conforme a necessidade de cada pessoa.',
-    'Durante esse processo, diferentes informações são reunidas e analisadas para construir uma compreensão mais organizada do seu momento atual.',
+    'A Parada Técnica combina uma preparação online com uma avaliação presencial de três horas.',
+    'Durante esse processo, a Alessandra reúne informações da sua história, de instrumentos psicológicos e, quando indicado, do biofeedback cardiovascular, para construir uma compreensão individualizada do seu momento atual.',
   ],
+  preparation: {
+    title: 'Antes do encontro: uma preparação online',
+    text: 'Você recebe links para responder a um briefing e a formulários sobre aspectos como ansiedade, humor, sono, alimentação e energia. Essa etapa é realizada no seu próprio tempo, sem necessidade de agendar uma reunião online.',
+  },
   stepsTitle: 'Como acontece na prática?',
   steps: [
     {
       id: 'etapa-01-escuta',
-      label: 'Escuta clínica',
-      title: 'Primeiro, entendemos o seu momento',
-      text: 'A avaliação começa com uma conversa aprofundada sobre sua rotina, responsabilidades, dificuldades e mudanças que você vem percebendo no trabalho e na vida pessoal.',
-      note: 'Compreender seu contexto é essencial para interpretar a avaliação de forma individualizada.',
+      label: '01 · CONVERSA',
+      title: 'Entendemos o seu momento',
+      text: ['Falamos sobre sua rotina, responsabilidades e o que mudou no trabalho e na vida pessoal.'],
       alt: 'Alessandra Trentin em conversa profissional no ambiente de atendimento',
     },
     {
       id: 'etapa-02-testes',
-      label: 'Testes psicológicos',
-      title: 'Utilizamos instrumentos de avaliação psicológica',
-      text: 'Ao longo do encontro, podem ser aplicados testes psicológicos e outros instrumentos profissionais, selecionados conforme os aspectos que precisam ser investigados.',
-      note: 'Esses recursos ajudam a complementar a conversa clínica e ampliar a compreensão do funcionamento psicológico.',
+      label: '02 · TESTES',
+      title: 'Investigamos o que a conversa sozinha não mostra',
+      text: ['Utilizamos questionários e instrumentos de avaliação psicológica selecionados pela Alessandra conforme as necessidades do seu caso.'],
       alt: 'Materiais profissionais de avaliação psicológica',
     },
     {
       id: 'etapa-03-biofeedback',
-      label: 'Biofeedback cardiovascular',
-      title: 'Observamos também respostas do organismo',
-      text: 'Quando indicado, a avaliação pode incluir o biofeedback cardiovascular, um recurso que permite observar determinadas respostas fisiológicas durante o procedimento.',
-      note: 'Essas informações podem complementar a avaliação psicológica e contribuir para uma compreensão mais ampla do caso.',
+      label: '03 · CORPO',
+      title: 'Observamos respostas do organismo',
+      text: ['Quando indicado, sensores permitem acompanhar respostas cardiovasculares durante a avaliação e relacionar esses registros ao contexto da conversa.'],
       alt: 'Equipamento de biofeedback cardiovascular utilizado na avaliação',
     },
     {
       id: 'etapa-04-analise',
-      label: 'Análise integrada',
+      label: '04 · ANÁLISE',
       title: 'Integramos as informações levantadas',
-      text: 'Após o encontro, a Alessandra analisa os dados obtidos na conversa, nos instrumentos utilizados e nos demais recursos aplicados, considerando o contexto individual.',
-      note: 'A análise conjunta dessas informações orienta a interpretação profissional e as recomendações.',
+      text: ['Depois do encontro, a Alessandra analisa em conjunto a entrevista, os testes e os registros do biofeedback, quando utilizado, para elaborar uma interpretação individualizada.'],
       alt: 'Alessandra Trentin organizando as informações da avaliação',
+    },
+    {
+      id: 'etapa-05-devolutiva',
+      label: '05 · DEVOLUTIVA',
+      title: 'Você recebe um documento completo e orientações para seguir',
+      text: [
+        'Em até sete dias úteis após a sessão, você recebe um documento individualizado que reúne as informações da avaliação, os aspectos que podem estar relacionados às dificuldades identificadas e recomendações para os próximos passos.',
+        'Quando utilizado, o biofeedback também pode contribuir com registros contextualizados sobre as respostas do organismo durante a conversa.',
+        'Uma devolutiva com a Alessandra permite esclarecer o conteúdo e conversar sobre as recomendações.',
+      ],
+      alt: 'Alessandra Trentin em devolutiva sobre o documento individualizado',
     },
   ].map((step) => ({ ...step, src: optionalImg(step.id) })),
   document: {
     eyebrow: 'O QUE VOCÊ RECEBE',
     headline: 'As informações da sua avaliação, organizadas para orientar os próximos passos.',
     text: [
-      'Em até sete dias úteis após a sessão, você recebe um documento individualizado com os principais pontos avaliados e as recomendações profissionais.',
-      'Também está prevista uma devolutiva para esclarecer o conteúdo e conversar sobre os possíveis caminhos de acompanhamento.',
+      'Em até sete dias úteis após a sessão, você recebe um documento individualizado que reúne a interpretação dos instrumentos psicológicos, as informações da entrevista clínica e, quando utilizado, os registros do biofeedback cardiovascular.',
+      'A Alessandra analisa esses dados em conjunto, considerando também os momentos da conversa em que determinadas respostas fisiológicas foram observadas.',
+      'O documento apresenta os principais aspectos identificados, possíveis relações com as dificuldades relatadas e recomendações profissionais para os próximos passos.',
+      'Você também recebe uma devolutiva para compreender o conteúdo e esclarecer dúvidas.',
     ],
-    deadline: 'Até 7 dias úteis após a sessão',
+    deadline: 'ATÉ 7 DIAS ÚTEIS APÓS A SESSÃO',
     pages: ['documento-01', 'documento-02'].map((id) => ({ id, src: optionalImg(id) })),
-    exampleLabel: 'Exemplo visual · documento ilustrativo',
+    exampleLabel: 'Ilustrativo · modelo sem dados reais',
   },
   closing: 'Não é apenas sobre o que você sente. É sobre compreender melhor o que essas informações podem revelar quando são avaliadas em conjunto.',
   cta: 'QUERO RESERVAR MINHA PARADA TÉCNICA',

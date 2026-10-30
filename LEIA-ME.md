@@ -32,7 +32,6 @@ Tudo sai do mesmo `node build.mjs`, com CSS, JS e imagens compartilhados. O que 
 Em `src/content.mjs` → `commercial` (só a Versão B usa):
 - `price`: **R$ 2.500** (confirmado).
 - `installments`: **em até 12x** (confirmado; é com juros, mas o cliente pediu para não citar na página).
-- `rebate` (abatimento no protocolo posterior): **não exibido** (removido a pedido do cliente).
 
 A barra de revisão (topo) tem os links **Versão A** e **Versão B** para alternar entre as páginas.
 
@@ -57,6 +56,10 @@ A barra de revisão (topo) tem os links **Versão A** e **Versão B** para alter
 
 Substitui as antigas seções 3 (Conheça) e 4 (Como funciona). Conteúdo em `src/content.mjs` → `practice`.
 Imagens (opcionais — enquanto não existirem, aparecem placeholders identificados):
-- Etapas (16:10, ex. 1600×1000): `assets/img/etapa-01-escuta.webp`, `etapa-02-testes.webp`, `etapa-03-biofeedback.webp`, `etapa-04-analise.webp`.
+- Etapas (16:10, ex. 1600×1000): `assets/img/etapa-01-escuta.webp`, `etapa-02-testes.webp`, `etapa-03-biofeedback.webp`, `etapa-04-analise.webp`, `etapa-05-devolutiva.webp`.
 - Documento (retrato 3:4, ex. 900×1200): `assets/img/documento-01.webp`, `documento-02.webp`.
 Basta salvar o arquivo com o nome certo e rodar `node build.mjs`. Ponto de recuperação anterior: tag `antes-secao-pratica`.
+
+### Revisão de copy da Alessandra (2026-10-30)
+
+A copy da Versão B fica em `src/content.mjs` → `versionB` (substitui só os campos listados) e `practice`. A Versão A não usa esses campos. Ponto de recuperação: tag `antes-revisao-copy`.

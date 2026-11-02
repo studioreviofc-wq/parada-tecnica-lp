@@ -690,12 +690,11 @@ strong { font-weight: 600; }
 }
 
 /* Modelo ilustrativo do documento: textos dimensionados pela largura da própria página (cqw). */
-.practice-doc__pages--mock { width: min(100%, 480px); aspect-ratio: 1 / 0.86; }
-.practice-doc__pages--mock .doc-page { width: 56%; }
+/* Pouca sobreposição: o conteúdo das duas folhas tem a mesma largura e fica todo visível. */
+.practice-doc__pages--mock { width: min(100%, 520px); aspect-ratio: 1 / 0.78; }
+.practice-doc__pages--mock .doc-page { width: 52%; }
 .practice-doc__pages--mock .doc-page--1 { left: 0; top: 7%; }
 .practice-doc__pages--mock .doc-page--2 { right: 0; top: 2%; }
-/* A folha da frente cobre a direita da primeira: o conteúdo fica na parte visível. */
-.practice-doc__pages--mock .doc-page--1.doc-mock { padding-right: 19%; }
 .doc-mock {
   container-type: inline-size; display: flex; flex-direction: column; overflow: hidden;
   padding: 7% 7.5%; color: var(--ink); text-align: left;
@@ -725,7 +724,6 @@ strong { font-weight: 600; }
   .practice-doc__pages--mock { aspect-ratio: 1 / 1.82; }
   .practice-doc__pages--mock .doc-page { width: 72%; }
   .practice-doc__pages--mock .doc-page--1 { left: 1%; top: 1%; }
-  .practice-doc__pages--mock .doc-page--1.doc-mock { padding-right: 7.5%; }
   .practice-doc__pages--mock .doc-page--2 { right: 1%; top: 47%; }
 }
 

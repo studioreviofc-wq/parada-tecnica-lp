@@ -353,7 +353,25 @@ export const practice = {
     ],
     deadline: 'ATÉ 7 DIAS ÚTEIS APÓS A SESSÃO',
     pages: ['documento-01', 'documento-02'].map((id) => ({ id, src: optionalImg(id) })),
-    exampleLabel: 'Ilustrativo · modelo sem dados reais',
+    exampleLabel: 'Modelo ilustrativo · sem dados reais',
+    // Páginas demonstrativas em HTML/CSS: só títulos neutros, sem resultados nem dados de pacientes.
+    mockup: {
+      brand: 'PARADA TÉCNICA',
+      results: {
+        title: 'Resultados da Avaliação',
+        tableTitle: 'Avaliação psicológica',
+        columns: ['Instrumento', 'Aspecto avaliado', 'Interpretação'],
+        chartTitle: 'Biofeedback cardiovascular',
+      },
+      synthesis: {
+        title: 'Síntese e Recomendações',
+        groups: [
+          { title: 'Aspectos identificados', icon: 'search' },
+          { title: 'Decisões e impactos', icon: 'signpost' },
+          { title: 'Próximos passos', icon: 'arrow' },
+        ],
+      },
+    },
   },
   closing: 'Não é apenas sobre o que você sente. É sobre compreender melhor o que essas informações podem revelar quando são avaliadas em conjunto.',
   cta: 'QUERO RESERVAR MINHA PARADA TÉCNICA',
@@ -432,6 +450,9 @@ export const online = {
         'Você também conta com uma devolutiva para compreender o conteúdo e esclarecer dúvidas.',
       ],
       deadline: '', // prazo da modalidade online a confirmar: preencher só depois da confirmação
+      // Versão online: mantém as páginas genéricas (o modelo da presencial cita biofeedback).
+      exampleLabel: 'Ilustrativo · modelo sem dados reais',
+      mockup: null,
     },
   },
 

@@ -689,6 +689,46 @@ strong { font-weight: 600; }
   .practice-doc { grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; padding: 64px; margin-top: 72px; }
 }
 
+/* Modelo ilustrativo do documento: textos dimensionados pela largura da própria página (cqw). */
+.practice-doc__pages--mock { width: min(100%, 480px); aspect-ratio: 1 / 0.86; }
+.practice-doc__pages--mock .doc-page { width: 56%; }
+.practice-doc__pages--mock .doc-page--1 { left: 0; top: 7%; }
+.practice-doc__pages--mock .doc-page--2 { right: 0; top: 2%; }
+/* A folha da frente cobre a direita da primeira: o conteúdo fica na parte visível. */
+.practice-doc__pages--mock .doc-page--1.doc-mock { padding-right: 19%; }
+.doc-mock {
+  container-type: inline-size; display: flex; flex-direction: column; overflow: hidden;
+  padding: 7% 7.5%; color: var(--ink); text-align: left;
+}
+.doc-mock__brand { font-size: 4.2cqw; font-weight: 700; letter-spacing: 0.14em; color: var(--gold-ink); padding-bottom: 3cqw; border-bottom: 1px solid var(--champagne); }
+.doc-mock__title { margin: 4.5cqw 0 5cqw; font-family: var(--font-serif); font-weight: 700; font-size: 8.4cqw; line-height: 1.2; }
+.doc-mock__label { display: block; margin-bottom: 2.6cqw; font-size: 5cqw; font-weight: 700; line-height: 1.25; color: var(--graphite); }
+.doc-mock__table {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 3cqw; align-items: center;
+  margin-bottom: 5cqw; padding: 3.6cqw; border-radius: 2cqw; background: #F7F2E9; border: 1px solid #E6DED1;
+}
+.doc-mock__th { align-self: start; font-size: 3.9cqw; font-weight: 700; line-height: 1.2; color: var(--gold-ink); }
+.doc-mock__bar { display: block; height: 2cqw; border-radius: 1cqw; background: #DDD3C3; }
+.doc-mock__bar--short { width: 62%; }
+.doc-mock__group-body .doc-mock__bar { margin-top: 2.2cqw; }
+.doc-mock__chart { display: block; flex: 1; width: 100%; min-height: 0; border-radius: 2cqw; background: #F7F2E9; border: 1px solid #E6DED1; }
+.doc-mock__grid { fill: none; stroke: #E6DED1; stroke-width: 1; vector-effect: non-scaling-stroke; }
+.doc-mock__line { fill: none; stroke: var(--gold); stroke-width: 1.75; vector-effect: non-scaling-stroke; }
+.doc-mock__group { flex: 1; display: grid; grid-template-columns: 14cqw 1fr; gap: 4cqw; align-items: center; border-top: 1px solid #EEE7DB; }
+.doc-mock__group:first-of-type { border-top: 0; }
+.doc-mock__icon { display: grid; place-items: center; width: 14cqw; height: 14cqw; border-radius: 4cqw; background: #F7F2E9; color: var(--gold-ink); }
+.doc-mock__icon .icon { width: 7.5cqw; height: 7.5cqw; }
+.doc-mock__group-body { display: block; min-width: 0; }
+.doc-mock__group-body .doc-mock__label { margin-bottom: 0; }
+/* Celular: cascata com pouca sobreposição, para as duas páginas ficarem legíveis. */
+@media (max-width: 599px) {
+  .practice-doc__pages--mock { aspect-ratio: 1 / 1.82; }
+  .practice-doc__pages--mock .doc-page { width: 72%; }
+  .practice-doc__pages--mock .doc-page--1 { left: 1%; top: 1%; }
+  .practice-doc__pages--mock .doc-page--1.doc-mock { padding-right: 7.5%; }
+  .practice-doc__pages--mock .doc-page--2 { right: 1%; top: 47%; }
+}
+
 .practice__closing { margin-top: 56px; text-align: center; display: grid; justify-items: center; gap: 28px; }
 .practice__closing p {
   margin: 0; max-width: 40ch; font-family: var(--font-serif); font-weight: 600;

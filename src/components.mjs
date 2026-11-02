@@ -270,6 +270,38 @@ const DocumentPage = (page, i) =>
           <span class="doc-page__line"></span><span class="doc-page__line doc-page__line--short"></span>
         </div>`;
 
+// Páginas demonstrativas do documento: textos em HTML (nítidos e editáveis), sem nenhum dado real.
+const DocumentMockup = (m, i) => {
+  const head = (title) => `<span class="doc-mock__brand">${esc(m.brand)}</span>
+          <span class="doc-mock__title">${esc(title)}</span>`;
+  const bars = '<span class="doc-mock__bar"></span><span class="doc-mock__bar"></span><span class="doc-mock__bar doc-mock__bar--short"></span>';
+  return i === 0
+    ? `<div class="doc-page doc-page--1 doc-mock">
+          ${head(m.results.title)}
+          <span class="doc-mock__label">${esc(m.results.tableTitle)}</span>
+          <span class="doc-mock__table">
+            ${m.results.columns.map((col) => `<span class="doc-mock__th">${esc(col)}</span>`).join('')}
+            ${'<span class="doc-mock__bar"></span>'.repeat(12)}
+          </span>
+          <span class="doc-mock__label">${esc(m.results.chartTitle)}</span>
+          <svg class="doc-mock__chart" viewBox="0 0 200 56" preserveAspectRatio="none" focusable="false">
+            <path class="doc-mock__grid" d="M0 14h200M0 28h200M0 42h200"/>
+            <path class="doc-mock__line" d="M0 34c10-10 18 8 28 0s16-16 28-8 14 14 26 4 16-14 28-6 16 16 28 6 14-12 26-6 14 10 36 2"/>
+          </svg>
+        </div>`
+    : `<div class="doc-page doc-page--2 doc-mock">
+          ${head(m.synthesis.title)}
+          ${m.synthesis.groups
+            .map(
+              (g) => `<span class="doc-mock__group">
+            <span class="doc-mock__icon">${icon(g.icon, 'icon')}</span>
+            <span class="doc-mock__group-body"><span class="doc-mock__label">${esc(g.title)}</span>${bars}</span>
+          </span>`
+            )
+            .join('\n')}
+        </div>`;
+};
+
 export const Practice = () => {
   const p = copy('practice');
   const d = p.document;
@@ -319,8 +351,8 @@ export const Practice = () => {
         ${d.deadline ? `<p class="practice-doc__deadline">${icon('calendar', 'icon')}<span>${esc(d.deadline)}</span></p>` : ''}
       </div>
       <figure class="practice-doc__visual">
-        <div class="practice-doc__pages">
-          ${d.pages.map(DocumentPage).join('\n')}
+        <div class="practice-doc__pages${d.mockup ? ' practice-doc__pages--mock' : ''}"${d.mockup ? ' role="img" aria-label="Duas páginas de um modelo ilustrativo do documento individualizado: Resultados da Avaliação e Síntese e Recomendações."' : ''}>
+          ${d.pages.map((pg, i) => (d.mockup && !pg.src ? DocumentMockup(d.mockup, i) : DocumentPage(pg, i))).join('\n')}
         </div>
         <figcaption>${esc(d.exampleLabel)}</figcaption>
       </figure>

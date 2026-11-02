@@ -90,6 +90,25 @@ export const Hero = () => `
   </div>
 </section>`;
 
+// Vídeo logo após a primeira dobra (só na versão presencial): a capa é um botão e o iframe do
+// YouTube só é criado no clique, em assets/video.js. A proporção fica reservada no CSS.
+export const Video = () => `
+<section class="section theme-dark section--video" aria-labelledby="video-title" data-section="01b-video">
+  <div class="container video">
+    ${Eyebrow(c.video.eyebrow, false)}
+    <h2 id="video-title">${accent(c.video.title)}</h2>
+    <p class="lead">${esc(c.video.description)}</p>
+    <div class="video__player" data-video-id="${esc(c.video.id)}" data-video-title="${esc(c.video.iframeTitle)}">
+      <button type="button" class="video__trigger" aria-label="${esc(c.video.playLabel)}">
+        <img src="${esc(c.video.poster)}" alt="" width="1280" height="720" loading="lazy" decoding="async">
+        <span class="video__play" aria-hidden="true"><svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+      </button>
+      <p class="video__status" role="status"></p>
+    </div>
+    <div class="section-cta">${Button({ label: c.versionB.buyCta, href: '#investimento', variant: 'gold', cta: 'video', iconBox: 'arrowUpRight' })}</div>
+  </div>
+</section>`;
+
 // Marca d'água com o nome do serviço no pé da seção (decorativa).
 export const Watermark = (text = 'Parada Técnica', mod = '') =>
   `<p class="watermark${mod ? ` watermark--${mod}` : ''}" aria-hidden="true">${esc(text)}</p>`;
@@ -455,19 +474,19 @@ export const Page = (v = 'a', opts = {}) => {
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Raleway:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="assets/styles.css">${isB() ? '\n<link rel="stylesheet" href="assets/motion.css">' : ''}
+<link rel="stylesheet" href="assets/styles.css">${isB() ? '\n<link rel="stylesheet" href="assets/motion.css">' : ''}${isB() && !online ? '\n<link rel="stylesheet" href="assets/video.css">' : ''}
 </head>
 <body${isB() ? ' class="version-b"' : ''}>
 <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
 ${presentation ? '' : `${ReviewBar()}\n`}<main id="conteudo" tabindex="-1">
 ${Hero()}
-${Identification()}
+${isB() && !online ? `${Video()}\n` : ''}${Identification()}
 ${isB() ? `${Practice()}\n` : `${Solution()}\n${Steps()}\n`}${Deliverables()}
 ${About()}
 ${isB() ? `${Offer()}\n` : ''}${Faq()}
 ${isB() ? `${FinalCta()}\n` : ''}</main>
 ${Footer()}
-<script src="assets/main.js" defer></script>${isB() ? '\n<script src="assets/motion.js" defer></script>' : ''}
+<script src="assets/main.js" defer></script>${isB() ? '\n<script src="assets/motion.js" defer></script>' : ''}${isB() && !online ? '\n<script src="assets/video.js" defer></script>' : ''}
 </body>
 </html>
 `;

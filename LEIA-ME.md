@@ -26,6 +26,8 @@ O formulário foi removido. Os botões (Hero, seção 3 e barra fixa do celular)
 - `/online/` — **Versão 2 Online**: em revisão, sujeita à validação da Alessandra. Sem links a partir da Versão 1.
 - `/apresentacao/` — só redireciona para `/`, porque esse link já foi enviado à cliente.
 
+A seção de vídeo existe só em `/`, logo após a primeira dobra. O texto e o ID do YouTube ficam em `src/content.mjs` → `video`; o estilo e o player, em `assets/video.css` e `assets/video.js`, que a versão online não carrega. A capa é `assets/img/video-capa.webp` (1280×720): se o vídeo for trocado, troque também esse arquivo.
+
 As antigas `/versao-a/` e `/versao-b/` foram excluídas. Pontos de recuperação no Git: tags `versao-a-original` (página aprovada antes dos ajustes comerciais) e `antes-pagina-principal` (estado anterior à troca de rotas) e `antes-versao-online` (antes de criar a Versão 2).
 
 ### Condições comerciais

@@ -170,6 +170,17 @@ export const commercial = {
   installments: { confirmed: true, value: 'em até 12x' },  // confirmado (com juros; o cliente pediu para não citar na página)
 };
 
+// Vídeo da versão presencial (não listado no YouTube; a versão online não usa).
+export const video = {
+  id: 'o8AK3dnc5Sc',
+  poster: 'assets/img/video-capa.webp', // capa do próprio vídeo (1280×720)
+  eyebrow: 'CONHEÇA A PARADA TÉCNICA',
+  title: 'Entenda a Parada Técnica em poucos minutos.',
+  description: 'Assista à explicação e descubra como funciona a Parada Técnica.',
+  playLabel: 'Reproduzir vídeo de apresentação da Parada Técnica',
+  iframeTitle: 'Vídeo de apresentação da Parada Técnica',
+};
+
 export const versionB = {
   // CTAs antes da oferta levam até ela (#investimento); da oferta em diante, direto ao checkout.
   buyCta: 'QUERO FAZER MINHA PARADA TÉCNICA',

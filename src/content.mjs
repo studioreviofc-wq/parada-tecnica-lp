@@ -174,7 +174,7 @@ export const commercial = {
 export const video = {
   id: 'o8AK3dnc5Sc',
   poster: 'assets/img/video-capa.webp', // capa do próprio vídeo (1280×720)
-  eyebrow: 'CONHEÇA A PARADA TÉCNICA',
+  eyebrow: 'ASSISTA À APRESENTAÇÃO',
   title: 'Entenda a Parada Técnica em poucos minutos.',
   description: 'Assista à explicação e descubra como funciona a Parada Técnica.',
   playLabel: 'Reproduzir vídeo de apresentação da Parada Técnica',

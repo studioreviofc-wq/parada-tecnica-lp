@@ -238,7 +238,7 @@ export const versionB = {
     pricePlaceholder: 'R$ [VALOR CONFIRMADO]',
     installmentsPlaceholder: '[CONDIÇÕES DE PARCELAMENTO]',
     cta: 'QUERO MINHA PARADA TÉCNICA',
-    microcopy: 'Após a confirmação do pagamento, nossa equipe entra em contato para orientar o agendamento e os próximos passos.',
+    microcopy: 'Após a confirmação do pagamento, nossa equipe entrará em contato para encaminhar o agendamento da reunião online de boas-vindas de 20 minutos.',
   },
   // FAQ completo da Versão B. As perguntas atuais continuam; agendamento + pós-compra foram consolidadas.
   faqItems: [
@@ -268,18 +268,14 @@ export const versionB = {
     {
       q: 'E se eu quiser continuar o acompanhamento com a Alessandra?',
       a: [
-        'Se houver indicação, a Alessandra poderá apresentar uma proposta individualizada de acompanhamento terapêutico.',
-        'Entre as possibilidades estão protocolos de terapia breve com hipnose terapêutica, que podem envolver de 3 a 10 encontros, conforme a avaliação e o plano indicado.',
-        'A continuidade não é obrigatória.',
+        'Se houver indicação, a Alessandra poderá apresentar uma proposta de acompanhamento terapêutico.',
+        'Existem duas possibilidades de prosseguir com hipnose terapêutica: uma individual, mais breve, de 3 a 10 encontros; e outra em grupo, com acompanhamento mais longo e contínuo ao longo de alguns meses.',
+        'O formato mais adequado depende do seu caso, e a decisão é sempre sua. A continuidade não é obrigatória.',
       ],
     },
     {
       q: 'Como funciona o sigilo?',
       a: 'As informações compartilhadas durante o atendimento são tratadas conforme o sigilo profissional e as regras aplicáveis à proteção dos dados pessoais.',
-    },
-    {
-      q: 'Posso fazer a Parada Técnica online?',
-      a: 'A preparação acontece online, por links que você responde no seu próprio tempo. A avaliação de três horas é presencial, em Farroupilha/RS.',
     },
     {
       q: 'Qual é o investimento para fazer a Parada Técnica?',
@@ -291,11 +287,15 @@ export const versionB = {
     },
     {
       q: 'Como faço para agendar e o que acontece depois que eu comprar?',
-      a: 'Após a confirmação do pagamento, nossa equipe entra em contato pelo WhatsApp para orientar o agendamento e a preparação online. Depois da avaliação presencial de 3 horas, a Alessandra prepara o documento individualizado, com os principais pontos avaliados e recomendações profissionais.',
+      a: [
+        'Após a confirmação do pagamento, nossa equipe entrará em contato para encaminhar o link de agendamento de uma reunião online de boas-vindas de 20 minutos.',
+        'Nesse encontro, você receberá orientações sobre a preparação online e o agendamento da avaliação presencial de três horas.',
+        'Depois da avaliação, a Alessandra prepara seu documento individualizado, com os principais pontos avaliados e recomendações profissionais.',
+      ],
     },
     {
       q: 'Em quanto tempo recebo o documento?',
-      a: 'O prazo previsto é de até 7 dias úteis após a sessão.',
+      a: 'O prazo previsto é de até 7 dias úteis após a sessão presencial.',
     },
   ],
   finalCta: {
@@ -304,7 +304,7 @@ export const versionB = {
     accent: 'olhar para você?',
     subtitle: 'A Parada Técnica oferece um momento individual e estruturado para compreender melhor sua situação e receber orientações profissionais sobre os próximos passos.',
     cta: 'QUERO FAZER MINHA PARADA TÉCNICA',
-    microcopy: 'Após o pagamento, nossa equipe entrará em contato para orientar o agendamento.',
+    microcopy: 'Após a confirmação do pagamento, nossa equipe entrará em contato com as orientações para agendar sua reunião de boas-vindas.',
   },
 };
 

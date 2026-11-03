@@ -157,7 +157,7 @@ export const checkout = {
 // Preenchido (ex.: 'https://seudominio.com.br'), cada imagem vira <baseUrl>/<nome-do-arquivo>.
 // A versão online continua usando assets/img/.
 export const imageHost = {
-  baseUrl: '',
+  baseUrl: 'https://psicologaalessandratrentin.com.br/wp-content/uploads/2026/11',
 };
 
 export const footer = {

@@ -1,5 +1,5 @@
 /* Seção de vídeo da versão presencial, no topo da página. */
-.theme-cream.section--video { --bg: #EADFCB; }
+.theme-dark.section--video { --bg: #161311; }
 .video { display: flex; flex-direction: column; align-items: center; text-align: center; }
 .video .eyebrow { color: var(--gold); margin-bottom: 12px; }
 .video h2 { max-width: 20ch; }

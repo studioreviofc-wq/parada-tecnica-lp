@@ -93,7 +93,7 @@ export const Hero = () => `
 // Vídeo no topo da página, antes da primeira dobra (só na versão presencial): a capa é um botão e o iframe do
 // YouTube só é criado no clique, em assets/video.js. A proporção fica reservada no CSS.
 export const Video = () => `
-<section class="section theme-cream section--video" aria-labelledby="video-title" data-section="01b-video">
+<section class="section theme-dark section--video" aria-labelledby="video-title" data-section="01b-video">
   <div class="container video">
     ${Eyebrow(c.video.eyebrow, false)}
     <h2 id="video-title">${accent(c.video.title)}</h2>

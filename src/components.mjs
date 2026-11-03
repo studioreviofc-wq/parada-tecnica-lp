@@ -29,6 +29,9 @@ const esc = (s) =>
 
 const paragraphs = (list, cls = '') => list.map((p) => `<p${cls ? ` class="${cls}"` : ''}>${esc(p)}</p>`).join('\n');
 
+// Negrito nas respostas do FAQ: o trecho entre **…** vira <strong>.
+const bold = (html) => html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+
 // Destaque editorial em dourado: aplicado ao nome do serviço sempre que aparece num título.
 const accent = (text) => esc(text).replace(/Parada Técnica/g, '<span class="accent">Parada Técnica</span>');
 
@@ -257,7 +260,7 @@ export const Faq = () => `
           (f) => `<details class="faq__item">
         <summary><h3>${esc(f.q)}</h3><span class="faq__toggle" aria-hidden="true">${icon('plus', 'faq__icon')}</span></summary>
         <div class="faq__answer">
-          ${f.pending ? `<p class="tag">Provisória — pendente de confirmação</p>${Note(f.a)}` : paragraphs([].concat(f.a))}
+          ${f.pending ? `<p class="tag">Provisória — pendente de confirmação</p>${Note(f.a)}` : [].concat(f.a).map((t) => `<p>${bold(esc(t))}</p>`).join('\n')}
         </div>
       </details>`
         )

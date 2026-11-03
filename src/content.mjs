@@ -268,8 +268,9 @@ export const versionB = {
     {
       q: 'E se eu quiser continuar o acompanhamento com a Alessandra?',
       a: [
-        'Se houver indicação, a Alessandra poderá apresentar uma proposta de acompanhamento terapêutico.',
+        'Se houver indicação, a Alessandra poderá apresentar uma proposta de acompanhamento terapêutico, com investimento à parte.',
         'Existem duas possibilidades de prosseguir com hipnose terapêutica: uma individual, mais breve, de 3 a 10 encontros; e outra em grupo, com acompanhamento mais longo e contínuo ao longo de alguns meses.',
+        '**O acompanhamento posterior é uma nova contratação, não incluída no valor da Parada Técnica.** Caso você decida continuar, o valor investido na Parada Técnica poderá ser abatido do investimento no acompanhamento, conforme as condições apresentadas na proposta.',
         'O formato mais adequado depende do seu caso, e a decisão é sempre sua. A continuidade não é obrigatória.',
       ],
     },

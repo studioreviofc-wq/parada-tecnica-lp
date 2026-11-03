@@ -153,6 +153,13 @@ export const checkout = {
   url: 'https://pay.sumup.com/b2c/QX5EAYO5',
 };
 
+// Onde ficam as imagens da página principal (/). Vazio = assets/img/ deste site.
+// Preenchido (ex.: 'https://seudominio.com.br'), cada imagem vira <baseUrl>/<nome-do-arquivo>.
+// A versão online continua usando assets/img/.
+export const imageHost = {
+  baseUrl: '',
+};
+
 export const footer = {
   line: 'Alessandra Mangoni Galves Trentin — Psicóloga — CRP 07/14095',
   city: 'Farroupilha, Rio Grande do Sul',

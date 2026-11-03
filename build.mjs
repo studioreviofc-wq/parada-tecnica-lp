@@ -5,6 +5,7 @@ import { createHash } from 'node:crypto';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { Page } from './src/components.mjs';
+import { imageHost } from './src/content.mjs';
 
 const root = dirname(fileURLToPath(import.meta.url));
 
@@ -22,7 +23,10 @@ const versioned = (html) =>
 
 // Página principal (a aprovada pela cliente, antes em /apresentacao/). Sem barra de revisão.
 const main = () => Page('b', { presentation: true });
-writeFileSync(join(root, 'index.html'), versioned(main()));
+// Com imageHost.baseUrl preenchido, as imagens saem da hospedagem: <baseUrl>/<arquivo>, sem ?v=.
+const base = imageHost.baseUrl.replace(/\/+$/, '');
+const hosted = (html) => (base ? html.replace(/assets\/img\/([\w.-]+)\?v=\w+"/g, (m, f) => `${base}/${f}"`) : html);
+writeFileSync(join(root, 'index.html'), hosted(versioned(main())));
 console.log('ok  /             (página principal)');
 
 // Versão 2 Online: mesma estrutura e os mesmos CSS/JS/imagens (só os caminhos sobem um nível).

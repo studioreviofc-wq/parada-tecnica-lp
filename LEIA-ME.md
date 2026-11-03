@@ -70,3 +70,9 @@ Copy, valores e checkout em `src/content.mjs` → `online`; os campos listados a
 - **Preço e parcelamento:** `online.commercial` (R$ 2.500 em até 12x).
 - **Prazo do documento:** `online.practice.document.deadline`. Vazio = selo oculto.
 - **Imagens das etapas:** `online-etapa-01-conversa`, `online-etapa-02-testes`, `online-etapa-03-aprofundamento`, `online-etapa-04-analise` (em `assets/img/`).
+
+### Imagens em hospedagem externa
+
+Em `src/content.mjs` → `imageHost.baseUrl`. Vazio = a página usa `assets/img/` deste site. Preenchido com o domínio (ex.: `https://seudominio.com.br`), cada imagem da página principal vira `<domínio>/<nome-do-arquivo>`, sem `?v=`. Depois rode `node build.mjs`. A versão online continua com `assets/img/`.
+
+Arquivos que precisam existir na hospedagem, com estes nomes: `video-capa.webp`, `hero-b.webp`, `hero-mobile.webp`, `avatar.webp`, `etapa-01-escuta.webp`, `etapa-02-testes.webp`, `etapa-03-biofeedback.webp`, `etapa-04-analise.webp`, `sobre.webp`.

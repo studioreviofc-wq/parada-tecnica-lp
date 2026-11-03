@@ -82,3 +82,7 @@ Arquivos que precisam existir na hospedagem, com estes nomes: `video-capa.webp`,
 `node build.mjs` também gera `elementor/parada-tecnica-elementor.html` (só quando `imageHost.baseUrl` está preenchido): a página principal inteira em um bloco, com CSS e JS embutidos, para colar num widget **HTML** do Elementor. Todo o CSS fica preso ao `<div id="pt">`, para não brigar com o tema. Gerador: `elementor.mjs`. Depois de qualquer ajuste na página, rode o build e cole o arquivo novo no widget.
 
 No WordPress: página com modelo **Elementor Canvas** (sem cabeçalho e rodapé do tema), um contêiner de **largura total** com espaçamento 0 e, dentro dele, um widget HTML com todo o conteúdo do arquivo.
+
+### iPhones antigos (iOS 15 ou anterior)
+
+O modelo de documento ("Como a Parada Técnica acontece na prática") usa unidades `cqw`, que o iOS 15 não entende. `assets/compat.css` + `assets/compat.js` (só em `/` e no arquivo do Elementor) recalculam essas medidas nesses aparelhos; nos navegadores atuais não fazem nada.

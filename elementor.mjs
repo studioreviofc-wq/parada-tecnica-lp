@@ -59,8 +59,8 @@ ${ROOT_ID} :where(img){border:0;border-radius:0;box-shadow:none;max-width:100%;h
 ${ROOT_ID} :where(button,a){text-transform:inherit;letter-spacing:inherit;text-shadow:none}
 ${ROOT_ID} :where(button){background:none;border:0;box-shadow:none;font:inherit;color:inherit}
 `;
-  const css = reset + ['assets/styles.css', 'assets/motion.css', 'assets/video.css'].map((f) => scopeCss(read(f))).join('\n');
-  const js = ['assets/main.js', 'assets/motion.js', 'assets/video.js'].map(read).join('\n');
+  const css = reset + ['assets/styles.css', 'assets/motion.css', 'assets/video.css', 'assets/compat.css'].map((f) => scopeCss(read(f))).join('\n');
+  const js = ['assets/main.js', 'assets/motion.js', 'assets/video.js', 'assets/compat.js'].map(read).join('\n');
 
   const body = html
     .slice(html.indexOf('>', html.indexOf('<body')) + 1, html.indexOf('<script'))

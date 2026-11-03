@@ -1,0 +1,20 @@
+/* Plano B do modelo de documento para navegadores sem unidades de contêiner (cqw):
+   iPhone com iOS 15 ou anterior (inclusive o navegador do WhatsApp) e Safari 15 no Mac.
+   compat.js grava em --u, em px, 1% da largura de cada .doc-mock (o mesmo que 1cqw).
+   Nos navegadores atuais este bloco é ignorado. */
+@supports not (width: 1cqw) {
+  .doc-mock__brand { font-size: calc(var(--u, 2px) * 4.2); padding-bottom: calc(var(--u, 2px) * 3); }
+  .doc-mock__title { margin: calc(var(--u, 2px) * 4.5) 0 calc(var(--u, 2px) * 5); font-size: calc(var(--u, 2px) * 8.4); }
+  .doc-mock__label { margin-bottom: calc(var(--u, 2px) * 2.6); font-size: calc(var(--u, 2px) * 5); }
+  .doc-mock__table {
+    gap: calc(var(--u, 2px) * 3); margin-bottom: calc(var(--u, 2px) * 5);
+    padding: calc(var(--u, 2px) * 3.6); border-radius: calc(var(--u, 2px) * 2);
+  }
+  .doc-mock__th { font-size: calc(var(--u, 2px) * 3.9); }
+  .doc-mock__bar { height: calc(var(--u, 2px) * 2); border-radius: var(--u, 2px); }
+  .doc-mock__group-body .doc-mock__bar { margin-top: calc(var(--u, 2px) * 2.2); }
+  .doc-mock__chart { border-radius: calc(var(--u, 2px) * 2); }
+  .doc-mock__group { grid-template-columns: calc(var(--u, 2px) * 14) 1fr; gap: calc(var(--u, 2px) * 4); }
+  .doc-mock__icon { width: calc(var(--u, 2px) * 14); height: calc(var(--u, 2px) * 14); border-radius: calc(var(--u, 2px) * 4); }
+  .doc-mock__icon .icon { width: calc(var(--u, 2px) * 7.5); height: calc(var(--u, 2px) * 7.5); }
+}

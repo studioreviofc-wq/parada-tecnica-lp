@@ -477,7 +477,7 @@ export const Page = (v = 'a', opts = {}) => {
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Raleway:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="assets/styles.css">${isB() ? '\n<link rel="stylesheet" href="assets/motion.css">' : ''}${isB() && !online ? '\n<link rel="stylesheet" href="assets/video.css">' : ''}
+<link rel="stylesheet" href="assets/styles.css">${isB() ? '\n<link rel="stylesheet" href="assets/motion.css">' : ''}${isB() && !online ? '\n<link rel="stylesheet" href="assets/video.css">\n<link rel="stylesheet" href="assets/compat.css">' : ''}
 </head>
 <body${isB() ? ' class="version-b"' : ''}>
 <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
@@ -489,7 +489,7 @@ ${About()}
 ${isB() ? `${Offer()}\n` : ''}${Faq()}
 ${isB() ? `${FinalCta()}\n` : ''}</main>
 ${Footer()}
-<script src="assets/main.js" defer></script>${isB() ? '\n<script src="assets/motion.js" defer></script>' : ''}${isB() && !online ? '\n<script src="assets/video.js" defer></script>' : ''}
+<script src="assets/main.js" defer></script>${isB() ? '\n<script src="assets/motion.js" defer></script>' : ''}${isB() && !online ? '\n<script src="assets/video.js" defer></script>\n<script src="assets/compat.js" defer></script>' : ''}
 </body>
 </html>
 `;

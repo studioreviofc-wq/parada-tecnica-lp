@@ -20,6 +20,8 @@ const versioned = (html) =>
     .replace('assets/motion.js"', `assets/motion.js?v=${stamp('assets/motion.js')}"`)
     .replace('assets/video.css"', `assets/video.css?v=${stamp('assets/video.css')}"`)
     .replace('assets/video.js"', `assets/video.js?v=${stamp('assets/video.js')}"`)
+    .replace('assets/compat.css"', `assets/compat.css?v=${stamp('assets/compat.css')}"`)
+    .replace('assets/compat.js"', `assets/compat.js?v=${stamp('assets/compat.js')}"`)
     .replace(/assets\/img\/([\w.-]+)"/g, (m, f) => `assets/img/${f}?v=${stamp(`assets/img/${f}`)}"`);
 
 // Página principal (a aprovada pela cliente, antes em /apresentacao/). Sem barra de revisão.

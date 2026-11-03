@@ -628,6 +628,21 @@
  }#pt .video .btn > span:first-child{text-wrap: balance;}
 @media (min-width: 1024px){#pt .section--video{padding-top: 72px;}
  }
+
+@supports not (width: 1cqw){#pt .doc-mock__brand{font-size: calc(var(--u, 2px) * 4.2); padding-bottom: calc(var(--u, 2px) * 3);}
+#pt .doc-mock__title{margin: calc(var(--u, 2px) * 4.5) 0 calc(var(--u, 2px) * 5); font-size: calc(var(--u, 2px) * 8.4);}
+#pt .doc-mock__label{margin-bottom: calc(var(--u, 2px) * 2.6); font-size: calc(var(--u, 2px) * 5);}
+#pt .doc-mock__table{gap: calc(var(--u, 2px) * 3); margin-bottom: calc(var(--u, 2px) * 5);
+    padding: calc(var(--u, 2px) * 3.6); border-radius: calc(var(--u, 2px) * 2);}
+#pt .doc-mock__th{font-size: calc(var(--u, 2px) * 3.9);}
+#pt .doc-mock__bar{height: calc(var(--u, 2px) * 2); border-radius: var(--u, 2px);}
+#pt .doc-mock__group-body .doc-mock__bar{margin-top: calc(var(--u, 2px) * 2.2);}
+#pt .doc-mock__chart{border-radius: calc(var(--u, 2px) * 2);}
+#pt .doc-mock__group{grid-template-columns: calc(var(--u, 2px) * 14) 1fr; gap: calc(var(--u, 2px) * 4);}
+#pt .doc-mock__icon{width: calc(var(--u, 2px) * 14); height: calc(var(--u, 2px) * 14); border-radius: calc(var(--u, 2px) * 4);}
+#pt .doc-mock__icon .icon{width: calc(var(--u, 2px) * 7.5); height: calc(var(--u, 2px) * 7.5);}
+
+}
 </style>
 <div id="pt" class="version-b">
 <div id="conteudo">
@@ -1202,5 +1217,31 @@
     setTimeout(reveal, WAIT);
     player.appendChild(iframe); // dentro do clique, para o navegador reconhecer o gesto do visitante
   }, { once: true });
+})();
+
+/* Plano B do modelo de documento (ver compat.css): só roda onde o navegador não entende cqw. */
+(function () {
+  'use strict';
+
+  if (window.CSS && CSS.supports && CSS.supports('width', '1cqw')) return;
+  var docs = document.querySelectorAll('.doc-mock');
+  if (!docs.length) return;
+
+  // 1cqw = 1% da largura interna (sem padding) do contêiner.
+  var measure = function (el) {
+    var cs = getComputedStyle(el);
+    var w = el.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+    if (w > 0) el.style.setProperty('--u', (w / 100) + 'px');
+  };
+  var all = function () { Array.prototype.forEach.call(docs, measure); };
+
+  all();
+  if ('ResizeObserver' in window) {
+    var ro = new ResizeObserver(all);
+    Array.prototype.forEach.call(docs, function (el) { ro.observe(el); });
+  } else {
+    window.addEventListener('resize', all);
+  }
+  window.addEventListener('load', all); // fontes e imagens assentadas
 })();
 </script>

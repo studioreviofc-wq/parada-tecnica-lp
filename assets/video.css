@@ -51,3 +51,6 @@
 .video .section-cta { margin-top: 32px; }
 @media (max-width: 599px) { .video .section-cta { width: 100%; } }
 .video .btn > span:first-child { text-wrap: balance; }
+
+/* No topo da página: menos respiro acima no desktop, para o botão caber na primeira tela (1440×900). */
+@media (min-width: 1024px) { .section--video { padding-top: 72px; } }

@@ -90,7 +90,7 @@ export const Hero = () => `
   </div>
 </section>`;
 
-// Vídeo logo após a primeira dobra (só na versão presencial): a capa é um botão e o iframe do
+// Vídeo no topo da página, antes da primeira dobra (só na versão presencial): a capa é um botão e o iframe do
 // YouTube só é criado no clique, em assets/video.js. A proporção fica reservada no CSS.
 export const Video = () => `
 <section class="section theme-cream section--video" aria-labelledby="video-title" data-section="01b-video">
@@ -100,7 +100,7 @@ export const Video = () => `
     <p class="lead">${esc(c.video.description)}</p>
     <div class="video__player" data-video-id="${esc(c.video.id)}" data-video-title="${esc(c.video.iframeTitle)}">
       <button type="button" class="video__trigger" aria-label="${esc(c.video.playLabel)}">
-        <img src="${esc(c.video.poster)}" alt="" width="1280" height="720" loading="lazy" decoding="async">
+        <img src="${esc(c.video.poster)}" alt="" width="1280" height="720" fetchpriority="high" decoding="async">
         <span class="video__play" aria-hidden="true"><svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg></span>
       </button>
       <p class="video__status" role="status"></p>
@@ -479,8 +479,8 @@ export const Page = (v = 'a', opts = {}) => {
 <body${isB() ? ' class="version-b"' : ''}>
 <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
 ${presentation ? '' : `${ReviewBar()}\n`}<main id="conteudo" tabindex="-1">
-${Hero()}
-${isB() && !online ? `${Video()}\n` : ''}${Identification()}
+${isB() && !online ? `${Video()}\n` : ''}${Hero()}
+${Identification()}
 ${isB() ? `${Practice()}\n` : `${Solution()}\n${Steps()}\n`}${Deliverables()}
 ${About()}
 ${isB() ? `${Offer()}\n` : ''}${Faq()}

@@ -23,7 +23,7 @@
 .video__play {
   position: absolute; top: 50%; left: 50%; display: flex; align-items: center; justify-content: center;
   width: 72px; height: 72px; margin: -36px 0 0 -36px; border-radius: 50%;
-  background: var(--gold-btn); box-shadow: 0 6px 24px rgba(23, 20, 17, 0.35);
+  background: linear-gradient(135deg, #FF3358 0%, #FF0033 50%, #C9002A 100%); box-shadow: 0 6px 24px rgba(23, 20, 17, 0.35);
   transition: transform var(--dur) var(--ease);
 }
 .video__play svg { display: block; margin-left: 2px; }

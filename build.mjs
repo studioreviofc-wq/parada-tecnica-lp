@@ -6,6 +6,7 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { Page } from './src/components.mjs';
 import { imageHost } from './src/content.mjs';
+import { buildElementor } from './elementor.mjs';
 
 const root = dirname(fileURLToPath(import.meta.url));
 
@@ -26,8 +27,14 @@ const main = () => Page('b', { presentation: true });
 // Com imageHost.baseUrl preenchido, as imagens saem da hospedagem: <baseUrl>/<arquivo>, sem ?v=.
 const base = imageHost.baseUrl.replace(/\/+$/, '');
 const hosted = (html) => (base ? html.replace(/assets\/img\/([\w.-]+)\?v=\w+"/g, (m, f) => `${base}/${f}"`) : html);
-writeFileSync(join(root, 'index.html'), hosted(versioned(main())));
+const mainHtml = hosted(versioned(main()));
+writeFileSync(join(root, 'index.html'), mainHtml);
 console.log('ok  /             (página principal)');
+// Mesma página em um bloco só, para o widget HTML do Elementor (precisa das imagens hospedadas).
+if (base) {
+  buildElementor(root, mainHtml);
+  console.log('ok  elementor/parada-tecnica-elementor.html');
+}
 
 // Versão 2 Online: mesma estrutura e os mesmos CSS/JS/imagens (só os caminhos sobem um nível).
 const nested = (html) => html.replace(/(href|src|srcset)="assets\//g, '$1="../assets/');

@@ -76,3 +76,9 @@ Copy, valores e checkout em `src/content.mjs` → `online`; os campos listados a
 Em `src/content.mjs` → `imageHost.baseUrl` (hoje: `https://psicologaalessandratrentin.com.br/wp-content/uploads/2026/11`, WordPress da Alessandra). Vazio = a página usa `assets/img/` deste site. Preenchido com o domínio (ex.: `https://seudominio.com.br`), cada imagem da página principal vira `<domínio>/<nome-do-arquivo>`, sem `?v=`. Depois rode `node build.mjs`. A versão online continua com `assets/img/`.
 
 Arquivos que precisam existir na hospedagem, com estes nomes: `video-capa.webp`, `hero-b.webp`, `hero-mobile.webp`, `avatar.webp`, `etapa-01-escuta.webp`, `etapa-02-testes.webp`, `etapa-03-biofeedback.webp`, `etapa-04-analise.webp`, `sobre.webp`.
+
+### Versão para o Elementor
+
+`node build.mjs` também gera `elementor/parada-tecnica-elementor.html` (só quando `imageHost.baseUrl` está preenchido): a página principal inteira em um bloco, com CSS e JS embutidos, para colar num widget **HTML** do Elementor. Todo o CSS fica preso ao `<div id="pt">`, para não brigar com o tema. Gerador: `elementor.mjs`. Depois de qualquer ajuste na página, rode o build e cole o arquivo novo no widget.
+
+No WordPress: página com modelo **Elementor Canvas** (sem cabeçalho e rodapé do tema), um contêiner de **largura total** com espaçamento 0 e, dentro dele, um widget HTML com todo o conteúdo do arquivo.

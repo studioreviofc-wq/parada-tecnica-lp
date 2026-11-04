@@ -93,17 +93,17 @@ export const Hero = () => `
   </div>
 </section>`;
 
-// Vídeo no topo da página, antes da primeira dobra (só na versão presencial): a capa é um botão e o iframe do
-// YouTube só é criado no clique, em assets/video.js. A proporção fica reservada no CSS.
-export const Video = () => `
+// Vídeo no topo da página, antes da primeira dobra (presencial e online, cada uma com o seu vídeo em copy('video')):
+// a capa é um botão e o iframe do YouTube só é criado no clique, em assets/video.js. A proporção fica reservada no CSS.
+export const Video = (v = copy('video')) => `
 <section class="section theme-dark section--video" aria-labelledby="video-title" data-section="01b-video">
   <div class="container video">
-    ${Eyebrow(c.video.eyebrow, false)}
-    <h2 id="video-title">${accent(c.video.title)}</h2>
-    <p class="lead">${esc(c.video.description)}</p>
-    <div class="video__player" data-video-id="${esc(c.video.id)}" data-video-title="${esc(c.video.iframeTitle)}">
-      <button type="button" class="video__trigger" aria-label="${esc(c.video.playLabel)}">
-        <img src="${esc(c.video.poster)}" alt="" width="1280" height="720" fetchpriority="high" decoding="async">
+    ${Eyebrow(v.eyebrow, false)}
+    <h2 id="video-title">${accent(v.title)}</h2>
+    <p class="lead">${esc(v.description)}</p>
+    <div class="video__player" data-video-id="${esc(v.id)}" data-video-title="${esc(v.iframeTitle)}">
+      <button type="button" class="video__trigger" aria-label="${esc(v.playLabel)}">
+        <img src="${esc(v.poster)}" alt="" width="1280" height="720" fetchpriority="high" decoding="async">
         <span class="video__play" aria-hidden="true"><svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg></span>
       </button>
       <p class="video__status" role="status"></p>
@@ -477,19 +477,19 @@ export const Page = (v = 'a', opts = {}) => {
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Raleway:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="assets/styles.css">${isB() ? '\n<link rel="stylesheet" href="assets/motion.css">' : ''}${isB() && !online ? '\n<link rel="stylesheet" href="assets/video.css">\n<link rel="stylesheet" href="assets/compat.css">' : ''}
+<link rel="stylesheet" href="assets/styles.css">${isB() ? '\n<link rel="stylesheet" href="assets/motion.css">' : ''}${isB() ? '\n<link rel="stylesheet" href="assets/video.css">' : ''}${isB() && !online ? '\n<link rel="stylesheet" href="assets/compat.css">' : ''}
 </head>
 <body${isB() ? ' class="version-b"' : ''}>
 <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
 ${presentation ? '' : `${ReviewBar()}\n`}<main id="conteudo" tabindex="-1">
-${isB() && !online ? `${Video()}\n` : ''}${Hero()}
+${isB() ? `${Video()}\n` : ''}${Hero()}
 ${Identification()}
 ${isB() ? `${Practice()}\n` : `${Solution()}\n${Steps()}\n`}${Deliverables()}
 ${About()}
 ${isB() ? `${Offer()}\n` : ''}${Faq()}
 ${isB() ? `${FinalCta()}\n` : ''}</main>
 ${Footer()}
-<script src="assets/main.js" defer></script>${isB() ? '\n<script src="assets/motion.js" defer></script>' : ''}${isB() && !online ? '\n<script src="assets/video.js" defer></script>\n<script src="assets/compat.js" defer></script>' : ''}
+<script src="assets/main.js" defer></script>${isB() ? '\n<script src="assets/motion.js" defer></script>' : ''}${isB() ? '\n<script src="assets/video.js" defer></script>' : ''}${isB() && !online ? '\n<script src="assets/compat.js" defer></script>' : ''}
 </body>
 </html>
 `;

@@ -404,6 +404,9 @@ export const practice = {
 export const online = {
   title: 'Parada Técnica Online — Alessandra Trentin',
 
+  // Vídeo do topo (mesma seção e textos da presencial; muda só o vídeo e a capa).
+  video: { id: 'StpI-m0bp9Y', poster: 'assets/img/video-capa-online.webp' },
+
   // Checkout da modalidade online (hoje o mesmo link da presencial, confirmado em 2026-10-30).
   // Vazio = botões de compra inativos.
   checkout: { url: 'https://pay.sumup.com/b2c/QX5EAYO5' },

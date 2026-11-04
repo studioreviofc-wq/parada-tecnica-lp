@@ -20,38 +20,29 @@ const prefixSelector = (sel) => {
   return `${ROOT_ID} ${s}`;
 };
 
-// Uma declaração por linha, para o CSS colado no Elementor ficar legível.
-const declarations = (body, pad = '') =>
-  body
-    .split(/;(?![^(]*\))/)
-    .map((d) => d.replace(/\s+/g, ' ').trim())
-    .filter(Boolean)
-    .map((d) => `${pad}  ${d};\n`)
-    .join('');
-
 // Percorre o CSS regra a regra (o CSS do projeto é simples: sem strings com chaves).
 const scopeCss = (css) => {
   css = css.replace(/\/\*[\s\S]*?\*\//g, '');
   let out = '';
   let i = 0;
-  const walk = (inKeyframes, pad = '') => {
+  const walk = (inKeyframes) => {
     while (i < css.length) {
       const open = css.indexOf('{', i);
       const close = css.indexOf('}', i);
-      if (close !== -1 && (open === -1 || close < open)) { out += `${pad.slice(2)}}\n`; i = close + 1; return; }
+      if (close !== -1 && (open === -1 || close < open)) { out += css.slice(i, close + 1); i = close + 1; return; }
       if (open === -1) { out += css.slice(i); i = css.length; return; }
       const head = css.slice(i, open).trim();
       i = open + 1;
       if (head.startsWith('@media') || head.startsWith('@supports') || head.startsWith('@container')) {
-        out += `${pad}${head} {\n`; walk(false, `${pad}  `);
+        out += `${head}{`; walk(false);
       } else if (head.startsWith('@keyframes')) {
-        out += `${pad}${head} {\n`; walk(true, `${pad}  `);
+        out += `${head}{`; walk(true);
       } else {
         const end = css.indexOf('}', i);
         const body = css.slice(i, end);
         i = end + 1;
-        const selector = inKeyframes ? head : head.split(',').map(prefixSelector).join(', ');
-        out += `${pad}${selector} {\n${declarations(body, pad)}${pad}}\n`;
+        const selector = inKeyframes ? head : head.split(',').map(prefixSelector).join(',');
+        out += `${selector}{${body.trim()}}\n`;
       }
     }
   };
@@ -61,72 +52,15 @@ const scopeCss = (css) => {
 
 export const buildElementor = (root, html, file = 'parada-tecnica-elementor.html') => {
   const read = (f) => readFileSync(join(root, f), 'utf8');
-  // Neutraliza o que temas (Hello, Astra…) e o kit do Elementor costumam pôr nos elementos da página.
+  // Neutraliza o que temas e o kit do Elementor costumam pôr em p/img/títulos/botões.
   // Especificidade (1,0,0): ganha do tema e perde para qualquer regra da página (todas vêm depois).
-  // Só devolve os valores padrão do navegador; o visual continua vindo do CSS da página.
-  const reset = `/* ---------- Proteção contra estilos do tema ---------- */
-${ROOT_ID} {
-  display: block;
-  width: 100%;
-  max-width: none;
-  margin: 0;
-  padding: 0;
-  text-align: left;
-}
-${ROOT_ID} :where(div,section,header,footer,article,aside,nav,figure,details,summary,ul,ol,li,blockquote,hr) {
-  background-color: transparent;
-  background-image: none;
-  border: 0;
-  border-radius: 0;
-  box-shadow: none;
-  padding: 0;
-  float: none;
-}
-${ROOT_ID} :where(figure,blockquote,details,summary) { margin: 0; }
-${ROOT_ID} :where(ul,ol) { list-style: none; margin: 0; }
-${ROOT_ID} :where(p,li,span,strong,em,small,summary,label,figcaption,blockquote) {
-  color: inherit;
-  font-family: inherit;
-  letter-spacing: inherit;
-  text-transform: inherit;
-}
-${ROOT_ID} :where(h1,h2,h3,h4) {
-  letter-spacing: inherit;
-  text-transform: inherit;
-  text-shadow: none;
-}
-${ROOT_ID} :where(img) {
-  border: 0;
-  border-radius: 0;
-  box-shadow: none;
-  max-width: 100%;
-  height: auto;
-}
-${ROOT_ID} :where(a,button) {
-  text-transform: inherit;
-  letter-spacing: inherit;
-  text-shadow: none;
-  text-decoration: inherit;
-}
-${ROOT_ID} :where(button,button:hover,button:focus) {
-  background: none;
-  border: 0;
-  border-radius: 0;
-  box-shadow: none;
-  padding: 0;
-  min-height: 0;
-  font: inherit;
-  color: inherit;
-  white-space: normal;
-  text-align: inherit;
-  transition: none;
-}
-${ROOT_ID} :where(a:hover,a:focus) { color: inherit; }
-
+  const reset = `${ROOT_ID} :where(p,li,span,strong,em,small,summary,label,figcaption,blockquote){color:inherit;font-family:inherit;letter-spacing:inherit;text-transform:inherit}
+${ROOT_ID} :where(h1,h2,h3,h4){letter-spacing:inherit;text-transform:inherit}
+${ROOT_ID} :where(img){border:0;border-radius:0;box-shadow:none;max-width:100%;height:auto}
+${ROOT_ID} :where(button,a){text-transform:inherit;letter-spacing:inherit;text-shadow:none}
+${ROOT_ID} :where(button){background:none;border:0;box-shadow:none;font:inherit;color:inherit}
 `;
-  const css = reset + ['assets/styles.css', 'assets/motion.css', 'assets/video.css', 'assets/compat.css']
-    .map((f) => `/* ---------- ${f} ---------- */\n${scopeCss(read(f))}`)
-    .join('\n');
+  const css = reset + ['assets/styles.css', 'assets/motion.css', 'assets/video.css', 'assets/compat.css'].map((f) => scopeCss(read(f))).join('\n');
   const js = ['assets/main.js', 'assets/motion.js', 'assets/video.js', 'assets/compat.js'].map(read).join('\n');
 
   const body = html

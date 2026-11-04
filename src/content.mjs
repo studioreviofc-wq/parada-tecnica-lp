@@ -235,9 +235,9 @@ export const versionB = {
     description: 'Uma avaliação psicológica individual de três horas, precedida de formulários preparatórios online, com análise integrada das informações, documento escrito e devolutiva para esclarecer os resultados e as recomendações.',
     includedTitle: 'O QUE ESTÁ INCLUÍDO',
     included: [
+      'Preparação online por briefing e formulários, além da análise integrada das informações realizada pela Alessandra.',
       'Avaliação psicológica individual de 3 horas, presencial em Farroupilha/RS.',
       'Entrevista clínica, instrumentos psicológicos e biofeedback cardiovascular, conforme indicação profissional.',
-      'Preparação online por briefing e formulários, além da análise integrada das informações realizada pela Alessandra.',
       'Documento individualizado com recomendações e plano de próximos passos, em até 7 dias úteis após a sessão.',
       'Devolutiva com a Alessandra para explicar o documento e esclarecer dúvidas.',
     ],

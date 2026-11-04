@@ -419,7 +419,7 @@ export const online = {
   // Sem seção de investimento nem checkout nesta versão.
   schedule: {
     url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ0GER3Q9r-Cd6gEwGqULrC5vCWJhCJrV0Dz8c8rcJPvm0b8F3mPzIvNbHDvNGpO9MVX6Z8Qi9CI',
-    cta: 'AGENDAR MINHA REUNIÃO',
+    cta: 'AGENDAR REUNIÃO GRATUITA', // gratuidade confirmada pela cliente em 2026-11-04
   },
 
   hero: {
@@ -560,7 +560,7 @@ export const online = {
 
   finalCta: {
     headline: 'Você dedica tanto tempo às suas responsabilidades. Que tal reservar um momento para olhar para você?',
-    subtitle: 'A Parada Técnica Online propõe uma avaliação psicológica individual e estruturada para compreender melhor sua situação e receber orientações profissionais sobre os próximos passos, sem a necessidade de deslocamento até o consultório.',
+    subtitle: 'A Parada Técnica Online propõe uma avaliação psicológica individual e estruturada para compreender melhor sua situação e receber orientações profissionais sobre os próximos passos, sem a necessidade de deslocamento até o consultório presencial.',
     cta: 'QUERO MINHA PARADA TÉCNICA',
     microcopy: '', // sem texto pós-pagamento: a online não tem venda direta
   },

@@ -414,14 +414,12 @@ export const online = {
   // Vídeo do topo (mesma seção e textos da presencial; muda só o vídeo e a capa).
   video: { id: 'StpI-m0bp9Y', poster: 'assets/img/video-capa-online.webp' },
 
-  // Checkout da modalidade online (hoje o mesmo link da presencial, confirmado em 2026-10-30).
-  // Vazio = botões de compra inativos.
-  checkout: { url: 'https://pay.sumup.com/b2c/QX5EAYO5' },
-
-  // Valores da modalidade online (confirmados em 2026-10-30: iguais aos da presencial).
-  commercial: {
-    price: { confirmed: true, value: 'R$ 2.500' },
-    installments: { confirmed: true, value: 'em até 12x' },
+  // Funil da online (desde 2026-11-04): sem venda direta. Todos os CTAs abrem o agendamento de uma
+  // reunião no Google Agenda, em nova aba; preço e contratação ficam para a conversa comercial.
+  // Sem seção de investimento nem checkout nesta versão.
+  schedule: {
+    url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ0GER3Q9r-Cd6gEwGqULrC5vCWJhCJrV0Dz8c8rcJPvm0b8F3mPzIvNbHDvNGpO9MVX6Z8Qi9CI',
+    cta: 'AGENDAR MINHA REUNIÃO',
   },
 
   hero: {
@@ -507,18 +505,6 @@ export const online = {
     trustIcons: ['person', 'lock', 'video'],
   },
 
-  offer: {
-    description: 'Uma avaliação psicológica individual online, com formulários preparatórios, encontro por videoconferência, análise integrada das informações, documento individualizado e devolutiva para explicar os resultados e as recomendações.',
-    included: [
-      'Preparação online por briefing e formulários, realizados antes do encontro por videoconferência.',
-      'Avaliação psicológica individual por videoconferência.',
-      'Entrevista clínica, instrumentos psicológicos adequados à modalidade online e análise integrada das informações realizada pela Alessandra.',
-      'Documento individualizado com recomendações e plano de próximos passos, em até 7 dias úteis após a sessão.',
-      'Devolutiva com a Alessandra para explicar o documento e esclarecer dúvidas.',
-    ],
-    microcopy: 'Após a confirmação do pagamento, nossa equipe entrará em contato para encaminhar o agendamento da reunião online de boas-vindas de 20 minutos.',
-  },
-
   faqItems: [
     {
       q: 'A Parada Técnica é uma terapia?',
@@ -560,19 +546,10 @@ export const online = {
       a: 'As informações compartilhadas durante o atendimento são tratadas conforme o sigilo profissional e as regras aplicáveis à proteção dos dados pessoais.',
     },
     {
-      q: 'Qual é o investimento para fazer a Parada Técnica?',
-      a: 'O investimento é de R$ 2.500, com possibilidade de pagamento em até 12x. Você pode consultar os detalhes antes de concluir a compra.',
-    },
-    {
-      q: 'Como funciona o pagamento?',
-      a: 'Ao clicar no botão de contratação, você será direcionado para uma página de pagamento, onde poderá conferir as condições disponíveis e concluir a compra.',
-    },
-    {
-      q: 'Como faço para agendar e o que acontece depois que eu comprar?',
+      q: 'Como faço para agendar uma reunião?',
       a: [
-        'Após a confirmação do pagamento, nossa equipe entrará em contato para encaminhar o link de agendamento de uma reunião online de boas-vindas de 20 minutos.',
-        'Nesse encontro, você receberá orientações sobre a preparação online e o agendamento da avaliação por videoconferência.',
-        'Depois da avaliação, a Alessandra prepara seu documento individualizado, com os principais pontos avaliados e recomendações profissionais.',
+        'Basta clicar em um dos botões de agendamento da página e escolher um horário disponível na agenda.',
+        'Nessa conversa, você poderá conhecer melhor a proposta da Parada Técnica Online, esclarecer dúvidas e receber orientações sobre as condições de contratação e os próximos passos.',
       ],
     },
     {
@@ -585,6 +562,6 @@ export const online = {
     headline: 'Você dedica tanto tempo às suas responsabilidades. Que tal reservar um momento para olhar para você?',
     subtitle: 'A Parada Técnica Online propõe uma avaliação psicológica individual e estruturada para compreender melhor sua situação e receber orientações profissionais sobre os próximos passos, sem a necessidade de deslocamento até o consultório.',
     cta: 'QUERO MINHA PARADA TÉCNICA',
-    microcopy: 'Após a confirmação do pagamento, nossa equipe entrará em contato para orientar o agendamento da reunião de boas-vindas.',
+    microcopy: '', // sem texto pós-pagamento: a online não tem venda direta
   },
 };

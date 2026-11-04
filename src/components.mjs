@@ -19,8 +19,12 @@ const copy = (key) => ({
 // Botão de compra: na versão online usa só o checkout próprio; sem link confirmado, fica inativo.
 const buy = () => {
   if (!online) return {};
-  return c.online.checkout.url ? { href: c.online.checkout.url } : { unavailable: true };
+  return c.online.checkout?.url ? { href: c.online.checkout.url } : { unavailable: true };
 };
+// Versão online: todos os CTAs comerciais levam ao agendamento (Google Agenda), em nova aba.
+// Espalhado por último no Button, substitui texto e destino; na presencial não faz nada.
+const schedule = () =>
+  online && c.online.schedule?.url ? { label: c.online.schedule.cta, href: c.online.schedule.url, external: true, unavailable: false } : {};
 // Versão B: CTAs anteriores à oferta rolam até ela (mesmo texto); na A seguem para o checkout.
 const toOffer = (label) => (isB() ? { label, href: '#investimento' } : { label });
 
@@ -40,8 +44,8 @@ export const Note = (text) => `<p class="pending-note" role="note"><strong>Pend�
 
 const checkoutHref = () => c.checkout.url || '#checkout';
 
-export const Button = ({ label, href = checkoutHref(), variant = 'dark', cta, arrow = false, iconBox = '', unavailable = false }) =>
-  `<a class="btn btn--${variant}" ${unavailable ? 'role="link" aria-disabled="true"' : `href="${href}"`}${cta ? ` data-cta="${cta}"` : ''}><span>${esc(label)}${unavailable ? '<span class="visually-hidden"> — contratação online ainda não disponível</span>' : ''}</span>${arrow ? icon('arrow', 'btn__arrow') : ''}${iconBox ? `<span class="btn__iconbox">${icon(iconBox)}</span>` : ''}</a>`;
+export const Button = ({ label, href = checkoutHref(), variant = 'dark', cta, arrow = false, iconBox = '', unavailable = false, external = false }) =>
+  `<a class="btn btn--${variant}" ${unavailable ? 'role="link" aria-disabled="true"' : `href="${esc(href)}"`}${external ? ' target="_blank" rel="noopener noreferrer"' : ''}${cta ? ` data-cta="${cta}"` : ''}><span>${esc(label)}${unavailable ? '<span class="visually-hidden"> — contratação online ainda não disponível</span>' : ''}</span>${arrow ? icon('arrow', 'btn__arrow') : ''}${iconBox ? `<span class="btn__iconbox">${icon(iconBox)}</span>` : ''}</a>`;
 
 // Selo flutuante com nome e registro, sobre a foto da primeira dobra.
 export const PhotoBadge = ({ name, role, avatar }) => `
@@ -83,7 +87,7 @@ export const Hero = () => `
         ${paragraphs(copy('hero').description)}
       </div>
       <div class="hero__cta" id="hero-cta">
-        ${Button({ ...toOffer(c.hero.cta), variant: 'gold', cta: 'hero', iconBox: 'arrowUpRight' })}
+        ${Button({ ...toOffer(c.hero.cta), ...schedule(), variant: 'gold', cta: 'hero', iconBox: 'arrowUpRight' })}
       </div>
     </div>
     <div class="hero__media">
@@ -108,7 +112,7 @@ export const Video = (v = copy('video')) => `
       </button>
       <p class="video__status" role="status"></p>
     </div>
-    <div class="section-cta">${Button({ label: c.versionB.buyCta, href: '#investimento', variant: 'gold', cta: 'video', iconBox: 'arrowUpRight' })}</div>
+    <div class="section-cta">${Button({ label: c.versionB.buyCta, href: '#investimento', ...schedule(), variant: 'gold', cta: 'video', iconBox: 'arrowUpRight' })}</div>
   </div>
 </section>`;
 
@@ -219,7 +223,7 @@ export const Deliverables = () => `
         .join('\n')}
     </ul>
     <p class="pull">${esc(c.deliverables.closing)}</p>
-    <div class="section-cta">${Button({ ...toOffer(c.deliverables.cta), variant: 'gold', cta: 'entregaveis', iconBox: 'arrowUpRight' })}</div>
+    <div class="section-cta">${Button({ ...toOffer(c.deliverables.cta), ...schedule(), variant: 'gold', cta: 'entregaveis', iconBox: 'arrowUpRight' })}</div>
   </div>
 </section>`;
 
@@ -266,7 +270,7 @@ export const Faq = () => `
         )
         .join('\n')}
     </div>
-    <div class="section-cta">${Button({ label: isB() ? c.versionB.buyCta : c.faq.cta, ...buy(), variant: 'gold', cta: 'faq', iconBox: 'arrowUpRight' })}</div>
+    <div class="section-cta">${Button({ label: isB() ? c.versionB.buyCta : c.faq.cta, ...buy(), ...schedule(), variant: 'gold', cta: 'faq', iconBox: 'arrowUpRight' })}</div>
   </div>
 </section>`;
 
@@ -386,7 +390,7 @@ export const Practice = () => {
 
     <div class="practice__closing">
       <p>${esc(p.closing)}</p>
-      ${Button({ label: p.cta, href: '#investimento', variant: 'gold', cta: 'pratica', iconBox: 'arrowUpRight' })}
+      ${Button({ label: p.cta, href: '#investimento', ...schedule(), variant: 'gold', cta: 'pratica', iconBox: 'arrowUpRight' })}
     </div>
   </div>
   ${Watermark()}
@@ -439,8 +443,8 @@ export const FinalCta = () => {
     ${Eyebrow(f.eyebrow, false)}
     <h2 id="final-title">${headlineWithAccent(f)}</h2>
     <p class="final__subtitle">${esc(f.subtitle)}</p>
-    <div class="section-cta">${Button({ label: f.cta, ...buy(), variant: 'gold', cta: 'chamada-final', iconBox: 'arrowUpRight' })}</div>
-    <p class="final__micro">${esc(f.microcopy)}</p>
+    <div class="section-cta">${Button({ label: f.cta, ...buy(), ...schedule(), variant: 'gold', cta: 'chamada-final', iconBox: 'arrowUpRight' })}</div>${f.microcopy ? `
+    <p class="final__micro">${esc(f.microcopy)}</p>` : ''}
   </div>
 </section>`;
 };
@@ -490,7 +494,7 @@ ${isB() ? `${Video()}\n` : ''}${Hero()}
 ${Identification()}
 ${isB() ? `${Practice()}\n` : `${Solution()}\n${Steps()}\n`}${Deliverables()}
 ${About()}
-${isB() ? `${Offer()}\n` : ''}${Faq()}
+${isB() && !online ? `${Offer()}\n` : ''}${Faq()}
 ${isB() ? `${FinalCta()}\n` : ''}</main>
 ${Footer()}
 <script src="assets/main.js" defer></script>${isB() ? '\n<script src="assets/motion.js" defer></script>' : ''}${isB() ? '\n<script src="assets/video.js" defer></script>' : ''}${isB() ? '\n<script src="assets/compat.js" defer></script>' : ''}

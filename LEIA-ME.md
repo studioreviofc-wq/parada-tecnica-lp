@@ -65,9 +65,8 @@ A copy da Versão B fica em `src/content.mjs` → `versionB` (substitui só os c
 
 ### Versão 2 Online
 
-Copy, valores e checkout em `src/content.mjs` → `online`; os campos listados ali substituem os da Versão 1 só em `/online/`. CSS, JS e imagens são os mesmos.
-- **Checkout:** `online.checkout.url` (hoje o mesmo link da Versão 1). Vazio = botões de compra inativos.
-- **Preço e parcelamento:** `online.commercial` (R$ 2.500 em até 12x).
+Copy em `src/content.mjs` → `online`; os campos listados ali substituem os da Versão 1 só em `/online/`. CSS, JS e imagens são os mesmos.
+- **Funil (desde 2026-11-04):** sem venda direta. Não há seção de investimento, preço nem checkout. Todos os CTAs ("AGENDAR MINHA REUNIÃO") abrem o Google Agenda em nova aba: link em `online.schedule.url`, texto em `online.schedule.cta`.
 - **Prazo do documento:** `online.practice.document.deadline`. Vazio = selo oculto.
 - **Imagens das etapas:** `online-etapa-01-conversa`, `online-etapa-02-testes`, `online-etapa-03-aprofundamento`, `online-etapa-04-analise` (em `assets/img/`).
 

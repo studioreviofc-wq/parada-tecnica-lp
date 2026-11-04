@@ -468,13 +468,16 @@ export const online = {
       ...practice.document,
       text: [
         'Após o encontro online, Alessandra reúne as informações da entrevista clínica e os resultados dos instrumentos psicológicos utilizados na avaliação.',
-        'Essa análise é organizada em um documento individualizado, que apresenta os principais aspectos identificados, os possíveis fatores associados às dificuldades relatadas e recomendações profissionais para os próximos passos.',
-        'Você também conta com uma devolutiva para compreender o conteúdo e esclarecer dúvidas.',
+        'Essa análise é apresentada em um documento individualizado, que ajuda a compreender os aspectos identificados, os possíveis fatores associados às dificuldades e as recomendações profissionais para seguir adiante.',
+        'Em até 7 dias úteis após a sessão, você recebe o documento e conta com uma devolutiva para esclarecer o conteúdo e conversar sobre os próximos passos.',
       ],
-      deadline: '', // prazo da modalidade online a confirmar: preencher só depois da confirmação
-      // Versão online: mantém as páginas genéricas (o modelo da presencial cita biofeedback).
+      deadline: 'ATÉ 7 DIAS ÚTEIS APÓS A SESSÃO', // confirmado pela Alessandra em 2026-11-03
       exampleLabel: 'Ilustrativo · modelo sem dados reais',
-      mockup: null,
+      // Mesmo modelo de duas páginas da presencial, sem biofeedback: o gráfico vira um resumo em barras dos instrumentos.
+      mockup: {
+        ...practice.document.mockup,
+        results: { ...practice.document.mockup.results, chartTitle: 'Síntese dos instrumentos', chart: 'bars' },
+      },
     },
   },
 
@@ -490,8 +493,8 @@ export const online = {
 
   about: {
     description: [
-      'Com atuação clínica em Farroupilha/RS, Alessandra realiza avaliações psicológicas individuais e utiliza entrevista clínica e instrumentos de avaliação para investigar aspectos relacionados à sobrecarga e às dificuldades percebidas no cotidiano.',
-      'Na proposta de atendimento online, a avaliação é realizada por videoconferência, com instrumentos adequados à modalidade remota, análise integrada das informações e devolutiva individualizada.',
+      'Com atuação clínica online e presencial, Alessandra Trentin atende clientes de diferentes partes do Brasil e do mundo, combinando entrevista clínica e instrumentos de avaliação psicológica para investigar aspectos relacionados à sobrecarga emocional e às dificuldades percebidas no cotidiano.',
+      'A Parada Técnica é uma avaliação individual, estruturada em etapas definidas, com análise integrada das informações e entrega de um documento escrito em até sete dias úteis após a sessão.',
     ],
     trust: ['Atendimento individual', 'Sigilo profissional', 'Atendimento online'],
     trustIcons: ['person', 'lock', 'video'],
@@ -500,20 +503,20 @@ export const online = {
   offer: {
     description: 'Uma avaliação psicológica individual online, com formulários preparatórios, encontro por videoconferência, análise integrada das informações, documento individualizado e devolutiva para explicar os resultados e as recomendações.',
     included: [
-      'Preparação online por briefing e formulários individuais.',
-      'Avaliação psicológica individual por videoconferência, com entrevista clínica e instrumentos adequados ao atendimento remoto.',
-      'Análise integrada das informações realizada pela Alessandra após o encontro.',
-      'Documento individualizado com recomendações e orientações para os próximos passos.',
-      'Devolutiva com Alessandra para explicar o documento e esclarecer dúvidas.',
+      'Preparação online por briefing e formulários, realizados antes do encontro por videoconferência.',
+      'Avaliação psicológica individual por videoconferência.',
+      'Entrevista clínica, instrumentos psicológicos adequados à modalidade online e análise integrada das informações realizada pela Alessandra.',
+      'Documento individualizado com recomendações e plano de próximos passos, em até 7 dias úteis após a sessão.',
+      'Devolutiva com a Alessandra para explicar o documento e esclarecer dúvidas.',
     ],
-    microcopy: 'Após a confirmação da contratação, nossa equipe entra em contato para orientar o agendamento e os próximos passos.',
+    microcopy: 'Após a confirmação do pagamento, nossa equipe entrará em contato para encaminhar o agendamento da reunião online de boas-vindas de 20 minutos.',
   },
 
   faqItems: [
     {
       q: 'A Parada Técnica é uma terapia?',
       a: [
-        'Não. É uma avaliação psicológica individual e estruturada, que reúne entrevista clínica, instrumentos psicológicos e análise profissional das informações obtidas.',
+        'É uma avaliação psicológica individual e estruturada, que reúne entrevista clínica, instrumentos psicológicos e análise profissional das informações obtidas.',
         'Se houver indicação de acompanhamento terapêutico posterior, as possibilidades serão apresentadas individualmente.',
       ],
     },
@@ -524,33 +527,30 @@ export const online = {
     {
       q: 'Uma única sessão é suficiente?',
       a: [
-        'A proposta da Parada Técnica é reunir informações para uma avaliação estruturada, complementada por formulários preparatórios e uma análise posterior.',
-        'Ela não substitui necessariamente um acompanhamento terapêutico. Se houver indicação de continuidade, isso será explicado na devolutiva.',
+        'A Parada Técnica foi estruturada para reunir, em uma avaliação, diferentes informações sobre seu momento atual. Antes do encontro por videoconferência, você também responde a formulários preparatórios online.',
+        'Depois, a Alessandra realiza a análise integrada e prepara o documento individualizado.',
+        'Esse processo tem uma proposta de avaliação e orientação. Se houver necessidade de acompanhamento terapêutico posterior, isso será explicado na devolutiva.',
       ],
     },
     {
       q: 'A Parada Técnica inclui hipnose?',
       a: [
-        'Não. A Parada Técnica é uma avaliação psicológica.',
-        'A hipnose terapêutica pode ser considerada em um tratamento posterior, conforme a indicação profissional e a decisão da pessoa.',
+        'Não. A Parada Técnica é uma avaliação psicológica estruturada, com entrevista clínica e instrumentos psicológicos, conforme indicação.',
+        'A hipnose terapêutica pode fazer parte de um tratamento posterior, caso seja recomendada para sua situação e você decida continuar.',
       ],
     },
     {
       q: 'E se eu quiser continuar o acompanhamento com a Alessandra?',
       a: [
-        'Se houver indicação, a Alessandra poderá apresentar uma proposta individualizada de acompanhamento terapêutico.',
-        'Entre as possibilidades estão protocolos de terapia breve com hipnose terapêutica, que podem envolver de 3 a 10 encontros, conforme a avaliação e o plano indicado.',
-        'A continuidade não é obrigatória.',
+        'Se houver indicação, a Alessandra poderá apresentar uma proposta de acompanhamento terapêutico, com investimento à parte.',
+        'Existem duas possibilidades de prosseguir com hipnose terapêutica: uma individual, mais breve, de 3 a 10 encontros; e outra em grupo, com acompanhamento mais longo e contínuo ao longo de alguns meses.',
+        '**O acompanhamento posterior é uma nova contratação, não incluída no valor da Parada Técnica.** Caso você decida continuar, o valor investido na Parada Técnica poderá ser abatido do investimento no acompanhamento, conforme as condições apresentadas na proposta.',
+        'O formato mais adequado depende do seu caso, e a decisão é sempre sua. A continuidade não é obrigatória.',
       ],
     },
     {
       q: 'Como funciona o sigilo?',
       a: 'As informações compartilhadas durante o atendimento são tratadas conforme o sigilo profissional e as regras aplicáveis à proteção dos dados pessoais.',
-    },
-    {
-      q: 'Posso fazer a Parada Técnica online?',
-      a: 'Resposta proposta para aprovação: A modalidade online está sendo estruturada para que a preparação, a avaliação e a devolutiva possam acontecer remotamente, utilizando recursos adequados a esse formato. A disponibilidade e as condições definitivas serão confirmadas pela equipe antes da contratação.',
-      pending: true,
     },
     {
       q: 'Qual é o investimento para fazer a Parada Técnica?',
@@ -561,20 +561,16 @@ export const online = {
       a: 'Ao clicar no botão de contratação, você será direcionado para uma página de pagamento, onde poderá conferir as condições disponíveis e concluir a compra.',
     },
     {
-      q: 'Como acontece o agendamento?',
+      q: 'Como faço para agendar e o que acontece depois que eu comprar?',
       a: [
-        'Após a confirmação da contratação, a equipe orienta o agendamento e o acesso aos formulários preparatórios.',
-        'O encontro é realizado por videoconferência, conforme as orientações enviadas.',
+        'Após a confirmação do pagamento, nossa equipe entrará em contato para encaminhar o link de agendamento de uma reunião online de boas-vindas de 20 minutos.',
+        'Nesse encontro, você receberá orientações sobre a preparação online e o agendamento da avaliação por videoconferência.',
+        'Depois da avaliação, a Alessandra prepara seu documento individualizado, com os principais pontos avaliados e recomendações profissionais.',
       ],
     },
     {
-      q: 'O que acontece depois do encontro?',
-      a: 'Alessandra realiza a análise integrada das informações e prepara o documento individualizado, com os principais pontos avaliados e recomendações profissionais. Uma devolutiva permite compreender o conteúdo e esclarecer dúvidas.',
-    },
-    {
       q: 'Em quanto tempo recebo o documento?',
-      a: '[Prazo de entrega na modalidade online a confirmar com a Alessandra.]',
-      pending: true,
+      a: 'O prazo previsto é de até 7 dias úteis após a sessão por videoconferência.',
     },
   ],
 
@@ -582,6 +578,6 @@ export const online = {
     headline: 'Você dedica tanto tempo às suas responsabilidades. Que tal reservar um momento para olhar para você?',
     subtitle: 'A Parada Técnica Online propõe uma avaliação psicológica individual e estruturada para compreender melhor sua situação e receber orientações profissionais sobre os próximos passos, sem a necessidade de deslocamento até o consultório.',
     cta: 'QUERO MINHA PARADA TÉCNICA',
-    microcopy: 'Após a confirmação da contratação, nossa equipe entra em contato para orientar o agendamento.',
+    microcopy: 'Após a confirmação do pagamento, nossa equipe entrará em contato para orientar o agendamento da reunião de boas-vindas.',
   },
 };

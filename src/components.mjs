@@ -293,6 +293,10 @@ const DocumentPage = (page, i) =>
         </div>`;
 
 // Páginas demonstrativas do documento: textos em HTML (nítidos e editáveis), sem nenhum dado real.
+// Versão online: barras genéricas no lugar da curva do biofeedback (cores por atributo, sem CSS novo).
+const docMockBars = [30, 18, 38, 24, 44, 14, 34, 26]
+  .map((h, i) => `<rect x="${8 + i * 24}" y="${52 - h}" width="14" height="${h}" rx="1.5" fill="#B78A50" fill-opacity="${i % 2 ? 0.4 : 0.7}"/>`)
+  .join('');
 const DocumentMockup = (m, i) => {
   const head = (title) => `<span class="doc-mock__brand">${esc(m.brand)}</span>
           <span class="doc-mock__title">${esc(title)}</span>`;
@@ -308,7 +312,7 @@ const DocumentMockup = (m, i) => {
           <span class="doc-mock__label">${esc(m.results.chartTitle)}</span>
           <svg class="doc-mock__chart" viewBox="0 0 200 56" preserveAspectRatio="none" focusable="false">
             <path class="doc-mock__grid" d="M0 14h200M0 28h200M0 42h200"/>
-            <path class="doc-mock__line" d="M0 34c10-10 18 8 28 0s16-16 28-8 14 14 26 4 16-14 28-6 16 16 28 6 14-12 26-6 14 10 36 2"/>
+            ${m.results.chart === 'bars' ? docMockBars : '<path class="doc-mock__line" d="M0 34c10-10 18 8 28 0s16-16 28-8 14 14 26 4 16-14 28-6 16 16 28 6 14-12 26-6 14 10 36 2"/>'}
           </svg>
         </div>`
     : `<div class="doc-page doc-page--2 doc-mock">
@@ -477,7 +481,7 @@ export const Page = (v = 'a', opts = {}) => {
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Raleway:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="assets/styles.css">${isB() ? '\n<link rel="stylesheet" href="assets/motion.css">' : ''}${isB() ? '\n<link rel="stylesheet" href="assets/video.css">' : ''}${isB() && !online ? '\n<link rel="stylesheet" href="assets/compat.css">' : ''}
+<link rel="stylesheet" href="assets/styles.css">${isB() ? '\n<link rel="stylesheet" href="assets/motion.css">' : ''}${isB() ? '\n<link rel="stylesheet" href="assets/video.css">' : ''}${isB() ? '\n<link rel="stylesheet" href="assets/compat.css">' : ''}
 </head>
 <body${isB() ? ' class="version-b"' : ''}>
 <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
@@ -489,7 +493,7 @@ ${About()}
 ${isB() ? `${Offer()}\n` : ''}${Faq()}
 ${isB() ? `${FinalCta()}\n` : ''}</main>
 ${Footer()}
-<script src="assets/main.js" defer></script>${isB() ? '\n<script src="assets/motion.js" defer></script>' : ''}${isB() ? '\n<script src="assets/video.js" defer></script>' : ''}${isB() && !online ? '\n<script src="assets/compat.js" defer></script>' : ''}
+<script src="assets/main.js" defer></script>${isB() ? '\n<script src="assets/motion.js" defer></script>' : ''}${isB() ? '\n<script src="assets/video.js" defer></script>' : ''}${isB() ? '\n<script src="assets/compat.js" defer></script>' : ''}
 </body>
 </html>
 `;

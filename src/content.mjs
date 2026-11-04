@@ -158,6 +158,13 @@ export const checkout = {
 // A versão online continua usando assets/img/.
 export const imageHost = {
   baseUrl: 'https://psicologaalessandratrentin.com.br/wp-content/uploads/2026/11',
+  // Arquivos que estão no WordPress com outro nome (local → WordPress).
+  rename: {
+    'online-etapa-01-conversa.webp': 'online_etapa_01_conversa.webp',
+    'online-etapa-02-testes.webp': 'online_etapa_02_testes.webp',
+    'online-etapa-03-aprofundamento.webp': 'online_etapa_03_aprofundamento.webp',
+    'online-etapa-04-analise.webp': 'online_etapa_04_analise.webp',
+  },
 };
 
 export const footer = {

@@ -1,5 +1,6 @@
 // Versão da página principal em um único bloco HTML, para colar no widget "HTML" do Elementor.
-// Uso: node build.mjs (chama este arquivo) → elementor/parada-tecnica-elementor.html
+// Uso: node build.mjs (chama este arquivo) → elementor/parada-tecnica-elementor.html (presencial)
+// e elementor/parada-tecnica-online-elementor.html (online).
 // - CSS e JS ficam embutidos; as imagens já saem com o domínio de imageHost.baseUrl.
 // - Todo o CSS é prefixado com #pt, para o tema e o kit do Elementor não sobrescreverem
 //   fontes e cores, e para o CSS da página não vazar para o resto do site.
@@ -49,7 +50,7 @@ const scopeCss = (css) => {
   return out;
 };
 
-export const buildElementor = (root, html) => {
+export const buildElementor = (root, html, file = 'parada-tecnica-elementor.html') => {
   const read = (f) => readFileSync(join(root, f), 'utf8');
   // Neutraliza o que temas e o kit do Elementor costumam pôr em p/img/títulos/botões.
   // Especificidade (1,0,0): ganha do tema e perde para qualquer regra da página (todas vêm depois).
@@ -84,5 +85,5 @@ ${body}
 ${js}</script>
 `;
   mkdirSync(join(root, 'elementor'), { recursive: true });
-  writeFileSync(join(root, 'elementor', 'parada-tecnica-elementor.html'), out);
+  writeFileSync(join(root, 'elementor', file), out);
 };

@@ -28,7 +28,8 @@ const versioned = (html) =>
 const main = () => Page('b', { presentation: true });
 // Com imageHost.baseUrl preenchido, as imagens saem da hospedagem: <baseUrl>/<arquivo>, sem ?v=.
 const base = imageHost.baseUrl.replace(/\/+$/, '');
-const hosted = (html) => (base ? html.replace(/assets\/img\/([\w.-]+)\?v=\w+"/g, (m, f) => `${base}/${f}"`) : html);
+const hosted = (html) =>
+  base ? html.replace(/assets\/img\/([\w.-]+)\?v=\w+"/g, (m, f) => `${base}/${(imageHost.rename || {})[f] || f}"`) : html;
 const mainHtml = hosted(versioned(main()));
 writeFileSync(join(root, 'index.html'), mainHtml);
 console.log('ok  /             (página principal)');
@@ -41,7 +42,13 @@ if (base) {
 // Versão 2 Online: mesma estrutura e os mesmos CSS/JS/imagens (só os caminhos sobem um nível).
 const nested = (html) => html.replace(/(href|src|srcset)="assets\//g, '$1="../assets/');
 mkdirSync(join(root, 'online'), { recursive: true });
-writeFileSync(join(root, 'online', 'index.html'), nested(versioned(Page('b', { presentation: true, online: true }))));
+// As imagens da online também vêm do WordPress (hosted), como na página principal.
+const onlineHtml = hosted(versioned(Page('b', { presentation: true, online: true })));
+writeFileSync(join(root, 'online', 'index.html'), nested(onlineHtml));
+if (base) {
+  buildElementor(root, onlineHtml, 'parada-tecnica-online-elementor.html');
+  console.log('ok  elementor/parada-tecnica-online-elementor.html');
+}
 console.log('ok  /online/      (versão 2 online)');
 
 // O link enviado à cliente continua funcionando: leva para a página principal.

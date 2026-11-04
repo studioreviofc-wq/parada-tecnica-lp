@@ -548,7 +548,7 @@ export const online = {
     {
       q: 'Como faço para agendar uma reunião?',
       a: [
-        'Basta clicar em um dos botões de agendamento da página e escolher um horário disponível na agenda.',
+        'Basta clicar em um dos botões de agendamento da página e escolher um horário disponível na agenda. A reunião é gratuita.',
         'Nessa conversa, você poderá conhecer melhor a proposta da Parada Técnica Online, esclarecer dúvidas e receber orientações sobre as condições de contratação e os próximos passos.',
       ],
     },

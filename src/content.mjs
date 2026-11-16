@@ -414,12 +414,12 @@ export const online = {
   // Vídeo do topo (mesma seção e textos da presencial; muda só o vídeo e a capa).
   video: { id: 'StpI-m0bp9Y', poster: 'assets/img/video-capa-online.webp' },
 
-  // Funil da online (desde 2026-11-04): sem venda direta. Todos os CTAs abrem o agendamento de uma
-  // reunião no Google Agenda, em nova aba; preço e contratação ficam para a conversa comercial.
+  // Funil da online: sem venda direta. Desde 2026-11-16 todos os CTAs abrem o WhatsApp da Alessandra
+  // (antes: Google Agenda, desde 2026-11-04), em nova aba; preço e contratação ficam para a conversa.
   // Sem seção de investimento nem checkout nesta versão.
   schedule: {
-    url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ0GER3Q9r-Cd6gEwGqULrC5vCWJhCJrV0Dz8c8rcJPvm0b8F3mPzIvNbHDvNGpO9MVX6Z8Qi9CI',
-    cta: 'AGENDAR REUNIÃO GRATUITA', // gratuidade confirmada pela cliente em 2026-11-04
+    url: 'https://wa.me/5554991060321?text=Ol%C3%A1!%20Tudo%20bem%3F%20Vim%20atrav%C3%A9s%20da%20p%C3%A1gina%20da%20Parada%20T%C3%A9cnica%20Online%20e%20gostaria%20de%20saber%20mais%20informa%C3%A7%C3%B5es',
+    cta: 'FALAR NO WHATSAPP',
   },
 
   hero: {
@@ -548,7 +548,7 @@ export const online = {
     {
       q: 'Como faço para agendar uma reunião?',
       a: [
-        'Basta clicar em um dos botões de agendamento da página e escolher um horário disponível na agenda. A reunião é gratuita.',
+        'Basta clicar em um dos botões da página para iniciar uma conversa pelo WhatsApp e combinar a reunião. A reunião é gratuita.',
         'Nessa conversa, você poderá conhecer melhor a proposta da Parada Técnica Online, esclarecer dúvidas e receber orientações sobre as condições de contratação e os próximos passos.',
       ],
     },

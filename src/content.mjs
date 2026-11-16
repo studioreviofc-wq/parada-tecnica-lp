@@ -419,7 +419,7 @@ export const online = {
   // Sem seção de investimento nem checkout nesta versão.
   schedule: {
     url: 'https://wa.me/5554991060321?text=Ol%C3%A1!%20Tudo%20bem%3F%20Vim%20atrav%C3%A9s%20da%20p%C3%A1gina%20da%20Parada%20T%C3%A9cnica%20Online%20e%20gostaria%20de%20saber%20mais%20informa%C3%A7%C3%B5es',
-    cta: 'FALAR NO WHATSAPP',
+    cta: 'AGENDAR REUNIÃO GRATUITA', // texto confirmado em 2026-11-16; o botão abre o WhatsApp
   },
 
   hero: {

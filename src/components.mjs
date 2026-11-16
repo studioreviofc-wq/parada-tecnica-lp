@@ -497,7 +497,7 @@ ${About()}
 ${isB() && !online ? `${Offer()}\n` : ''}${Faq()}
 ${isB() ? `${FinalCta()}\n` : ''}</main>
 ${Footer()}
-<script src="assets/main.js" defer></script>${isB() ? '\n<script src="assets/motion.js" defer></script>' : ''}${isB() ? '\n<script src="assets/video.js" defer></script>' : ''}${isB() ? '\n<script src="assets/compat.js" defer></script>' : ''}
+<script src="assets/main.js" defer></script>${isB() ? '\n<script src="assets/motion.js" defer></script>' : ''}${isB() ? '\n<script src="assets/video.js" defer></script>' : ''}${isB() ? '\n<script src="assets/compat.js" defer></script>' : ''}${online ? '\n<script src="assets/meta-contact.js" defer></script>' : ''}
 </body>
 </html>
 `;

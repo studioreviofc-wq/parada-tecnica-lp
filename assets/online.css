@@ -2,6 +2,7 @@
 
 /* Topo: headline (h1) e subtítulo acima do vídeo. */
 .video .video__headline { max-width: 22ch; margin: 0 auto; color: var(--cream); text-wrap: balance; }
+.video .video__headline .display__accent { color: var(--champagne); } /* mesma cor do destaque da chamada final */
 .video .video__sub { max-width: 60ch; margin: 16px auto 0; color: var(--on-dark-muted); text-wrap: pretty; }
 @media (min-width: 1024px) { .video .video__sub { font-size: 1.125rem; } }
 

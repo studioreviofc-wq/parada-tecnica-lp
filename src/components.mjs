@@ -1,7 +1,7 @@
 // Componentes reutilizáveis: funções puras que recebem conteúdo e devolvem HTML.
 // A página é montada em `Page` e gerada por build.mjs.
 import * as c from './content.mjs';
-import { icon } from './icons.mjs';
+import { icon, whatsappIcon } from './icons.mjs';
 
 // Versão em renderização: 'a' (original, intocada) ou 'b' (ajustes comerciais). Definida por Page().
 let variant = 'a';
@@ -24,7 +24,7 @@ const buy = () => {
 // Versão online: todos os CTAs comerciais levam ao agendamento (Google Agenda), em nova aba.
 // Espalhado por último no Button, substitui texto e destino; na presencial não faz nada.
 const schedule = () =>
-  online && c.online.schedule?.url ? { label: c.online.schedule.cta, href: c.online.schedule.url, external: true, unavailable: false } : {};
+  online && c.online.schedule?.url ? { label: c.online.schedule.cta, href: c.online.schedule.url, external: true, unavailable: false, whatsapp: c.online.schedule.url.startsWith('https://wa.me/') } : {};
 // Versão B: CTAs anteriores à oferta rolam até ela (mesmo texto); na A seguem para o checkout.
 const toOffer = (label) => (isB() ? { label, href: '#investimento' } : { label });
 
@@ -44,8 +44,8 @@ export const Note = (text) => `<p class="pending-note" role="note"><strong>Pend�
 
 const checkoutHref = () => c.checkout.url || '#checkout';
 
-export const Button = ({ label, href = checkoutHref(), variant = 'dark', cta, arrow = false, iconBox = '', unavailable = false, external = false }) =>
-  `<a class="btn btn--${variant}" ${unavailable ? 'role="link" aria-disabled="true"' : `href="${esc(href)}"`}${external ? ' target="_blank" rel="noopener noreferrer"' : ''}${cta ? ` data-cta="${cta}"` : ''}><span>${esc(label)}${unavailable ? '<span class="visually-hidden"> — contratação online ainda não disponível</span>' : ''}</span>${arrow ? icon('arrow', 'btn__arrow') : ''}${iconBox ? `<span class="btn__iconbox">${icon(iconBox)}</span>` : ''}</a>`;
+export const Button = ({ label, href = checkoutHref(), variant = 'dark', cta, arrow = false, iconBox = '', unavailable = false, external = false, whatsapp = false }) =>
+  `<a class="btn btn--${variant}${whatsapp ? ' btn--whatsapp' : ''}" ${unavailable ? 'role="link" aria-disabled="true"' : `href="${esc(href)}"`}${external ? ' target="_blank" rel="noopener noreferrer"' : ''}${cta ? ` data-cta="${cta}"` : ''}><span>${esc(label)}${unavailable ? '<span class="visually-hidden"> — contratação online ainda não disponível</span>' : ''}</span>${arrow ? icon('arrow', 'btn__arrow') : ''}${iconBox ? `<span class="btn__iconbox">${whatsapp ? whatsappIcon() : icon(iconBox)}</span>` : ''}</a>`;
 
 // Selo flutuante com nome e registro, sobre a foto da primeira dobra.
 export const PhotoBadge = ({ name, role, avatar }) => `
@@ -82,7 +82,7 @@ export const Hero = () => `
   <div class="hero__grid">
     <div class="hero__text">
       ${Eyebrow(copy('hero').eyebrow, false)}
-      <h1 id="hero-title" class="display">${headlineWithAccent(c.hero)}</h1>
+      <${online ? 'h2' : 'h1'} id="hero-title" class="display">${headlineWithAccent(c.hero)}</${online ? 'h2' : 'h1'}>
       <div class="hero__desc">
         ${paragraphs(copy('hero').description)}
       </div>
@@ -103,8 +103,10 @@ export const Video = (v = copy('video')) => `
 <section class="section theme-dark section--video" aria-labelledby="video-title" data-section="01b-video">
   <div class="container video">
     ${Eyebrow(v.eyebrow, false)}
-    <h2 id="video-title">${accent(v.title)}</h2>
-    <p class="lead">${esc(v.description)}</p>
+    ${v.headline
+      ? `<h1 id="video-title" class="display video__headline">${headlineWithAccent(v)}</h1>`
+      : `<h2 id="video-title">${accent(v.title)}</h2>`}
+    <p class="lead${v.headline ? ' video__sub' : ''}">${esc(v.description)}</p>
     <div class="video__player" data-video-id="${esc(v.id)}" data-video-title="${esc(v.iframeTitle)}">
       <button type="button" class="video__trigger" aria-label="${esc(v.playLabel)}">
         <img src="${esc(v.poster)}" alt="" width="1280" height="720" fetchpriority="high" decoding="async">
@@ -485,7 +487,7 @@ export const Page = (v = 'a', opts = {}) => {
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Raleway:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="assets/styles.css">${isB() ? '\n<link rel="stylesheet" href="assets/motion.css">' : ''}${isB() ? '\n<link rel="stylesheet" href="assets/video.css">' : ''}${isB() ? '\n<link rel="stylesheet" href="assets/compat.css">' : ''}
+<link rel="stylesheet" href="assets/styles.css">${isB() ? '\n<link rel="stylesheet" href="assets/motion.css">' : ''}${isB() ? '\n<link rel="stylesheet" href="assets/video.css">' : ''}${isB() ? '\n<link rel="stylesheet" href="assets/compat.css">' : ''}${online ? '\n<link rel="stylesheet" href="assets/online.css">' : ''}
 </head>
 <body${isB() ? ' class="version-b"' : ''}>
 <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>

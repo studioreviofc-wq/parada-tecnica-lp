@@ -50,7 +50,7 @@ const scopeCss = (css) => {
   return out;
 };
 
-export const buildElementor = (root, html, file = 'parada-tecnica-elementor.html', extraJs = []) => {
+export const buildElementor = (root, html, file = 'parada-tecnica-elementor.html', extraJs = [], extraCss = []) => {
   const read = (f) => readFileSync(join(root, f), 'utf8');
   // Neutraliza o que temas e o kit do Elementor costumam pôr em p/img/títulos/botões.
   // Especificidade (1,0,0): ganha do tema e perde para qualquer regra da página (todas vêm depois).
@@ -60,7 +60,7 @@ ${ROOT_ID} :where(img){border:0;border-radius:0;box-shadow:none;max-width:100%;h
 ${ROOT_ID} :where(button,a){text-transform:inherit;letter-spacing:inherit;text-shadow:none}
 ${ROOT_ID} :where(button){background:none;border:0;box-shadow:none;font:inherit;color:inherit}
 `;
-  const css = reset + ['assets/styles.css', 'assets/motion.css', 'assets/video.css', 'assets/compat.css'].map((f) => scopeCss(read(f))).join('\n');
+  const css = reset + ['assets/styles.css', 'assets/motion.css', 'assets/video.css', 'assets/compat.css', ...extraCss].map((f) => scopeCss(read(f))).join('\n');
   const js = ['assets/main.js', 'assets/motion.js', 'assets/video.js', 'assets/compat.js', ...extraJs].map(read).join('\n');
 
   const body = html

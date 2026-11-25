@@ -68,6 +68,7 @@ A copy da Versão B fica em `src/content.mjs` → `versionB` (substitui só os c
 Copy em `src/content.mjs` → `online`; os campos listados ali substituem os da Versão 1 só em `/online/`. CSS, JS e imagens são os mesmos.
 - **Funil:** sem venda direta. Não há seção de investimento, preço nem checkout. Desde 2026-11-16, todos os CTAs ("AGENDAR REUNIÃO GRATUITA") abrem o WhatsApp da Alessandra em nova aba, com mensagem pronta (antes: Google Agenda). O link fica em `online.schedule.url` e o texto em `online.schedule.cta`.
 - **Pixel da Meta (desde 2026-11-16):** o pixel base (1016626434133093) é instalado pelo Código Personalizado do Elementor, não por este projeto. `assets/meta-contact.js`, carregado só na online e embutido só no HTML do Elementor da online, dispara `fbq('track', 'Contact')` no clique de cada botão de WhatsApp, com `cta` indicando qual botão foi clicado. Sem pixel na página, não faz nada.
+- **Topo e botões (desde 2026-11-24):** acima do vídeo há headline (h1) e subtítulo, em `online.video` (`eyebrow`, `headline`, `accent`, `description`); o título da primeira dobra vira h2 na online. Os botões de WhatsApp ficam verdes, com o logo do WhatsApp (`btn--whatsapp`). O CSS só da online fica em `assets/online.css`, que não é carregado na presencial.
 - **Prazo do documento:** `online.practice.document.deadline`. Vazio = selo oculto.
 - **Imagens das etapas:** `online-etapa-01-conversa`, `online-etapa-02-testes`, `online-etapa-03-aprofundamento`, `online-etapa-04-analise` (em `assets/img/`).
 

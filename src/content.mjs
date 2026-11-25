@@ -412,7 +412,15 @@ export const online = {
   title: 'Parada Técnica Online — Alessandra Trentin',
 
   // Vídeo do topo (mesma seção e textos da presencial; muda só o vídeo e a capa).
-  video: { id: 'StpI-m0bp9Y', poster: 'assets/img/video-capa-online.webp' },
+  // Desde 2026-11-24 o topo tem headline (h1) e subtítulo próprios acima do vídeo; o h1 da primeira dobra vira h2.
+  video: {
+    id: 'StpI-m0bp9Y',
+    poster: 'assets/img/video-capa-online.webp',
+    eyebrow: 'PARADA TÉCNICA ONLINE | PARA EMPRESÁRIOS E EXECUTIVOS',
+    headline: 'Descubra o que está drenando sua energia e decida com clareza o seu próximo passo.',
+    accent: 'o seu próximo passo.', // trecho final em dourado itálico, como na primeira dobra
+    description: 'Uma avaliação psicológica individual por videoconferência, para empresários e executivos que seguem entregando, mas sentem que estão no limite. Ao final, você recebe um documento com os pontos avaliados e orientações profissionais para os próximos passos.',
+  },
 
   // Funil da online: sem venda direta. Desde 2026-11-16 todos os CTAs abrem o WhatsApp da Alessandra
   // (antes: Google Agenda, desde 2026-11-04), em nova aba; preço e contratação ficam para a conversa.

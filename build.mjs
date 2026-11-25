@@ -21,6 +21,7 @@ const versioned = (html) =>
     .replace('assets/video.css"', `assets/video.css?v=${stamp('assets/video.css')}"`)
     .replace('assets/video.js"', `assets/video.js?v=${stamp('assets/video.js')}"`)
     .replace('assets/compat.css"', `assets/compat.css?v=${stamp('assets/compat.css')}"`)
+    .replace('assets/online.css"', `assets/online.css?v=${stamp('assets/online.css')}"`)
     .replace('assets/compat.js"', `assets/compat.js?v=${stamp('assets/compat.js')}"`)
     .replace('assets/meta-contact.js"', `assets/meta-contact.js?v=${stamp('assets/meta-contact.js')}"`)
     .replace(/assets\/img\/([\w.-]+)"/g, (m, f) => `assets/img/${f}?v=${stamp(`assets/img/${f}`)}"`);
@@ -47,7 +48,7 @@ mkdirSync(join(root, 'online'), { recursive: true });
 const onlineHtml = hosted(versioned(Page('b', { presentation: true, online: true })));
 writeFileSync(join(root, 'online', 'index.html'), nested(onlineHtml));
 if (base) {
-  buildElementor(root, onlineHtml, 'parada-tecnica-online-elementor.html', ['assets/meta-contact.js']);
+  buildElementor(root, onlineHtml, 'parada-tecnica-online-elementor.html', ['assets/meta-contact.js'], ['assets/online.css']);
   console.log('ok  elementor/parada-tecnica-online-elementor.html');
 }
 console.log('ok  /online/      (versão 2 online)');
